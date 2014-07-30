@@ -49,6 +49,7 @@ address, caption, cite, code, dfn,em, strong, th, var, optgroup {
 h1, h2, h3, h4, h5, h6 {
 	font-size: 100%;
 	font-weight: normal;
+	font-family: "Microsoft Yahei",arial,helvetica,sans-serif
 }
 
 abbr, acronym {
@@ -173,13 +174,13 @@ textarea,input {
 }
 
 body {
-	font: 14px/1.5 arial,SimSun,serif;
+	font-family: "SimSun","Arial",sans-serif; 
 	font-size: 0.875rem;
 	background-color: #eee;
 	background-image: url('images/bg.jpg');
 	background-attachment: fixed;
 	background-repeat: no-repeat;
-	background-size: 100% 100%
+	background-size: 100% 100%;
 }
 
 .f12 {
@@ -212,6 +213,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
 	padding: 8px 10px;
 	border-radius: 2px;
 	transition: all 0.2s ease-in-out 0s;
+	font-family: "Microsoft Yahei",arial,helvetica,sans-serif
 }
 
 textarea {
@@ -603,6 +605,7 @@ blockquote cite a {
 .entry-content {
 	padding: 0 1.5rem;
 	color: #666;
+	line-height:1.8
 }
 
 .entry-content  a {
@@ -718,7 +721,9 @@ blockquote cite a {
 	background: #fff;
 	display: none;
 }
-
+.post-share, .post-share ul li{
+	width:74px;
+}
 .post-share ul li a {
 	padding: 5px 27px;
 	border-radius: 0;
@@ -936,6 +941,7 @@ thead tr {
 	padding: 1rem;
 	border-radius: 2px;
 	background-color: rgba(255, 255, 255, 0.2);
+	font-size:1.2rem;
 }
 
 .entry-image {
@@ -1292,7 +1298,6 @@ thead tr {
 	margin: 0px 0px 1rem;
 	font-size: 1.2rem;
 	color: #666;
-	font-weight: bold;
 	position: relative;
 	border-bottom: 1px solid #EEE;
 }
@@ -1707,7 +1712,6 @@ thead tr {
 	margin: 0px 0px 1rem;
 	font-size: 1rem;
 	color: #666;
-	font-weight: bold;
 	position: relative;
 	letter-spacing: 1px;
 	text-transform: uppercase;

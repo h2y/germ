@@ -41,7 +41,7 @@
 <body class="nav-open">
 <?php 
 	if( is_mobile() ) {
-	echo '<div id="mobile-nav" class="f12"><form class="mm-search" action="'.get_bloginfo('url').'" method="get" role="search"><input type="text" autocomplete="off" placeholder="Search" name="s" value=""><input id="mobilesubmit" type="submit" value="搜索"></form> ';
+	echo '<div id="mobile-nav" class="f12 yahei"><form class="mm-search" action="'.get_bloginfo('url').'" method="get" role="search"><input type="text" autocomplete="off" placeholder="Search" name="s" value=""><input id="mobilesubmit" type="submit" value="搜索"></form> ';
 	if(function_exists('wp_nav_menu')) {
 						wp_nav_menu(array( 'theme_location' => 'header-menu','container' => 'ul', 'menu_class' => 'nav')); 
 					}
@@ -54,12 +54,12 @@
         <header id="header" class="clearfix">
 			<div class="head">
 				<h1><a href="<?php bloginfo('url'); ?>">Quench!</a></h1>
-				<p class="desc"><span>Just another WordPress Theme</span></p>
+				<p class="desc yahei"><span>Just another WordPress Theme</span></p>
 			</div>
 			
 			<?php 
 				if( !is_mobile() ) {
-					echo '<nav id="main-nav" class="clearfix">';
+					echo '<nav id="main-nav" class="clearfix yahei">';
 					if(function_exists('wp_nav_menu')) {
 						wp_nav_menu(array( 'theme_location' => 'header-menu','container' => 'ul', 'menu_class' => 'nav')); 
 					}

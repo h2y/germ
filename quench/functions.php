@@ -13,6 +13,7 @@ if( dopt('d_autospace_b') != '' )
 
 wp_localize_script('base', 'ajax', array(
 	'ajax_url' => admin_url('admin-ajax.php'),
+	'home' => home_url()
 ));
 
 

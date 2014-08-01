@@ -53,8 +53,8 @@
         <div id="preheader"><?php echo dopt('d_notice');?></div>
         <header id="header" class="clearfix">
 			<div class="head">
-				<h1><a href="<?php bloginfo('url'); ?>">Quench!</a></h1>
-				<p class="desc yahei"><span>Just another WordPress Theme</span></p>
+				<h1><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name')?></a></h1>
+				<p class="desc yahei"><span><?php bloginfo('description')?></span></p>
 			</div>
 			
 			<?php 

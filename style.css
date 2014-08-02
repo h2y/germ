@@ -225,8 +225,8 @@ input[type="submit"] {
 	text-decoration: none;
 	color: #FFF;
 	padding: 8px 16px;
-	cursor: pointer;
 	background-color: #47C2DC;
+	cursor: pointer;
 	border-radius: 2px;
 	transition: all 0.2s ease-in-out 0s;
 }

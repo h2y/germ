@@ -544,7 +544,7 @@ blockquote cite a {
 	border-color: #FFF #FFF #47C2DC;
 	content: "";
 	position: absolute;
-	margin-left: 1px;
+	margin-left: -1px;
 	bottom: 12px;
 }
 

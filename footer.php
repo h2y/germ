@@ -26,7 +26,7 @@ if( is_single() && dopt('d_sideroll_single_b') ){
 	$sr_1 = 2;
 	$sr_2 = 4;
 }
-echo '<script>var asr_1 = '.$sr_1.',asr_2 = '.$sr_2.';var home = "'.get_bloginfo('url').'";</script>';
+echo '<script>var asr_1 = '.$sr_1.',asr_2 = '.$sr_2.';</script>';
 
 wp_footer();
 

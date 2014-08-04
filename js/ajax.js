@@ -1,6 +1,6 @@
 var ajaxcontent = 'content';
 var ajaxsearch_class = 'searchform';
-var ajaxignore_string = new String('#, /wp-, .pdf, .zip, .rar'); 
+var ajaxignore_string = new String('#, /wp-, .pdf, .zip, .rar, /share'); 
 var ajaxignore = ajaxignore_string.split(', ');
 
 var ajaxtrack_analytics = false
@@ -28,7 +28,7 @@ window.onpopstate = function(event) {
 
 function ajaxloadPageInit(scope){
 	jQuery(scope + "a").click(function(event){
-		if (this.href.indexOf(ajax_url.home) >= 0 && ajaxcheck_ignore(this.href) == true){
+		if (this.href.indexOf(ajax.home) >= 0 && ajaxcheck_ignore(this.href) == true){
 			event.preventDefault();
 
 			this.blur();

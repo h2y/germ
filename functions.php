@@ -759,5 +759,103 @@ function my_avatar($avatar) {
 }
 add_filter('get_avatar', 'my_avatar');
 
+/*shortcodes*/
+function boxattention($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxattention">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('attention' , 'boxattention' );
+
+function boxbag($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxbag">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('bag' , 'boxbag' );
+
+function boxbonus($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxbonus">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('bonus' , 'boxbonus' );
+
+function boxcalendar($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxcalendar">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('calendar' , 'boxcalendar' );
+
+function boxcheck($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxcheck">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('check' , 'boxcheck' );
+
+function boxdelete($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxdelete">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('delete' , 'boxdelete' );
+
+function boxedit($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxedit">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('edit' , 'boxedit' );
+
+function boxflag($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxflag">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('flag' , 'boxflag' );
+
+function boxhelp($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxhelp">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('help' , 'boxhelp' );
+
+function boxinformation($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxinformation">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('information' , 'boxinformation' );
+
+function boxlove($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxlove">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('love' , 'boxlove' );
+
+function boxtag($atts, $content=null, $code="") {
+	$return = '<div class="shortbox boxtag">';
+	$return .= $content;
+	$return .= '</div>';
+	return $return;
+}
+add_shortcode('tag' , 'boxtag' );
+
+
 
 ?>

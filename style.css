@@ -770,6 +770,76 @@ blockquote cite a {
 	top: -10px;
 }
 
+/*shortcode*/
+
+.shortbox{
+	margin:20px;
+	padding:15px 15px 15px 70px;
+	box-shadow:0 1px 2px rgba(0,0,0,0.1);
+	font-size:12px;
+}
+
+.boxattention{
+	border:1px solid #FFDEAD;
+	background:url( "images/attention.png ") no-repeat scroll 20px center #FFEFD5;
+	color:#FF7F50;
+}
+.boxbag{
+	border:1px solid #B0E0E6;
+	background:url( "images/bag.png ") no-repeat scroll 20px center #E0EEE0;
+	color:#3370CC
+}
+.boxcalendar {
+	border:1px solid #ddd;
+	background:url( "images/calendar.png ") no-repeat scroll 20px center #EFEFEF;
+	color:#999;
+}
+.boxbonus {
+	border:1px solid #EBA8A8;
+	background:url( "images/bonus.png ") no-repeat scroll 20px center #FADCD8;
+	color:#CC6666;
+}
+.boxdelete {
+	border:1px solid #EBA8A8;
+	background:url( "images/delete.png ") no-repeat scroll 20px center #FADCD8;
+	color:#CC6666;
+}
+.boxlove {
+	border:1px solid #EBA8A8;
+	background:url( "images/love.png ") no-repeat scroll 20px center #FADCD8;
+	color:#CC6666;
+}
+.boxcheck {
+	border:1px solid #AFC76C;
+	background:url( "images/check.png ") no-repeat scroll 20px center #EFF4D4;
+	color:#779B39;
+}
+.boxflag {
+	border:1px solid #AFC76C;
+	background:url( "images/flag.png ") no-repeat scroll 20px center #EFF4D4;
+	color:#779B39;
+}
+.boxtag {
+	border:1px solid #AFC76C;
+	background:url( "images/tag.png ") no-repeat scroll 20px center #EFF4D4;
+	color:#779B39;
+}
+.boxhelp {
+	border:1px solid #A4D3EE;
+	background:url( "images/help.png ") no-repeat scroll 20px center #E0FFFF;
+	color:#1E90FF;
+}
+.boxinformation {
+	border:1px solid #A4D3EE;
+	background:url( "images/information.png ") no-repeat scroll 20px center #E0FFFF;
+	color:#1E90FF;
+}
+.boxedit {
+	border:1px solid #EAC946;
+	background:url( "images/edit.png ") no-repeat scroll 20px center #FFF0B5;
+	color:#B09E56;
+}
+
 /*button*/
 .btn, a.btn {
 	border-bottom: none;

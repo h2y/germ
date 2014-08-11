@@ -18,9 +18,11 @@
 
 ?>
 
+<?php if($wp_query->max_num_pages > 1 ) { ?>
     <div class="pagination clearfix">
        <?php pagenavi($range = 3);?>
     </div>
+<?php } ?>
 </div>
 </div>
 

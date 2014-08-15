@@ -174,7 +174,7 @@ textarea,input {
 }
 
 body {
-	font-family: "SimSun","Arial",sans-serif; 
+	font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
 	font-size: 0.875rem;
 	background-color: #eee;
 	background-image: url('images/bg.jpg');

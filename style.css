@@ -224,7 +224,7 @@ input[type="submit"] {
 	display: inline-block;
 	text-decoration: none;
 	color: #FFF;
-	padding: 8px 16px;
+	padding: 11px 16px;
 	background-color: #47C2DC;
 	cursor: pointer;
 	border-radius: 2px;
@@ -1980,7 +1980,6 @@ thead tr {
 	right: 90px;
 	width: 140px;
 	height: 140px;
-	transition: all 0.5s ease 0s;
 	display: none;
 	z-index: 999;
 }

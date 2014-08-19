@@ -182,10 +182,10 @@ function ajaxcheck_ignore(url) {
 }
 
 function ajaxreload_code() {
-loadjplayer();
-initgallary();
-initSlim();
-jQuery("img").unveil();
+	loadjplayer();
+	initgallary();
+	initSlim();
+	jQuery("img").unveil();
 }
 
 function ajaxclick_code(thiss) {

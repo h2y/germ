@@ -2243,14 +2243,8 @@ body.nav-open #wrap {
 
 @media screen and (max-width:650px) {
 	body {
-		font-size: 16px;
-		font-size: 1rem;
 		background-image: none;
 		background-color: #eee;
-	}
-
-	a:hover {
-		color: #333;
 	}
 
 	#wrap {

@@ -28,7 +28,7 @@ window.onpopstate = function(event) {
 
 function ajaxloadPageInit(scope){
 	jQuery(scope + "a").click(function(event){
-		if (this.href.indexOf(ajax.home) >= 0 && ajaxcheck_ignore(this.href) == true){
+		if (this.href.indexOf(ajax.home) >= 0 && this.href.indexOf(ajax.home) <20 && ajaxcheck_ignore(this.href) == true){
 			event.preventDefault();
 
 			this.blur();

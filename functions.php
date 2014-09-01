@@ -31,7 +31,7 @@ function hide_admin_bar($flag) {
 }
 add_filter('show_admin_bar','hide_admin_bar'); 
 
-remove_filter ('the_content', 'wpautop');
+//remove_filter ('the_content', 'wpautop');
 
 remove_filter ('comment_text', 'wpautop');
 

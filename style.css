@@ -1943,6 +1943,26 @@ thead tr {
 	color: #47C2DC;
 }
 
+.widget_categories li{
+	padding:5px 0;
+}
+.widget_categories .children li{
+	padding-left:12px;
+}
+.widget_categories .children li:before{
+	content:"- "
+}
+.widget_categories li a:hover{
+	color:#47C2DC;
+	font-weight:bold;
+	padding-right:10px;
+	-webkit-transition: .3s ease-in-out;
+	-moz-transition: .3s ease-in-out;
+	-ms-transition: .3s ease-in-out;
+	-o-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
 #footer {
 	padding: 1rem;
 	background-color: #fff;

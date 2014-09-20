@@ -1283,12 +1283,14 @@ thead tr {
 }
 
 .post-author .avatar {
-	float: left;
+	position: absolute;
 	border-radius: 50px;
 }
 
 .post-author .author-meta {
-	float: left;
+	min-height: 80px;
+	padding-left: 100px;
+	word-wrap: break-word;
 	margin: 5px 20px;
 }
 

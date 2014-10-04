@@ -296,7 +296,7 @@ function mzw_readers_list($out,$tim,$lim,$addlink){
 		}else{
 			$c_urllink = '';
 		}
-		$type .= '<a title="['.$count->comment_author.'] 近期点评'. $count->cnt .'次" target="_blank"'.$c_urllink.'>'.get_avatar( $count->comment_author_email, $size = '36' , '' ) .'</a>';
+		$type .= '<a title="['.$count->comment_author.']" target="_blank"'.$c_urllink.'>'.get_avatar( $count->comment_author_email, $size = '36' , '' ) .'</a>';
 	}
 	return $type;
 }

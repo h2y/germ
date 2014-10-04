@@ -3,7 +3,7 @@
 
 <div class="box archive-meta">
 	<h3 class="title-meta">
-		标签<?php single_cat_title() ?>下的文章
+		<?php printf( __( 'Tag Archives: %s', 'quench' ), single_cat_title( '', false ));?>
 	</h3>
 </div>
 

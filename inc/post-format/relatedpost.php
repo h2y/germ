@@ -1,5 +1,5 @@
 <div class="relatedpost box clearfix">
-<h3 class="relatedtitle"><span>相关文章</span></h3>
+<h3 class="relatedtitle"><span><?php _e('Related Posts', 'quench');?></span></h3>
 	<ul>
 		<?php
 $post_num = 8;

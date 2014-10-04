@@ -56,12 +56,9 @@ get_header();
 					<h3>Categories</h3>
 					<ul>
 					<?php
-						// 获取分类
 						$terms = get_terms('category', 'orderby=name&hide_empty=0' );
-						// 获取到的分类数量
 						$count = count($terms);
 						if($count > 0){
-							// 循环输出所有分类信息
 							foreach ($terms as $term) {
 								echo '<li><a href="'.get_term_link($term, $term->slug).'" title="'.$term->name.'">'.$term->name.'</a></li>';
 							}
@@ -90,7 +87,7 @@ get_header();
     </div>
 	<footer class="entry-footer clearfix">
 		<div class="post-share">
-			<a href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+			<a href="javascript:;"><i class="fa fa-share-alt"></i><?php _e('share', 'quench');?></a>
 			<ul>
 				<li><a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<?php the_permalink(); ?>&title=<?php the_title(); ?>" target="_blank"><i class="fa fa-qq"></i></a></li>
 				<li><a href="http://service.weibo.com/share/share.php?title=<?php the_title(); ?>&url=<?php the_permalink(); ?>" target="_blank"><i class="fa fa-weibo"></i></a></li>

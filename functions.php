@@ -20,6 +20,11 @@ wp_localize_script('base', 'ajax', array(
 include_once('inc/widget.php');
 include_once('inc/themeset.php');
 
+add_action('after_setup_theme', 'my_theme_setup');
+function my_theme_setup(){
+    load_theme_textdomain('quench', get_template_directory() . '/languages');
+}
+
 remove_action('wp_head','wp_generator');//禁止在head泄露wordpress版本号
 remove_action('wp_head','rsd_link');//移除head中的rel="EditURI"
 remove_action('wp_head','wlwmanifest_link');//移除head中的rel="wlwmanifest"

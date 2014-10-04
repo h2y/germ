@@ -14,13 +14,13 @@
 			<?php if ( $user_ID ) { ?>
 			<p style="margin-bottom:10px">Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>&nbsp;|&nbsp;<a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Log out &raquo;</a></p>
 			<?php } else { ?>
-			<p class="input-row"><input type="text" name="author" class="text_input" id="author" size="22" tabindex="1" placeholder="昵称 *"/>
+			<p class="input-row"><input type="text" name="author" class="text_input" id="author" size="22" tabindex="1" placeholder="<?php _e('NAME', 'quench');?> *"/>
 			</p>
 			
-			<p class="input-row"><input type="text" name="email" class="text_input" id="email" size="22" tabindex="2" placeholder="邮箱 *"/>
+			<p class="input-row"><input type="text" name="email" class="text_input" id="email" size="22" tabindex="2" placeholder="<?php _e('E-MAIL', 'quench');?> *"/>
 			</p>
 			
-			<p class="input-row"><input type="text" name="url" class="text_input" id="url" size="22" tabindex="3"  placeholder="网站"/>
+			<p class="input-row"><input type="text" name="url" class="text_input" id="url" size="22" tabindex="3"  placeholder="<?php _e('WEBSITE', 'quench');?>"/>
 			</p>
 			
 			<?php }?>
@@ -29,7 +29,7 @@
 		
 	
 		
-			<p class="input-row message-row"><textarea class="text_area" rows="3" cols="80" name="comment" id="comment" tabindex="4"  placeholder="留言内容……"></textarea></p>
+			<p class="input-row message-row"><textarea class="text_area" rows="3" cols="80" name="comment" id="comment" tabindex="4"  placeholder="<?php _e('CONTENT...', 'quench');?>"></textarea></p>
 			<input type="submit" name="submit" class="button" id="submit" tabindex="5" value="Submit"/>
 		
 		</form>

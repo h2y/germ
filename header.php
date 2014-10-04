@@ -8,11 +8,11 @@
 	} else if(is_single() || is_page()) {
 		 wp_title(''); 
 	} else if(is_category()) {
-		printf('%1$s 类目的文章存档', single_cat_title('', false));
+		printf(__('Category Archives: %1$s', 'quench' ), single_cat_title('', false));
 	} else if(is_search()) {
-		printf('%1$s 的搜索结果', wp_specialchars($s, 1));
+		printf(__('Search Result: %1$s', 'quench' ), wp_specialchars($s, 1));
 	} else if(is_tag()) {
-		printf('%1$s 标签的文章存档', single_tag_title('', false));
+		printf(__('Tag Archives: %1$s', 'quench' ), single_tag_title('', false));
 	} else if(is_date()) {
 		$title = '';
 		if(is_day()) {
@@ -41,7 +41,7 @@
 <body class="nav-open">
 <?php 
 	if( is_mobile() ) {
-	echo '<div id="mobile-nav" class="f12 yahei"><form class="mm-search" action="'.get_bloginfo('url').'" method="get" role="search"><input type="text" autocomplete="off" placeholder="Search" name="s" value=""><input id="mobilesubmit" type="submit" value="搜索"></form> ';
+	echo '<div id="mobile-nav" class="f12 yahei"><form class="mm-search" action="'.get_bloginfo('url').'" method="get" role="search"><input type="text" autocomplete="off" placeholder="Search" name="s" value=""><input id="mobilesubmit" type="submit" value="Search"></form> ';
 	if(function_exists('wp_nav_menu')) {
 						wp_nav_menu(array( 'theme_location' => 'header-menu','container' => 'ul', 'menu_class' => 'nav')); 
 					}

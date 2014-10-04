@@ -5,8 +5,8 @@
 ?>
 
 <div class="box archive-meta">
-	<h3 class="title-meta">搜索结果</h3>
-	<?php echo '<div class="desc-meta"><span class="top">◆</span>有关 '.$s.' 的内容</div>'; ?>
+	<h3 class="title-meta"><?php _e('Search Results', 'quench')?></h3>
+	<?php echo '<div class="desc-meta"><span class="top">◆</span>'; printf(__('Searching for %s', 'quench' ), $s); echo '</div>'; ?>
 </div>
 <?php	
 		while ( have_posts() ){
@@ -17,7 +17,7 @@
 ?>
 
 <div class="box archive-meta">
-	<h3 class="title-meta">没有找到有关 <?php echo $s; ?> 的内容</h3>
+	<h3 class="title-meta"><?php _e('Apologies, but no results were found.', 'quench')?></h3>
 </div>
 <?php
 	}

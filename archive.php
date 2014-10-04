@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="box archive-meta">
-	<h3 class="title-meta">文章存档</h3>
+	<h3 class="title-meta"><?php _e('Article Archive', 'quench')?></h3>
 </div>
 <?php 
 

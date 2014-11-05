@@ -2253,7 +2253,7 @@ body.nav-open #wrap {
 	background: none repeat scroll 0 0 rgba(0,0,0,0.1);
 	color: rgba(0,0,0,0.6)
 }
-
+.static-hide{display:none;}
 @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (-webkit-min-device-pixel-ratio:2) and (orientation:portrait) {
 	#content {
 		width: 100%

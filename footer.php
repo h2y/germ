@@ -10,7 +10,7 @@
 	<a id="gotop" href="javascript:;"><i class="fa fa-arrow-up"></i></a>
 	
 <?php 
-if( dopt('d_track_b') != '' ) echo dopt('d_track');
+if( dopt('d_track_b') != '' ) '<div class="static-hide">'.dopt('d_track').'</div>';
 if( dopt('d_footcode_b') != '' ) echo dopt('d_footcode');
 
 if( is_single() && dopt('d_sideroll_single_b') ){ 

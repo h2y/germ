@@ -28,23 +28,25 @@ function mzw_sidebar(){
 		'after_widget'  => '</aside>',
     ));
 	
-	register_sidebar(array(
-        'id'=>'single_sidebar',
-        'name'=>'文章页边栏',
-		'before_title' => '<h3 class="widget-title"><span>',
-        'after_title' => '</h3></span>',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-    ));
-	
-	register_sidebar(array(
-        'id'=>'page_sidebar',
-        'name'=>'页面边栏',
-		'before_title' => '<h3 class="widget-title"><span>',
-        'after_title' => '</h3></span>',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-    ));
+	if( dopt('d_same_sidebar_b') == '' ) {
+		register_sidebar(array(
+			'id'=>'single_sidebar',
+			'name'=>'文章页边栏',
+			'before_title' => '<h3 class="widget-title"><span>',
+			'after_title' => '</h3></span>',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+		));
+		
+		register_sidebar(array(
+			'id'=>'page_sidebar',
+			'name'=>'页面边栏',
+			'before_title' => '<h3 class="widget-title"><span>',
+			'after_title' => '</h3></span>',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+		));
+	}
 }
 add_action('widgets_init','mzw_sidebar');
 

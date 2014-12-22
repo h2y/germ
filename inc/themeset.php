@@ -24,6 +24,9 @@ $options = array (
 	array( "name" => "开启全站 Ajax","type" => "tit"),
 	array( "id" => "d_ajax_b","type" => "checkbox" ),
 	
+	array( "name" => "使用同一个侧边栏","type" => "tit"),
+	array( "id" => "d_same_sidebar_b","type" => "checkbox" ),
+	
 	array( "name" => "首页面滚动时侧栏模块固定","type" => "tit"),
 	array( "id" => "d_sideroll_index_b","type" => "checkbox" ),
 	array( "id" => "d_sideroll_index_1","type" => "number","std" => "1","txt" => "滚动时固定侧栏模块"),

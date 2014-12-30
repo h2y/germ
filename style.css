@@ -610,8 +610,7 @@ blockquote cite a {
 }
 
 .entry-content  a {
-	border-bottom: 1px dotted #333;
-	//padding-bottom: 1px;
+	color:#47C2DC;
 }
 
 .entry-content>p {

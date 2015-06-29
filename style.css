@@ -1,11 +1,11 @@
-/*
+﻿/*
 
 Theme Name:Quench
 Theme URI:http://mzw.me/wordpress-theme-quench.html
 Author:javis
 Author URI:http://mzw.me/
 Description:nice theme
-Version:Alpha 1.0
+Version: 2.0
 */
 html {
 	-webkit-text-size-adjust: 100%;
@@ -1284,6 +1284,7 @@ thead tr {
 .post-author .avatar {
 	position: absolute;
 	border-radius: 50px;
+	width:90px;
 }
 
 .post-author .author-meta {
@@ -1542,6 +1543,7 @@ thead tr {
 .comment-author {
 	float: left;
 	margin-right: 10px;
+	width:40px;
 }
 
 .comment-metadata {
@@ -1974,8 +1976,6 @@ thead tr {
 
 #footer a {
 	color: #333;
-	margin-bottom: 1px;
-	border-bottom: 1px dotted #333;
 	cursor: crosshair;
 }
 

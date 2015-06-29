@@ -1,6 +1,6 @@
         </div>
         <footer id="footer" class="yahei clearfix">
-			<p class="right">Theme by <a href="http://mzw.me" target="_blank">javis</a></p>
+			<p class="right">Theme by <a href="http://lophita.com" target="_blank">Lophita</a></p>
 			<p class="left"><?php echo dopt('d_notice_bottom');?></p>
 		</footer>
 	</div>

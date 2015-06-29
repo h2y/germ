@@ -18,6 +18,28 @@ function my_enqueue_scripts_frontpage() {
 	));
 }
 
+function reset_emojis() {
+	remove_action('wp_head', 'print_emoji_detection_script', 7);
+	remove_action('admin_print_scripts', 'print_emoji_detection_script');
+	remove_action('wp_print_styles', 'print_emoji_styles');
+	remove_action('admin_print_styles', 'print_emoji_styles');
+	add_filter('the_content', 'wp_staticize_emoji');
+	add_filter('comment_text', 'wp_staticize_emoji',50);
+}
+add_action('init', 'reset_emojis');
+
+function fixed_activity_widget_avatar_style(){
+echo '<style type="text/css">
+		#activity-widget #the-comment-list .avatar {
+		position: absolute;
+		top: 13px;
+		width: 50px;
+		height: 50px;
+	  }
+	  </style>';
+}
+add_action('admin_head', 'fixed_activity_widget_avatar_style' );
+
 add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts_frontpage' );
 
 include_once('inc/widget.php');
@@ -475,7 +497,7 @@ function specs_getfirstchar($s0){
     if($asc >= -18710 and $asc <= -18527) return "E";
     if($asc >= -18526 and $asc <= -18240) return "F";
     if($asc >= -18239 and $asc <= -17923) return "G";
-    if($asc >= -17922 and $asc <= -17418) return "I";
+    if($asc >= -17922 and $asc <= -17418) return "H";
     if($asc >= -17417 and $asc <= -16475) return "J";
     if($asc >= -16474 and $asc <= -16213) return "K";
     if($asc >= -16212 and $asc <= -15641) return "L";
@@ -616,6 +638,12 @@ function comment_mail_notify($comment_id) {
 }
 add_action('comment_post','comment_mail_notify'); 
 
+function get_ssl_avatar($avatar) {
+   $avatar = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&.*/','<img src="https://secure.gravatar.com/avatar/$1?s=$2" class="avatar avatar-$2" height="$2" width="$2">',$avatar);
+   return $avatar;
+}
+add_filter('get_avatar', 'get_ssl_avatar');
+
 function dimox_breadcrumbs() {
   $delimiter = '&raquo;';
   $name = 'Home';
@@ -739,33 +767,6 @@ function is_mobile() {
 	}
 	return $is_mobile;
 }
-
-add_filter ('the_content', 'lazyload');
-function lazyload($content) {
-	$loadimg_url=get_bloginfo('template_directory').'/loading.gif';
-	if(!is_feed()||!is_robots) {
-		$content=preg_replace('/<img(.+)src=[\'"]([^\'"]+)[\'"](.*)>/i',"<img data-unveil='true' \$1data-src=\"\$2\" src=\"$loadimg_url\"\$3>\n<noscript>\$0</noscript>",$content);
-	}
-	return $content;
-}
-
-
-
-function my_avatar($avatar) {
-  $tmp = strpos($avatar, 'http');
-  $g = substr($avatar, $tmp, strpos($avatar, "'", $tmp) - $tmp);
-  $tmp = strpos($g, 'avatar/') + 7;
-  $f = substr($g, $tmp, strpos($g, "?", $tmp) - $tmp);
-  $w = get_bloginfo('wpurl');
-  $e = ABSPATH .'avatar/'. $f .'.jpg';
-  $t = 1209600; 
-  if ( !is_file($e) || (time() - filemtime($e)) > $t ) { 
-    copy(htmlspecialchars_decode($g), $e);
-  } else  $avatar = strtr($avatar, array($g => $w.'/avatar/'.$f.'.jpg'));
-  if (filesize($e) < 500) copy($w.'/avatar/default.jpg', $e);
-  return $avatar;
-}
-add_filter('get_avatar', 'my_avatar');
 
 /*shortcodes*/
 function boxattention($atts, $content=null, $code="") {

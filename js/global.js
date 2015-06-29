@@ -1,5 +1,3 @@
-(function(e){e.fn.unveil=function(t,n){function f(){var t=u.filter(function(){var t=e(this),n=r.scrollTop(),s=n+r.height(),o=t.offset().top,u=o+t.height();return u>=n-i&&o<=s+i});a=t.trigger("unveil");u=u.not(a)}var r=e(window),i=t||0,s=window.devicePixelRatio>1,o=s?"data-src-retina":"data-src",u=this,a;this.one("unveil",function(){var e=this.getAttribute(o);e=e||this.getAttribute("data-src");if(e){this.setAttribute("src",e);if(typeof n==="function")n.call(this)}});r.scroll(f);r.resize(f);f();return this}})(window.jQuery||window.Zepto);jQuery(document).ready(function(e){if(typeof t==="undefined"){var t=0}e('img[data-unveil="true"]').unveil(t,function(){e(this).load(function(){this.style.opacity=1})})})
-
 jQuery('.openpre').click(function() {
 	if (jQuery(this).hasClass('close')) {
 		jQuery(this).removeClass('close');
@@ -87,8 +85,6 @@ $('#header .desc span').typing({
 });
 
 jQuery(document).ready(function($) {
-	jQuery("img").unveil();
-
 
 	var $commentform = $('#commentform'),
 	txt1 = '<div id="loading"><img src="/wp-includes/images/spinner.gif">正在提交, 请稍候...</div>',

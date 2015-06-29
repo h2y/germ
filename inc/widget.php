@@ -422,7 +422,7 @@ class mzw_admin extends WP_Widget {
 		<img src="<?php bloginfo('template_directory'); ?>/images/bg_small.jpg">
 		<div class="author-body">
 			<div class="author_img">
-			<?php echo get_avatar( get_bloginfo ('admin_email'), $size = '80' , '' );?>
+			<?php echo get_avatar( get_the_author_email(), $size = '80' , '' );?>
 			</div>
 			<div class="author_bio">
 				<h3><?php the_author_meta('nickname');?> </h3>

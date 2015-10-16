@@ -1,6 +1,9 @@
-Quench
+WordPress Theme Quench
 ======
->本来是想作为付费主题发售的，但最近比较忙，担心后续的服务可能无法保障，所以免费分享出来，希望大家喜欢。有任何问题或者修改意见可留言提出，我会尽量完善这款主题。
+update 2015-10-16
+
++ 优化网页背景显示效果
++ 修改 AJAX 加载动画
 
 update 2015-06-29
 
@@ -50,7 +53,6 @@ update 2014-07-30
 
 注意事项
 
-+ 音乐文章使用的是虾米的链接，可直接使用短代码【xiami】id【/xiami】插入。
-+ 头像缓存功能需手动在根目录建立avatar文件夹并设置属性为可写。
++ 音乐文章使用的是虾米的链接，可直接使用短代码[xiami]id[/xiami]插入。
 
-可查看[主题页面](http://mzw.me/wordpress-theme-quench.html)
+可查看[主题页面](https://lophita.com/wordpress-theme-quench.html)

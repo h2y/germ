@@ -1,11 +1,10 @@
 ﻿/*
-
 Theme Name:Quench
-Theme URI:http://mzw.me/wordpress-theme-quench.html
+Theme URI:https://lophita.com/wordpress-theme-quench.html
 Author:javis
-Author URI:http://mzw.me/
+Author URI:https://lophita.com
 Description:nice theme
-Version: 2.0
+Version: 2.1
 */
 html {
 	-webkit-text-size-adjust: 100%;
@@ -320,6 +319,15 @@ blockquote cite a {
 	width: 100%;
 	max-width: 1080px;
 	margin: 0 auto;
+}
+
+#bg-over{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(20, 29, 36, 0.1)url(images/bg.png) repeat;
 }
 
 #preheader {
@@ -1580,7 +1588,7 @@ thead tr {
 }
 
 .commentnav {
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 .commentnav a,.commentnav span {
@@ -1974,6 +1982,15 @@ thead tr {
 	color: #333;
 }
 
+#footer .right{
+	margin-top: 10px;
+	color: #888;
+	text-align: center;
+	font-size: 12px;
+	font-family: Palatino, Optima, Georgia, serif;
+	font-style: italic;
+}
+
 #footer a {
 	color: #333;
 	cursor: crosshair;
@@ -2072,6 +2089,41 @@ thead tr {
 
 /*loading*/
 .spinner {
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:5000;
+	display:block;
+	width:100%;
+	height:4px;
+	background:#96C;
+	-webkit-animation:right-shift .8s ease-in-out infinite;
+	animation:right-shift .8s ease-in-out infinite;
+	-webkit-animation-delay:0.2s;
+	animation-delay:0.2s;
+}
+@-webkit-keyframes right-shift {
+	0% {
+		-webkit-transform:translateX(-100%);
+		transform:translateX(-100%);
+	}
+	100% {
+		-webkit-transform:translateX(100%);
+		transform:translateX(100%);
+	}
+}
+@keyframes right-shift{
+	0% {
+		-webkit-transform:translateX(-100%);
+		transform:translateX(-100%);
+	}
+	100% {
+		-webkit-transform:translateX(100%);
+		transform:translateX(100%);
+	}
+}
+/*.spinner {
+	display: none;
 	opacity: 1 !important;
 	position: fixed;
 	top: 300px;
@@ -2134,7 +2186,7 @@ thead tr {
 		transform: scaleY(1.0);
 		-webkit-transform: scaleY(1.0);
 	}
-}
+}*/
 
 .nav-open {
 	overflow-x: hidden;

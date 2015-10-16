@@ -6,7 +6,8 @@ var ajaxignore = ajaxignore_string.split(', ');
 var ajaxtrack_analytics = false
 var ajaxscroll_top = true
 	
-var ajaxloading_code = '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
+var ajaxloading_code = '<div class="spinner"></div>';
+//var ajaxloading_code = '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
 var ajaxloading_error_code = '<div class="box"><p style="padding:20px;">出错啦，请刷新当前页面。</p></div>';
 var ajaxreloadDocumentReady = false;
 
@@ -82,7 +83,7 @@ function ajaxloadPage(url, push, getData){
 		}
 		if (!jQuery('#' + ajaxcontent)) {
 		}
-		jQuery('#' + ajaxcontent).append(ajaxloading_code);
+		jQuery('body').append(ajaxloading_code);
 		jQuery('#' + ajaxcontent).fadeTo("slow", 0.4,function() {
 			jQuery('#' + ajaxcontent).fadeIn("slow", function() {
 				jQuery.ajax({
@@ -154,6 +155,7 @@ function ajaxloadPage(url, push, getData){
 						jQuery('#' + ajaxcontent).css("position", "");
 						jQuery('#' + ajaxcontent).css("left", "");
 						jQuery('#' + ajaxcontent).fadeTo("slow", 1, function() {});
+						jQuery('.spinner').remove();
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
 						ajaxisLoad = false;

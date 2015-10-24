@@ -642,7 +642,13 @@ function get_ssl_avatar($avatar) {
    $avatar = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&.*/','<img src="https://secure.gravatar.com/avatar/$1?s=$2" class="avatar avatar-$2" height="$2" width="$2">',$avatar);
    return $avatar;
 }
-add_filter('get_avatar', 'get_ssl_avatar');
+//add_filter('get_avatar', 'get_ssl_avatar');
+
+function get_ds_avatar($avatar) {
+    $avatar = str_replace(array("www.gravatar.com","0.gravatar.com","1.gravatar.com","2.gravatar.com"),"gravatar.duoshuo.com",$avatar);
+    return $avatar;
+}
+add_filter( 'get_avatar', 'get_ds_avatar', 10, 3 );
 
 function dimox_breadcrumbs() {
   $delimiter = '&raquo;';

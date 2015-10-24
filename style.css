@@ -331,6 +331,8 @@ blockquote cite a {
 }
 
 #preheader {
+	position: relative;
+	z-index: 100000;
 	background-color: #47C2DC;
 	border-top: 4px solid #47C2DC;
 	display: none;

@@ -1897,6 +1897,8 @@ thead tr {
 
 .widget .recentcomments .alignleft img {
 	border-radius: 2px;
+	width: 45px;
+	height: 45px;
 }
 
 .widget .recentcomments .comment-right {

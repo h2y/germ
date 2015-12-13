@@ -54,5 +54,6 @@ update 2014-07-30
 注意事项
 
 + 音乐文章使用的是虾米的链接，可直接使用短代码[xiami]id[/xiami]插入。
++ 头像可能会出现不能访问的情况，目前使用方法是调用 `https` 头像。 需要修改可用关键词 Gravatar WordPress 搜索解决。
 
 可查看[主题页面](https://lophita.com/wordpress-theme-quench.html)

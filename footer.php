@@ -5,7 +5,7 @@
 		</footer>
 	</div>
 	
-	<img id="qrimg" src="http://qr.liantu.com/api.php?text=<?php global $wp;echo home_url(add_query_arg(array(),$wp->request));?>"/>
+	<img id="qrimg" src="http://s.jiathis.com/qrcode.php?url=<?php global $wp;echo home_url(add_query_arg(array(),$wp->request));?>"/>
 	<a id="qr" href="javascript:;"><i class="fa fa-qrcode"></i></a>
 	<a id="gotop" href="javascript:;"><i class="fa fa-arrow-up"></i></a>
 	

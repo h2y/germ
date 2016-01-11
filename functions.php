@@ -478,7 +478,7 @@ function ajax_comment_page_nav(){
     my_wp_list_comments('type=comment&style=ol&callback=comment&page=' . $pageid . '&per_page=' . get_option('comments_per_page'), $comments);
     echo '</ol>';
     echo '<nav class="commentnav" data-postid="'.$postid.'">';
-    paginate_comments_links('current=' . $pageid . '&prev_text=«&next_text=»');
+    paginate_comments_links('total=' . get_comment_pages_count($comments). '&current=' . $pageid . '&prev_text=«&next_text=»');
     echo '</nav>';
     die;
 }

@@ -1,5 +1,9 @@
 WordPress Theme Quench
 ======
+update 2016-01-11
+
++ 修复 WordPress 4.4 的评论分页的错误
+
 update 2015-10-16
 
 + 优化网页背景显示效果

@@ -399,6 +399,7 @@ $(document).on("click", ".commentnav a",
         concelLink = $("#cancel-comment-reply-link");
         /comment-page-/i.test(baseUrl) ? page = baseUrl.split(/comment-page-/i)[1].split(/(\/|#|&).*jQuery/)[0] : /cpage=/i.test(baseUrl) && (page = baseUrl.split(/cpage=/)[1].split(/(\/|#|&).*jQuery/)[0]);
         concelLink.click();
+        page = page.split('#')[0];
         var ajax_data = {
             action: "ajax_comment_page_nav",
             um_post: id,

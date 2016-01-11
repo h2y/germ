@@ -475,7 +475,7 @@ function ajax_comment_page_nav(){
         $baseLink = '&base=' . user_trailingslashit(get_permalink($postid) . 'comment-page-%#%', 'commentpaged');
     }
     echo '<ol class="comments-list">';
-    wp_list_comments('type=comment&style=ol&callback=comment&page=' . $pageid . '&per_page=' . get_option('comments_per_page'), $comments);
+    my_wp_list_comments('type=comment&style=ol&callback=comment&page=' . $pageid . '&per_page=' . get_option('comments_per_page'), $comments);
     echo '</ol>';
     echo '<nav class="commentnav" data-postid="'.$postid.'">';
     paginate_comments_links('current=' . $pageid . '&prev_text=«&next_text=»');
@@ -871,6 +871,160 @@ function boxtag($atts, $content=null, $code="") {
 }
 add_shortcode('tag' , 'boxtag' );
 
+function my_wp_list_comments( $args = array(), $comments = null) {
+	global $wp_query, $comment_alt, $comment_depth, $comment_thread_alt, $overridden_cpage, $in_comment_loop;
 
+	$in_comment_loop = true;
+
+	$comment_alt = $comment_thread_alt = 0;
+	$comment_depth = 1;
+
+	$defaults = array(
+		'walker'            => null,
+		'max_depth'         => '',
+		'style'             => 'ul',
+		'callback'          => null,
+		'end-callback'      => null,
+		'type'              => 'all',
+		'page'              => '',
+		'per_page'          => '',
+		'avatar_size'       => 32,
+		'reverse_top_level' => null,
+		'reverse_children'  => '',
+		'format'            => current_theme_supports( 'html5', 'comment-list' ) ? 'html5' : 'xhtml',
+		'short_ping'        => false,
+		'echo'              => true,
+	);
+
+	$r = wp_parse_args( $args, $defaults );
+
+	/**
+	 * Filter the arguments used in retrieving the comment list.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @see wp_list_comments()
+	 *
+	 * @param array $r An array of arguments for displaying comments.
+	 */
+	$r = apply_filters( 'wp_list_comments_args', $r );
+
+	/*
+	 * If 'page' or 'per_page' has been passed, and does not match what's in $wp_query,
+	 * perform a separate comment query and allow Walker_Comment to paginate.
+	 */
+	//var_dump($r);
+	/*if ( is_singular() && ( $r['page'] || $r['per_page'] ) ) {
+		$current_cpage = get_query_var( 'cpage' );
+		if ( ! $current_cpage ) {
+			$current_cpage = 'newest' === get_option( 'default_comments_page' ) ? 1 : $wp_query->max_num_comment_pages;
+		}
+
+		$current_per_page = get_query_var( 'comments_per_page' );
+		if ( $r['page'] != $current_cpage || $r['per_page'] != $current_per_page ) {
+
+			$comments = get_comments( array(
+				'post_id' => $id,
+				'orderby' => 'comment_date_gmt',
+				'order' => 'ASC',
+				'status' => 'all',
+			) );
+		}
+	}*/
+
+	// Figure out what comments we'll be looping through ($_comments)
+	if ( null !== $comments ) {
+		$comments = (array) $comments;
+		if ( empty($comments) )
+			return;
+		if ( 'all' != $r['type'] ) {
+			$comments_by_type = separate_comments($comments);
+			if ( empty($comments_by_type[$r['type']]) )
+				return;
+			$_comments = $comments_by_type[$r['type']];
+		} else {
+			$_comments = $comments;
+		}
+	} else {
+		if ( empty($wp_query->comments) )
+			return;
+		if ( 'all' != $r['type'] ) {
+			if ( empty($wp_query->comments_by_type) )
+				$wp_query->comments_by_type = separate_comments($wp_query->comments);
+			if ( empty($wp_query->comments_by_type[$r['type']]) )
+				return;
+			$_comments = $wp_query->comments_by_type[$r['type']];
+		} else {
+			$_comments = $wp_query->comments;
+		}
+
+		// Pagination is already handled by `WP_Comment_Query`, so we tell Walker not to bother.
+		if ( $wp_query->max_num_comment_pages ) {
+			$default_comments_page = get_option( 'default_comments_page' );
+			$cpage = get_query_var( 'cpage' );
+			if ( 'newest' === $default_comments_page ) {
+				$r['cpage'] = $cpage;
+
+			// When first page shows oldest comments, post permalink is the same as the comment permalink.
+			} elseif ( $cpage == 1 ) {
+				$r['cpage'] = '';
+			} else {
+				$r['cpage'] = $cpage;
+			}
+
+			$r['page'] = 0;
+			$r['per_page'] = 0;
+		}
+	}
+
+	if ( '' === $r['per_page'] && get_option( 'page_comments' ) ) {
+		$r['per_page'] = get_query_var('comments_per_page');
+	}
+
+	if ( empty($r['per_page']) ) {
+		$r['per_page'] = 0;
+		$r['page'] = 0;
+	}
+
+	if ( '' === $r['max_depth'] ) {
+		if ( get_option('thread_comments') )
+			$r['max_depth'] = get_option('thread_comments_depth');
+		else
+			$r['max_depth'] = -1;
+	}
+
+	if ( '' === $r['page'] ) {
+		if ( empty($overridden_cpage) ) {
+			$r['page'] = get_query_var('cpage');
+		} else {
+			$threaded = ( -1 != $r['max_depth'] );
+			$r['page'] = ( 'newest' == get_option('default_comments_page') ) ? get_comment_pages_count($_comments, $r['per_page'], $threaded) : 1;
+			set_query_var( 'cpage', $r['page'] );
+		}
+	}
+	// Validation check
+	$r['page'] = intval($r['page']);
+	if ( 0 == $r['page'] && 0 != $r['per_page'] )
+		$r['page'] = 1;
+
+	if ( null === $r['reverse_top_level'] )
+		$r['reverse_top_level'] = ( 'desc' == get_option('comment_order') );
+
+	if ( empty( $r['walker'] ) ) {
+		$walker = new Walker_Comment;
+	} else {
+		$walker = $r['walker'];
+	}
+
+	$output = $walker->paged_walk( $_comments, $r['max_depth'], $r['page'], $r['per_page'], $r );
+
+	$in_comment_loop = false;
+
+	if ( $r['echo'] ) {
+		echo $output;
+	} else {
+		return $output;
+	}
+}
 
 ?>

@@ -1,5 +1,5 @@
 <div class="comments clearfix box">
-
+	<?php $comments = get_comments('post_id='.$post->ID.'&status=approve');?>
 	<h5 id="comments-title"><span><?php echo count($comments); ?> Comments</span></h5>
 	<div class="commentshow">
 		<ol class="comments-list">

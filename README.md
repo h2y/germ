@@ -1,5 +1,9 @@
 WordPress Theme Quench
 ======
+update 2016-01-20
+
++ 更新 Gravatar 源，使用七牛云存储
+
 update 2016-01-11
 
 + 修复 WordPress 4.4 的评论分页的错误

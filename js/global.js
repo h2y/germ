@@ -8,7 +8,7 @@ jQuery('.openpre').click(function() {
 		jQuery(this).addClass('close');
 		jQuery('#preheader').slideUp(400);
 	}
-	return false;
+	return false; 
 });
 
 jQuery.fn.postLike = function() {
@@ -43,9 +43,9 @@ $.fn.typing = function(n){
 	}
 	$.extend(options,n);
 	var _this = $(this);
-	var str = $(this).text().split(''); 
+	var str = $(this).text().split('');
 	var index = 0;
-	var direction = 1; 
+	var direction = 1;
 	$(str).each(function(i,k){
 		str[i] = (str[i-1] ? str[i-1] : '') + str[i];
 	});
@@ -78,7 +78,7 @@ $.fn.typing = function(n){
 		index += direction;
 	}
 };
- 
+
 $('#header .desc span').typing({
 	range : 200,
 	repeat : true
@@ -422,7 +422,7 @@ $(document).on("click", ".commentnav a",
         });
         return false;
     });
-	
+
 		jQuery(document).on("click", ".open-nav",
 	function() {
 		if (jQuery('body').hasClass('has-opened')) {
@@ -439,7 +439,7 @@ $(document).on("click", ".commentnav a",
 		jQuery('body').removeClass('has-opened');
 		jQuery('#mobile-nav').delay(500).hide(100);
 	});
-	
+
 jQuery(document).ready(function($){
 	jQuery('.archives ul.archives-monthlisting').hide();
 	jQuery('.archives ul.archives-monthlisting:first').show();

@@ -2,12 +2,12 @@
 function my_enqueue_scripts_frontpage() {
 	//载入jquery库
 	wp_enqueue_script( 'jquery&migrate', get_template_directory_uri() . '/js/jquery&migrate-1.x.min.js', false, '1.13.0', false);
-	wp_enqueue_script( 'base', get_template_directory_uri() . '/js/global.js', array(), '1.00', true);
+	wp_enqueue_script( 'base', get_template_directory_uri() . '/js/global.min.js', array(), '1.00', true);
 	wp_enqueue_script( 'slider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array(), '1.00', true);
 	wp_enqueue_script( 'slimbox', get_template_directory_uri() . '/js/slimbox2.min.js', array(), '1.00', true);
 	wp_enqueue_script( 'jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array(), '1.00', true);
 	if( dopt('d_ajax_b') != '' )
-		wp_enqueue_script( 'ajax', get_template_directory_uri() . '/js/ajax.js', array(), '1.00', true);
+		wp_enqueue_script( 'ajax', get_template_directory_uri() . '/js/ajax.min.js', array(), '1.00', true);
 	if( dopt('d_autospace_b') != '' )
 		wp_enqueue_script( 'autospace', get_template_directory_uri() . '/js/autospace.min.js', array(), '1.00', true);
 

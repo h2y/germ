@@ -4,7 +4,7 @@ Theme URI:	http://hzy.pw/p/1933
 Author:			Moshel
 Author URI:	https://hzy.pw
 Description:An exquisite theme for you. Used PJAX and many advanced features. Besides, it looks well.
-Version: 		0.1.0.1
+Version: 		0.0.1.1
 */
 html {
 	-webkit-text-size-adjust: 100%;
@@ -336,7 +336,7 @@ blockquote cite a {
 	z-index: 100000;
 	background-color: #47C2DC;
 	border-top: 4px solid #47C2DC;
-	display: none; 
+	display: none;
 	padding-left: 2rem;
 }
 

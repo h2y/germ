@@ -411,7 +411,7 @@ blockquote cite a {
 	z-index: 9999;
 	top: 34px;
 	display: none;
-	width: 120px;
+	width: 200px;
 	background-color: #FFFFFF;
 	box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
@@ -426,7 +426,8 @@ blockquote cite a {
 	padding: 0;
 	float: none;
 	position: relative;
-	border-bottom: 1px solid #EBEBEB
+	border-bottom: 1px solid #EBEBEB;
+	display: inline;
 }
 
 #main-nav ul ul li:after {

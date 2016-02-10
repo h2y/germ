@@ -6,14 +6,8 @@ $options = array (
 	//基本设置
 	array( "name" => "基本设置","type" => "section","desc" => "主题的基本设置，包括模块是否开启等"),
 
-	array( "name" => "网站描述","type" => "tit"),
-	array( "id" => "d_description","type" => "text","std" => "输入你的网站描述，一般不超过 200 字符"),
-
-	array( "name" => "文章顶部公告","type" => "tit"),
-	array( "id" => "d_notice","type" => "textarea"),
-
-	array( "name" => "页面底部公告","type" => "tit"),
-	array( "id" => "d_notice_bottom","type" => "textarea"),
+	array( "name" => "[SEO] 网站描述","type" => "tit"),
+	array( "id" => "d_description","type" => "text","std" => "会作为 meta 添加到 head 中。在这里输入你的网站描述，一般不超过 200 字符"),
 
 	array( "name" => "文章分类信息显示","type" => "tit"),
 	array( "id" => "d_showcategory_b","type" => "checkbox" ),
@@ -27,7 +21,7 @@ $options = array (
 	array( "name" => "开启全站 Ajax","type" => "tit"),
 	array( "id" => "d_ajax_b","type" => "checkbox" ),
 
-	array( "name" => "使用同一个侧边栏","type" => "tit"),
+	array( "name" => "首页、文章、页面，都使用同一个侧边栏","type" => "tit"),
 	array( "id" => "d_same_sidebar_b","type" => "checkbox" ),
 
 	array( "name" => "首页面滚动时侧栏模块固定","type" => "tit"),
@@ -50,45 +44,45 @@ $options = array (
 
 
 	//SNS设置
-	array( "name" => "SNS设置","type" => "section" ),
-  array( "name" => "开启","type" => "tit"),
+	array( "name" => "小工具设置","type" => "section" ),
+  array( "name" => "联系方式总开关","type" => "tit"),
 	array( "id" => "d_sns_open","type" => "checkbox" ),
 
 	array( "name" => "RSS 订阅地址","type" => "tit"),
 	array( "id" => "d_rss_b","type" => "checkbox" ),
-	array( "id" => "d_rss","type" => "text","class" => "d_inp_short","std" => "http://mzw.me/feed"),
+	array( "id" => "d_rss","type" => "text","class" => "d_inp_short","std" => home_url('/feed')),
 
 	array( "name" => "邮箱地址","type" => "tit"),
 	array( "id" => "d_mail_b","type" => "checkbox" ),
-	array( "id" => "d_mail","type" => "text","class" => "d_inp_short","std" => "mailto://i@mzw.me"),
+	array( "id" => "d_mail","type" => "text","class" => "d_inp_short","std" => "mailto://i@hzy.pw"),
 
   array( "name" => "新浪微博","type" => "tit"),
 	array( "id" => "d_rss_sina_b","type" => "checkbox" ),
-	array( "id" => "d_rss_sina","type" => "text","class" => "d_inp_short","std" => "http://weibo.com/"),
+	array( "id" => "d_rss_sina","type" => "text","class" => "d_inp_short","std" => "http://weibo.com/moshel"),
 
-	array( "name" => "twitter","type" => "tit"),
+	array( "name" => "Twitter","type" => "tit"),
 	array( "id" => "d_rss_twitter_b","type" => "checkbox" ),
-	array( "id" => "d_rss_twitter","type" => "text","class" => "d_inp_short","std" => "http://twitter.com"),
+	array( "id" => "d_rss_twitter","type" => "text","class" => "d_inp_short","std" => "http://twitter.com/"),
 
 	array( "name" => "Google+","type" => "tit"),
 	array( "id" => "d_rss_google_b","type" => "checkbox" ),
-	array( "id" => "d_rss_google","type" => "text","class" => "d_inp_short","std" => "https://plus.google.com "),
+	array( "id" => "d_rss_google","type" => "text","class" => "d_inp_short","std" => "https://plus.google.com/"),
 
 	array( "name" => "Github","type" => "tit"),
 	array( "id" => "d_rss_github_b","type" => "checkbox" ),
 	array( "id" => "d_rss_github","type" => "text","class" => "d_inp_short","std" => "https://github.com/h2y"),
 
-	array( "name" => "facebook","type" => "tit"),
+	array( "name" => "Facebook","type" => "tit"),
 	array( "id" => "d_rss_facebook_b","type" => "checkbox" ),
-	array( "id" => "d_rss_facebook","type" => "text","class" => "d_inp_short","std" => "http://facebook.com"),
+	array( "id" => "d_rss_facebook","type" => "text","class" => "d_inp_short","std" => "http://facebook.com/"),
 
 	array( "name" => "Linkedin","type" => "tit"),
 	array( "id" => "d_rss_linkedin_b","type" => "checkbox" ),
-	array( "id" => "d_rss_linkedin","type" => "text","class" => "d_inp_short","std" => "http://linkedin.com"),
+	array( "id" => "d_rss_linkedin","type" => "text","class" => "d_inp_short","std" => "http://linkedin.com/"),
 
 	array( "name" => "腾讯微博","type" => "tit"),
 	array( "id" => "d_rss_tencent_b","type" => "checkbox" ),
-	array( "id" => "d_rss_tencent","type" => "text","class" => "d_inp_short","std" => "http://t.qq.com"),
+	array( "id" => "d_rss_tencent","type" => "text","class" => "d_inp_short","std" => "http://t.qq.com/hzy1996"),
 
 
 	array( "type" => "endtag"),
@@ -103,11 +97,14 @@ $options = array (
 
 	array( "name" => "头部公共代码","type" => "tit"),
 	array( "id" => "d_headcode_b","type" => "checkbox" ),
-	array( "id" => "d_headcode","type" => "textarea","std" => "这部分代码显示在head标签内，可以是css，js等代码"),
+	array( "id" => "d_headcode","type" => "textarea","std" => "这部分代码显示在head标签内，推荐放入 css、js 的引用"),
+
+	array( "name" => "页底横幅公告","type" => "tit"),
+	array( "id" => "d_notice_bottom","type" => "textarea","std"=>"这部分代码显示在页面底部横幅内，推荐放入 p 标签"),
 
 	array( "name" => "底部公共代码","type" => "tit"),
 	array( "id" => "d_footcode_b","type" => "checkbox" ),
-	array( "id" => "d_footcode","type" => "textarea","std" => "这部分代码显示在页面最底部，可以是js等代码"),
+	array( "id" => "d_footcode","type" => "textarea","std" => "这部分代码显示在页面最底部，推荐放入 js 的引用"),
 
 	array( "type" => "endtag"),
 

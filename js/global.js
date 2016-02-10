@@ -2,11 +2,9 @@ jQuery('.openpre').click(function() {
 	if (jQuery(this).hasClass('close')) {
 		jQuery(this).removeClass('close');
 		jQuery(this).addClass('open');
-		jQuery('#preheader').slideDown(400);
 	} else {
 		jQuery(this).removeClass('open');
 		jQuery(this).addClass('close');
-		jQuery('#preheader').slideUp(400);
 	}
 	return false;
 });

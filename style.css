@@ -569,6 +569,7 @@ blockquote cite a {
 	line-height: 2rem;
 	font-weight: 300;
 	font-style: normal;
+	margin-bottom: 5px;
 }
 
 .entry-header h2 a {
@@ -604,6 +605,13 @@ blockquote cite a {
 	font-size: 0.8rem;
 	margin-right: 1.2rem;
 }
+/*.entry-header .entry-meta li:last-child {
+	margin-right: 0;
+}*/
+
+.entry-meta .comments_meta, .entry-meta .views_meta {
+	float:right;
+}
 
 .entry-header .entry-meta li a {
 	color: #BBB;
@@ -614,6 +622,7 @@ blockquote cite a {
 	color: #ccc;
 	border-bottom: 1px dotted #bbb;
 }
+
 
 .entry-content {
 	padding: 0 1.5rem;
@@ -2416,11 +2425,4 @@ body.nav-open #wrap {
 		display: none;
 	}
 
-	.entry-header .entry-meta li {
-		margin-right: 0.2rem;
-	}
-
-	.entry-header .entry-meta li:last-child {
-		margin-right: 0;
-	}
 }

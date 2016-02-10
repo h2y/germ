@@ -1,8 +1,7 @@
 <?php
 function my_enqueue_scripts_frontpage() {
 	//载入jquery库
-	wp_enqueue_script( 'jquerylib', get_template_directory_uri() . '/js/jquery-1.10.2.min.js' , array(), '1.10.2', false);    
-	wp_enqueue_script( 'jquerymigrate', get_template_directory_uri() . '/js/jquery-migrate-1.2.1.js' , array(), '1.2.1', false);    
+	wp_enqueue_script( 'jquery&migrate', get_template_directory_uri() . '/js/jquery&migrate-1.x.min.js', false, '1.13.0', false);
 	wp_enqueue_script( 'base', get_template_directory_uri() . '/js/global.js', array(), '1.00', true);
 	wp_enqueue_script( 'slider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array(), '1.00', true);
 	wp_enqueue_script( 'slimbox', get_template_directory_uri() . '/js/slimbox2.min.js', array(), '1.00', true);
@@ -50,16 +49,20 @@ function my_theme_setup(){
     load_theme_textdomain('quench', get_template_directory() . '/languages');
 }
 
+//head信息精简
+remove_action('wp_head', 'feed_links_extra', 3 ); //去除评论feed
+remove_action('wp_head', 'feed_links', 2 ); //去除文章feed
 remove_action('wp_head','wp_generator');//禁止在head泄露wordpress版本号
 remove_action('wp_head','rsd_link');//移除head中的rel="EditURI"
 remove_action('wp_head','wlwmanifest_link');//移除head中的rel="wlwmanifest"
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );//rel=pre
-remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink 
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
+
 //隐藏admin Bar
 function hide_admin_bar($flag) {
 	return false;
 }
-add_filter('show_admin_bar','hide_admin_bar'); 
+add_filter('show_admin_bar','hide_admin_bar');
 
 //remove_filter ('the_content', 'wpautop');
 
@@ -105,7 +108,7 @@ function pagenavi($range = 7){
 function comment($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment;
 ?>
-   <li <?php comment_class(); ?><?php if( $depth > 2){ echo ' style="margin-left:-50px;"';} ?> id="li-comment-<?php comment_ID() ?>">	 
+   <li <?php comment_class(); ?><?php if( $depth > 2){ echo ' style="margin-left:-50px;"';} ?> id="li-comment-<?php comment_ID() ?>">
 
 <article id="comment-<?php comment_ID(); ?>" class="comment-body">
 	<div class="comment-meta clearfix">
@@ -223,21 +226,21 @@ function postformat_gallery(){
 
 if ( ! function_exists( 'mzw_post_views' ) ) :
 function record_visitors(){
-	if (is_singular()) 
+	if (is_singular())
 	{
 	  global $post;
 	  $post_ID = $post->ID;
-	  if($post_ID) 
+	  if($post_ID)
 	  {
 		  $post_views = (int)get_post_meta($post_ID, 'views', true);
-		  if(!update_post_meta($post_ID, 'views', ($post_views+1))) 
+		  if(!update_post_meta($post_ID, 'views', ($post_views+1)))
 		  {
 			add_post_meta($post_ID, 'views', 1, true);
 		  }
 	  }
 	}
 }
-add_action('wp_head', 'record_visitors');  
+add_action('wp_head', 'record_visitors');
 
 function mzw_post_views($after=''){
   global $post;
@@ -261,7 +264,7 @@ function mzw_like(){
     setcookie('mzw_ding_'.$id,$id,$expire,'/',$domain,false);
     if (!$mzw_raters || !is_numeric($mzw_raters)) {
         update_post_meta($id, 'mzw_ding', 1);
-    } 
+    }
     else {
             update_post_meta($id, 'mzw_ding', ($mzw_raters + 1));
         }
@@ -388,7 +391,7 @@ function ajax_comment(){
 	{
 		$comment_id = $commentdata['comment_ID'] = $edit_id;
 		if( ihacklog_user_can_edit_comment($commentdata,$comment_id) )
-		{  
+		{
 			wp_update_comment( $commentdata );
 		}
 		else
@@ -483,7 +486,7 @@ function ajax_comment_page_nav(){
     die;
 }
 
-function specs_getfirstchar($s0){  
+function specs_getfirstchar($s0){
     $fchar = ord($s0{0});
     if($fchar >= ord("A") and $fchar <= ord("z") )return strtoupper($s0{0});
     $s1 = iconv("UTF-8","gb2312", $s0);
@@ -636,7 +639,7 @@ function comment_mail_notify($comment_id) {
     wp_mail( $to, $subject, $message, $headers );
   }
 }
-add_action('comment_post','comment_mail_notify'); 
+add_action('comment_post','comment_mail_notify');
 
 function get_ssl_avatar($avatar) {
 	$avatar = str_replace(array("www.gravatar.com", "0.gravatar.com", "1.gravatar.com", "2.gravatar.com"), "o0skf43s7.qnssl.com", $avatar);
@@ -743,7 +746,7 @@ function search_filter($query) {
 
 /*
 add_filter( 'author_link', 'my_author_link' );
- 
+
 function my_author_link() {
     return home_url( 'about' );
 }*/

@@ -353,6 +353,6 @@ jQuery(document).ready(function($) {
 	</form>
 
 </div>
-<script src="<?php bloginfo('template_url') ?>/js/jquery-1.x.min.js"></script>
+<script src="<?php bloginfo('template_url') ?>/js/jquery&migrate-1.x.min.js"></script>
 <?php } ?>
 <?php add_action('admin_menu', 'mytheme_add_admin');?>

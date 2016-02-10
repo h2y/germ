@@ -2018,7 +2018,7 @@ thead tr {
 
 #qrimg {
 	background-color: #fff;
-	border-radius: 15px;
+	border-radius: 5px;
 	position: fixed;
 	bottom: 120px;
 	right: 90px;
@@ -2031,10 +2031,12 @@ thead tr {
 #gotop {
 	bottom: -100px;
 	transition: all 0.5s ease 0s;
+	cursor:pointer;
 }
 
 #qr {
 	bottom: 165px;
+	cursor:crosshair;
 }
 
 /*slimbox*/

@@ -1,1 +1,3 @@
 cache/
+*.min.css
+*.min.js

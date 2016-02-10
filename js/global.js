@@ -8,7 +8,7 @@ jQuery('.openpre').click(function() {
 		jQuery(this).addClass('close');
 		jQuery('#preheader').slideUp(400);
 	}
-	return false; 
+	return false;
 });
 
 jQuery.fn.postLike = function() {
@@ -338,12 +338,17 @@ var ajaxBinded = false;
 
 $(document).ready(function(e) {
 	initgallary();
+	refresh_qrimg();
 	$('#qr').hover(function(){
-			$('#qrimg').show(300);
+			$('#qrimg').stop().show(300);
 		},function(){
-			$('#qrimg').hide(300);
+			$('#qrimg').stop().hide(300);
 	});
 });
+
+function refresh_qrimg(){
+	$('#qrimg').attr('src', 'http://s.jiathis.com/qrcode.php?url='+location.href);
+}
 
 function initgallary() {
 	$('.flexslider').flexslider({

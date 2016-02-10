@@ -5,9 +5,9 @@
 		</footer>
 	</div>
 
-	<img id="qrimg" src="http://s.jiathis.com/qrcode.php?url=<?php global $wp;echo home_url(add_query_arg(array(),$wp->request));?>"/>
-	<a id="qr" href="javascript:;"><i class="fa fa-qrcode"></i></a>
-	<a id="gotop" href="javascript:;"><i class="fa fa-arrow-up"></i></a>
+	<img id="qrimg" src="http://s.jiathis.com/qrcode.php?url=<?php echo home_url() ?>"/>
+	<a id="qr"><i class="fa fa-qrcode"></i></a>
+	<a id="gotop" title="点击返回页顶"><i class="fa fa-arrow-up"></i></a>
 
 <?php
 if( dopt('d_track_b') != '' ) '<div class="static-hide">'.dopt('d_track').'</div>';

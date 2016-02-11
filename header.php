@@ -1,42 +1,14 @@
 <!DOCTYPE html>
 <html <?php if( dopt('d_autospace_b') != '' ) echo 'class="han-la"';?>>
 <head>
-	<title>
-	<?php
-	if(is_front_page() || is_home()) {
-		bloginfo('name');
-	} else if(is_single() || is_page()) {
-		 wp_title('');
-	} else if(is_category()) {
-		printf(__('Category Archives: %1$s', 'quench' ), single_cat_title('', false));
-	} else if(is_search()) {
-		printf(__('Search Result: %1$s', 'quench' ), wp_specialchars($s, 1));
-	} else if(is_tag()) {
-		printf(__('Tag Archives: %1$s', 'quench' ), single_tag_title('', false));
-	} else if(is_date()) {
-		$title = '';
-		if(is_day()) {
-			$title = get_the_time('Y年n月j日');
-		} else if(is_year()) {
-			$title = get_the_time('Y年');
-		} else {
-			$title = get_the_time('Y年n月');
-		}
-		printf('%1$s的文章存档', $title);
-	} else {
-		bloginfo('name');
-	}
-	?>
-	</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="<?php bloginfo('template_directory');?>/style.min.css" rel="stylesheet" media="screen">
     <link href="<?php bloginfo('template_directory');?>/css/font-awesome.min.css" rel="stylesheet" media="screen">
-	<?php if( dopt('d_headcode_b') != '' ) echo dopt('d_headcode');?>
-	<?php wp_head(); ?>
+		<?php if( dopt('d_headcode_b') != '' ) echo dopt('d_headcode');?>
+		<?php wp_head(); ?>
 </head>
-
 
 <body class="nav-open">
 <?php

@@ -13,17 +13,16 @@
 		</ul>
     </header>
     <div class="entry-content" itemprop="description">
-        <?php
-		$pc=$post->post_content;
-		$st=strip_tags(apply_filters('the_content',$pc));
-		/*if(has_excerpt())
-			the_excerpt();
-		elseif(preg_match('/<!--more.*?-->/',$pc) || mb_strwidth($st)<500)
-			the_content('');
-		elseif(function_exists('mb_strimwidth'))
-			echo'<p>'.mb_strimwidth($st,0,500,' ...').'</p>';
-		else*/ the_content('');
-		?>
+      <?php
+    		$pc = $post->post_content;
+    		$st = strip_tags(apply_filters('the_content',$pc));
+    		if(has_excerpt())
+    			the_excerpt();
+    		elseif( preg_match('/<!--more.*?-->/',$pc) || mb_strwidth($st)<500 )
+    			the_content('');
+    		else
+    			echo mb_strimwidth($st,0,500,' ......');
+    	?>
     </div>
     <footer class="entry-footer clearfix">
 		<div class="post-love">

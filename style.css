@@ -13,6 +13,10 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/*光标样式*/
+body{cursor: url(images/normal.cur),default;}
+a, button {cursor: url(images/link.cur),pointer;}
+
 body, div, dl, dt, dd, ul, ol, li,h1, h2, h3, h4, h5, h6, pre, code,form, fieldset, legend, input, button,textarea, p, blockquote, th, td {
 	margin: 0;
 	padding: 0;

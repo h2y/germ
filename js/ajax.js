@@ -177,7 +177,6 @@ function ajaxreload_code() {
   refresh_qrimg();
   initgallary();
   initSlim();
-  jQuery("img").unveil();
 	text_autospace_init();
 }
 

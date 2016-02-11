@@ -78,7 +78,7 @@
     unicode['zhuyin']['diao'] = '[\u02D9\u02CA\u02C5\u02C7\u02CB\u02EA\u02EB]';
 
     //写入全局，以供ajax后调用
-    //window.text_autospace_init = init;
+    window.text_autospace_init = init;
 
     $(document).on('ready', function() {
         init();

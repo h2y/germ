@@ -178,7 +178,7 @@ function ajaxreload_code() {
   initgallary();
   initSlim();
   jQuery("img").unveil();
-  //setTimeout(text_autospace_init,1000);
+	text_autospace_init();
 }
 
 function ajaxclick_code(thiss) {

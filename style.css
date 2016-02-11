@@ -15,7 +15,9 @@ html {
 
 /*光标样式*/
 body{cursor: url(images/normal.cur),default;}
-a, button {cursor: url(images/link.cur),pointer;}
+a, button, input[type="submit"] {
+	cursor: url(images/link.cur),pointer;
+}
 
 body, div, dl, dt, dd, ul, ol, li,h1, h2, h3, h4, h5, h6, pre, code,form, fieldset, legend, input, button,textarea, p, blockquote, th, td {
 	margin: 0;
@@ -229,7 +231,6 @@ input[type="submit"] {
 	color: #FFF;
 	padding: 9px 16px;
 	background-color: #47C2DC;
-	cursor: pointer;
 	border-radius: 2px;
 	transition: all 0.2s ease-in-out 0s;
 }
@@ -878,7 +879,6 @@ blockquote cite a {
 	white-space: nowrap;
 	vertical-align: baseline;
 	text-align: center;
-	cursor: pointer;
 	-webkit-user-drag: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -2012,7 +2012,6 @@ thead tr {
 
 #footer a {
 	color: #333;
-	cursor: crosshair;
 }
 
 #gotop,#qr {
@@ -2045,12 +2044,10 @@ thead tr {
 #gotop {
 	bottom: -100px;
 	transition: all 0.5s ease 0s;
-	cursor:pointer;
 }
 
 #qr {
 	bottom: 165px;
-	cursor:crosshair;
 }
 
 /*slimbox*/

@@ -6,8 +6,8 @@
 	</div>
 
 	<img id="qrimg" src="http://s.jiathis.com/qrcode.php?url=<?php echo home_url() ?>"/>
-	<a id="qr"><i class="fa fa-qrcode"></i></a>
-	<a id="gotop" title="点击返回页顶"><i class="fa fa-arrow-up"></i></a>
+	<a id="qr" href="javascript:;"><i class="fa fa-qrcode"></i></a>
+	<a id="gotop" title="点击返回页顶" href="javascript:;"><i class="fa fa-arrow-up"></i></a>
 
 <?php
 if( dopt('d_track_b') != '' ) '<div class="static-hide">'.dopt('d_track').'</div>';

@@ -9,6 +9,9 @@ $options = array (
 	array( "name" => "[SEO] 网站描述","type" => "tit"),
 	array( "id" => "d_description","type" => "text","std" => "会作为 meta 添加到 head 中。在这里输入你的网站描述，一般不超过 200 字符"),
 
+	array( "name" => "[SEO] 网站关键字","type" => "tit"),
+	array( "id" => "d_keywords","type" => "text","std" => "会作为 meta 添加到 head 中。在这里输入你的网站关键字，用英文逗号','间隔"),
+
 	array( "name" => "文章分类信息显示","type" => "tit"),
 	array( "id" => "d_showcategory_b","type" => "checkbox" ),
 

@@ -161,24 +161,39 @@ add_filter('comment_reply_link', 'add_nofollow', 420, 4);
 function mzw_description() {
     global $s, $post;
     $description = '';
+		$keywords = "";
     $blog_name = get_bloginfo('name');
     if ( is_singular() ) {
-        $ID = $post->ID;
-        $title = $post->post_title;
-        $author = $post->post_author;
-        $user_info = get_userdata($author);
-        $post_author = $user_info->display_name;
-        if (!get_post_meta($ID, "meta-description", true)) {$description = $title.' - 作者: '.$post_author.',首发于'.$blog_name;}
-        else {$description = get_post_meta($ID, "meta-description", true);}
-    } elseif ( is_home () )    { $description = dopt('d_description');
-    } elseif ( is_tag() )      { $description = single_tag_title('', false) . " - ". trim(strip_tags(tag_description()));
-    } elseif ( is_category() ) { $description = single_cat_title('', false) . " - ". trim(strip_tags(category_description()));
-    } elseif ( is_archive() )  { $description = $blog_name . "'" . trim( wp_title('', false) ) . "'";
-    } elseif ( is_search() )   { $description = $blog_name . ": '" . esc_html( $s, 1 ) . "' 的搜索結果";
-    } else { $description = $blog_name . "'" . trim( wp_title('', false) ) . "'";
+	    if ($post->post_excerpt)
+	      $description = $post->post_excerpt;
+			else
+				$description = mb_substr(strip_tags($post->post_content),0,210,'utf-8') .'......';
+			$tags = wp_get_post_tags($post->ID);
+	    foreach ($tags as $tag )
+		    $keywords .= $tag->name . ",";
+    } elseif ( is_home () )    {
+			$description = dopt('d_description');
+			$keywords = dopt('d_keywords');
+    } elseif ( is_tag() )      {
+			$keywords = single_tag_title('', false);
+			$description = "标签: [$keywords] | $blog_name";
+    } elseif ( is_category() ) {
+			$keywords = single_cat_title('', false);
+			$description = "分类: [$keywords] | $blog_name";
+    } elseif ( is_archive() )  {
+	    if ($post->post_excerpt)
+	      $description = $post->post_excerpt;
+			else
+				$description = mb_substr(strip_tags($post->post_content),0,210,'utf-8') .'......';
+    } elseif ( is_search() )   {
+			$keywords = esc_html( $s, 1 );
+			$description = $blog_name . ": [$keywords] 的搜索結果";
     }
     $description = mb_substr( $description, 0, 220, 'utf-8' );
-    echo "<meta name=\"description\" content=\"$description\">\n";
+		if($description!="")
+    	echo "<meta name='description' content='$description'>\n";
+		if($keywords!="")
+			echo "<meta name='keywords' content='$keywords'>\n";
 }
 add_action('wp_head','mzw_description');
 

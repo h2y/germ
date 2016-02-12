@@ -18,12 +18,6 @@ $options = array (
 	array( "name" => "禁止站内 pingback","type" => "tit"),
 	array( "id" => "d_nopingback_b","type" => "checkbox" ),
 
-	array( "name" => "中英文间自动添加空格","type" => "tit"),
-	array( "id" => "d_autospace_b","type" => "checkbox" ),
-
-	array( "name" => "开启全站 Ajax","type" => "tit"),
-	array( "id" => "d_ajax_b","type" => "checkbox" ),
-
 	array( "name" => "首页、文章、页面，都使用同一个侧边栏","type" => "tit"),
 	array( "id" => "d_same_sidebar_b","type" => "checkbox" ),
 
@@ -41,6 +35,21 @@ $options = array (
 	array( "id" => "d_sideroll_page_b","type" => "checkbox" ),
 	array( "id" => "d_sideroll_page_1","type" => "number","std" => "1","txt" => "滚动时固定侧栏模块"),
 	array( "id" => "d_sideroll_page_2","type" => "number","std" => "2","txt" => "和模块 "),
+
+	array( "type" => "endtag"),
+
+
+	//功能开关
+	array( "name" => "功能开关","type" => "section"),
+
+	array( "name" => "开启全站 Ajax","type" => "tit"),
+	array( "id" => "d_ajax_b","type" => "checkbox" ),
+
+	array( "name" => "中英文间自动添加空格","type" => "tit"),
+	array( "id" => "d_autospace_b","type" => "checkbox" ),
+
+	array( "name" => "文章点赞功能","type" => "tit"),
+	array( "id" => "d_ding_b","type" => "checkbox" ),
 
 	array( "type" => "endtag"),
 
@@ -304,7 +313,8 @@ function mytheme_admin() {
 		<div class="d_tab">
 			<ul>
 				<li class="d_tab_on">基本设置</li>
-				<li>SNS设置</li>
+				<li>功能开关</li>
+				<li>小工具设置</li>
 				<li>首尾代码</li>
 			</ul>
 		</div>

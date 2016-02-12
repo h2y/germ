@@ -2,7 +2,7 @@
 /*
 Template Name: 标签模板
 */
-get_header(); 
+get_header();
 ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -29,20 +29,23 @@ get_header();
 				<li><a href="http://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" target="_blank"><i class="fa fa-twitter"></i></a></li>
 			</ul>
 		</div>
+    <?php if( dopt('d_ding_b') != '' ) : ?>
 		<div class="post-love">
-			<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="Love this">
+			<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="Love this"><i class="fa fa-heart-o"></i>
 			<span class="love-count">
-				<?php if( get_post_meta($post->ID,'mzw_ding',true) ){            
-                    echo get_post_meta($post->ID,'mzw_ding',true);
-                 } else {
-                    echo '0';
-                 }?>
-			</span> <i class="fa fa-heart-o"></i></a>
+				<?php
+          if( get_post_meta($post->ID,'mzw_ding',true) )
+            echo get_post_meta($post->ID,'mzw_ding',true);
+          else
+            echo '0';
+        ?>
+			</span></a>
 		</div>
+    <?php endif; ?>
 	</footer>
 </article>
 
-	
+
 <?php endwhile; endif;?>
 </div></div>
 	<?php get_sidebar(); ?>

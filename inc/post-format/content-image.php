@@ -29,16 +29,19 @@
 		?>
     </div>
     <footer class="entry-footer clearfix">
+    <?php if( dopt('d_ding_b') != '' ) : ?>
 		<div class="post-love">
 			<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="Love this"><i class="fa fa-heart-o"></i>
 			<span class="love-count">
-				<?php if( get_post_meta($post->ID,'mzw_ding',true) ){
-                    echo get_post_meta($post->ID,'mzw_ding',true);
-                 } else {
-                    echo '0';
-                 }?>
+				<?php
+          if( get_post_meta($post->ID,'mzw_ding',true) )
+            echo get_post_meta($post->ID,'mzw_ding',true);
+          else
+            echo '0';
+        ?>
 			</span></a>
 		</div>
+    <?php endif; ?>
 		<div class="post-more">
 			<a href="<?php the_permalink(); ?>">Read More</a>
 		</div>

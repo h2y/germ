@@ -9,7 +9,7 @@
 			   <li><i class="fa fa-pencil-square-o"></i> <?php the_category(','); ?></li>
       <?php endif; ?>
 			<li class="comments_meta"><i class="fa fa-comments-o"></i> <?php comments_popup_link('暂无评论', '1 条评论', '% 条评论'); ?></li>
-			<li class="views_meta"><i class="fa fa-eye"></i> <?php mzw_post_views(' 访问量');?></li>
+			<li class="views_meta"><i class="fa fa-eye"></i> <a><?php mzw_post_views(' 访问量');?></a></li>
 		</ul>
     </header>
 	<div class="flexslider">
@@ -32,7 +32,7 @@
 		</div>
     <?php if( dopt('d_ding_b') != '' ) : ?>
 		<div class="post-love">
-			<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="Love this"><i class="fa fa-heart-o"></i>
+			<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="点个赞"><i class="fa fa-heart-o"></i>
 			<span class="love-count">
 				<?php
           if( get_post_meta($post->ID,'mzw_ding',true) )

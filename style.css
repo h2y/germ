@@ -701,6 +701,11 @@ blockquote cite a {
 	border-radius: 3px;
 }
 
+.post-more:hover a {
+	color: #47c2dc;
+  border: 1px solid #47c2dc;
+}
+
 .post-tags a:hover {
 	color: #47C2DC;
 }
@@ -714,12 +719,20 @@ blockquote cite a {
 	display: inline-block;
 }
 
-.post-love a,.post-more a,.post-share a {
-	color: #F7536B;
-	border: 1px solid #F7536B;
+.post-love a, .post-more a,.post-share a {
 	display: block;
 	padding: 5px 12px;
 	border-radius: 3px;
+}
+
+.post-love a {
+	color: #bbb;
+	border: 1px solid #bbb;
+}
+
+.post-love:hover a {
+	color: #f7536b;
+	border: 1px solid #f7536b;
 }
 
 .post-share a {

@@ -69,7 +69,7 @@ get_header();
 		</div>
     <?php if( dopt('d_ding_b') != '' ) : ?>
 		<div class="post-love">
-			<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="Love this"><i class="fa fa-heart-o"></i>
+			<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="点个赞"><i class="fa fa-heart-o"></i>
 			<span class="love-count">
 				<?php
           if( get_post_meta($post->ID,'mzw_ding',true) )

@@ -12,12 +12,6 @@ $options = array (
 	array( "name" => "[SEO] 网站关键字","type" => "tit"),
 	array( "id" => "d_keywords","type" => "text","std" => "会作为 meta 添加到 head 中。在这里输入你的网站关键字，用英文逗号','间隔"),
 
-	array( "name" => "文章分类信息显示","type" => "tit"),
-	array( "id" => "d_showcategory_b","type" => "checkbox" ),
-
-	array( "name" => "禁止站内 pingback","type" => "tit"),
-	array( "id" => "d_nopingback_b","type" => "checkbox" ),
-
 	array( "name" => "首页、文章、页面，都使用同一个侧边栏","type" => "tit"),
 	array( "id" => "d_same_sidebar_b","type" => "checkbox" ),
 
@@ -50,6 +44,12 @@ $options = array (
 
 	array( "name" => "文章点赞功能","type" => "tit"),
 	array( "id" => "d_ding_b","type" => "checkbox" ),
+
+	array( "name" => "文章分类信息显示","type" => "tit"),
+	array( "id" => "d_showcategory_b","type" => "checkbox" ),
+
+	array( "name" => "禁止站内 pingback","type" => "tit"),
+	array( "id" => "d_nopingback_b","type" => "checkbox" ),
 
 	array( "type" => "endtag"),
 
@@ -103,6 +103,9 @@ $options = array (
 	//首尾代码
 	array( "name" => "首尾代码","type" => "section" ),
 
+	array( "name" => "页底横幅公告","type" => "tit"),
+	array( "id" => "d_notice_bottom","type" => "textarea","std"=>"这部分代码显示在页面底部横幅内，推荐放入 p 标签"),
+
 	array( "name" => "流量统计代码","type" => "tit"),
 	array( "id" => "d_track_b","type" => "checkbox" ),
 	array( "id" => "d_track","type" => "textarea","std" => "贴入百度统计、CNZZ、51啦、量子统计代码等等"),
@@ -110,9 +113,6 @@ $options = array (
 	array( "name" => "头部公共代码","type" => "tit"),
 	array( "id" => "d_headcode_b","type" => "checkbox" ),
 	array( "id" => "d_headcode","type" => "textarea","std" => "这部分代码显示在head标签内，推荐放入 css、js 的引用"),
-
-	array( "name" => "页底横幅公告","type" => "tit"),
-	array( "id" => "d_notice_bottom","type" => "textarea","std"=>"这部分代码显示在页面底部横幅内，推荐放入 p 标签"),
 
 	array( "name" => "底部公共代码","type" => "tit"),
 	array( "id" => "d_footcode_b","type" => "checkbox" ),
@@ -351,7 +351,7 @@ function mytheme_admin() {
 
 			<?php break; case "endtag": ?>
 			</li></ul>
-			<div class="d_desc"><input class="button-primary" name="save<?php echo $i; ?>" type="submit" value="保存设置" /></div>
+			<div class="d_desc"><input class="button-primary" name="save<?php echo $i; ?>" type="submit" value="保存所有设置" /></div>
 			</div>
 
 		<?php break; }} ?>

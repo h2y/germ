@@ -730,7 +730,7 @@ blockquote cite a {
 	border: 1px solid #bbb;
 }
 
-.post-love:hover a {
+.post-love:hover a, .post-love a.done {
 	color: #f7536b;
 	border: 1px solid #f7536b;
 }

@@ -682,10 +682,6 @@ blockquote cite a {
 	float: right;
 }
 
-.post-love,.post-share {
-	float: left;
-}
-
 .post-tags {
 	float: left;
 	max-width: 60%;
@@ -1234,8 +1230,12 @@ thead tr {
 	padding: 15px;
 }
 
+.post-love {
+	margin: 0 5px;
+}
+
 /*single*/
-.single .post-love, .page .post-love, .single .post-share, .page .post-share {
+.post-love, .single .post-share, .page .post-share {
 	float: right;
 }
 

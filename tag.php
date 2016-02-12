@@ -2,16 +2,17 @@
 <?php get_header(); ?>
 
 <div class="box archive-meta">
-	<h3 class="title-meta">
-		<?php printf( __( 'Tag Archives: %s', 'quench' ), single_cat_title( '', false ));?>
-	</h3>
+	<p class="title-meta">
+		<i class="fa fa-tag"></i>
+		标签为 [<span class="title-name"><?php single_cat_title( '', true ) ?></span>] 的文章
+	</p>
 </div>
 
-<?php 
+<?php
 
-	if( have_posts() ){ 
+	if( have_posts() ){
 		while ( have_posts() ){
-			the_post(); 
+			the_post();
 			get_template_part( 'inc/post-format/content', get_post_format() );
 		}
 	}

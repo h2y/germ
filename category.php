@@ -1,17 +1,18 @@
 
 <?php get_header(); ?>
 
-
 <div class="box archive-meta">
-	<h3 class="title-meta"><?php single_cat_title() ?></h3>
-	<?php if ( category_description() ) echo '<div class="desc-meta"><span class="top">◆</span>'.category_description().'</div>'; ?>
+	<p class="title-meta">
+		<i class="fa fa-book"></i>
+		分类: [<span class="title-name"><?php single_cat_title( '', true ) ?></span>]
+	</p>
 </div>
 
-<?php 
+<?php
 
-	if( have_posts() ){ 
+	if( have_posts() ){
 		while ( have_posts() ){
-			the_post(); 
+			the_post();
 			get_template_part( 'inc/post-format/content', get_post_format() );
 		}
 	}

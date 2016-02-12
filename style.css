@@ -779,9 +779,9 @@ blockquote cite a {
 	padding: 1.5rem;
 }
 
-.archive-meta h3 {
-	font-size: 1.5rem;
-	margin-bottom: 5px;
+.archive-meta p.title-meta {
+	font-size: 1rem;
+	font-weight: bold;
 }
 
 .archive-meta .desc-meta {

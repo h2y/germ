@@ -1,4 +1,4 @@
-<?php  
+<?php
 // 删除wp自带的小工具
 function unregister_default_wp_widgets() {
 	unregister_widget('WP_Widget_Pages');
@@ -27,7 +27,7 @@ function mzw_sidebar(){
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
     ));
-	
+
 	if( dopt('d_same_sidebar_b') == '' ) {
 		register_sidebar(array(
 			'id'=>'single_sidebar',
@@ -37,7 +37,7 @@ function mzw_sidebar(){
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
 		));
-		
+
 		register_sidebar(array(
 			'id'=>'page_sidebar',
 			'name'=>'页面边栏',
@@ -65,10 +65,10 @@ class mzw_siderbar_post extends WP_Widget {
 		$cat          = $instance['cat'];
 		$orderby      = $instance['orderby'];
 
-		echo $before_title.$title.$after_title; 
+		echo $before_title.$title.$after_title;
 
 		echo mzw_posts_list( $orderby,$limit,$cat );
-		
+
 		echo $after_widget;
 	}
 	function update($new_instance, $old_instance) {
@@ -80,12 +80,12 @@ class mzw_siderbar_post extends WP_Widget {
 		return $instance;
 	}
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array( 
+		$instance = wp_parse_args( (array) $instance, array(
 			'title'        => '',
 			'limit'        => '6',
 			'cat'          => '',
 			'orderby'      => 'date',
-			) 
+			)
 		);
 		$title        = strip_tags($instance['title']);
 		$limit        = strip_tags($instance['limit']);
@@ -138,12 +138,12 @@ function mzw_posts_list($orderby,$limit,$cat) {
 
 	query_posts($args);
 	echo '<div class="smart_post"><ul>';
-	while (have_posts()) : 
-		the_post(); 
+	while (have_posts()) :
+		the_post();
 		global $post;
 		echo '<li class="clearfix">';
 		echo '<div class="post-thumb">';
-		echo post_thumbnail(45, 45, false); 
+		echo post_thumbnail(45, 45, false);
 		echo '</div>';
 		echo '<div class="post-right">';
 		echo '<h3><a href="'.get_permalink().'">';
@@ -173,23 +173,23 @@ class mzw_siderbar_tags extends WP_Widget {
 		$tag_title        = apply_filters('widget_name', $instance['tag_title']);
 		$tag_limit        = $instance['tag_limit'];
 
-		echo $before_title.$tag_title.$after_title; 
+		echo $before_title.$tag_title.$after_title;
 
 		$tag_args = array(
-		'order'         => DESC,		
+		'order'         => DESC,
 		'orderby'       => count,
-		'number'        => $tag_limit,		
+		'number'        => $tag_limit,
 		);
 		$tags_list = get_tags($tag_args);
 		if ($tags_list) {
 			echo '<div class="tagcloud">';
 			foreach($tags_list as $tag) {
-				echo '<a href="'.get_tag_link($tag).'">'. $tag->name .'</a>'; 
-			} 
+				echo '<a href="'.get_tag_link($tag).'">'. $tag->name .'</a>';
+			}
 			echo '</div>';
-		} 
-		
-		
+		}
+
+
 		echo $after_widget;
 	}
 	function update($new_instance, $old_instance) {
@@ -199,10 +199,10 @@ class mzw_siderbar_tags extends WP_Widget {
 		return $instance;
 	}
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array( 
+		$instance = wp_parse_args( (array) $instance, array(
 			'tag_title'        => '',
 			'tag_limit'        => '15'
-			) 
+			)
 		);
 		$tag_title        = strip_tags($instance['tag_title']);
 		$tag_limit        = strip_tags($instance['tag_limit']);
@@ -213,7 +213,7 @@ class mzw_siderbar_tags extends WP_Widget {
 				标题：
 				<input class="widefat" id="<?php echo $this->get_field_id('tag_title'); ?>" name="<?php echo $this->get_field_name('tag_title'); ?>" type="text" value="<?php echo $instance['tag_title']; ?>" />
 			</label>
-		</p>	
+		</p>
 		<p>
 			<label>
 				显示数目：
@@ -243,7 +243,7 @@ class mzw_reader extends WP_Widget {
 		$addlink = $instance['addlink'];
 
 		echo $before_widget;
-		echo $before_title.$title.$after_title; 
+		echo $before_title.$title.$after_title;
 		echo '<div class="sidebar_readers">';
 		echo mzw_readers_list( $out=$outer, $tim=$timer, $lim=$limit, $addlink );
 		echo '</div>';
@@ -320,7 +320,7 @@ class mzw_recent_comment extends WP_Widget {
 		$addlink = $instance['addlink'];
 
 		echo $before_widget;
-		echo $before_title.$title.$after_title; 
+		echo $before_title.$title.$after_title;
 		echo '<ul id="recentcomments">';
 		mzw_recent_comment_list($lim=$limit, $addlink );
 		echo '</ul>';
@@ -353,7 +353,7 @@ class mzw_recent_comment extends WP_Widget {
 
 function mzw_recent_comment_list($lim,$addlink){
 	$my_email = get_bloginfo ('admin_email');
-	$counts = get_comments('number=200&status=approve&type=comment'); 
+	$counts = get_comments('number=200&status=approve&type=comment');
 	$i = 1;
 	foreach ($counts as $count) {
 		if ($count->comment_author_email != $my_email) {
@@ -431,15 +431,15 @@ class mzw_admin extends WP_Widget {
 		</div>
 		<?php if( dopt('d_sns_open') ) {
 			echo '<div class="social">';
-			if( dopt('d_rss_b') ) echo '<a class="rss" href="'.dopt('d_rss').'"><i class="fa fa-rss"></i></a>';
-			if( dopt('d_mail_b') ) echo '<a class="mail" href="'.dopt('d_mail').'"><i class="fa fa-envelope"></i></a>';
-			if( dopt('d_rss_sina_b') ) echo '<a class="weibo" href="'.dopt('d_rss_sina').'"><i class="fa fa-weibo"></i></a>';
-			if( dopt('d_rss_twitter_b') ) echo '<a class="twitter" href="'.dopt('d_rss_twitter').'"><i class="fa fa-twitter"></i></a>';
-			if( dopt('d_rss_google_b') ) echo '<a class="google" href="'.dopt('d_rss_google').'"><i class="fa fa-google-plus "></i></a>';
-			if( dopt('d_rss_facebook_b') ) echo '<a class="facebook" href="'.dopt('d_rss_facebook').'"><i class="fa fa-facebook"></i></a>';
-			if( dopt('d_rss_github_b') ) echo '<a class="github" href="'.dopt('d_rss_github').'"><i class="fa fa-github"></i></a>';
-			if( dopt('d_rss_tencent_b') ) echo '<a class="tweibo" href="'.dopt('d_rss_tencent').'"><i class="fa fa-tencent-weibo"></i></a>';
-			if( dopt('d_rss_linkedin_b') ) echo '<a class="linkedin" href="'.dopt('d_rss_linkedin').'"><i class="fa fa-linkedin"></i></a>';
+			if( dopt('d_rss_b') ) echo '<a target="_blank" class="rss" href="'.dopt('d_rss').'"><i class="fa fa-rss"></i></a>';
+			if( dopt('d_mail_b') ) echo '<a rel="nofollow" target="_blank" class="mail" href="'.dopt('d_mail').'"><i class="fa fa-envelope"></i></a>';
+			if( dopt('d_rss_sina_b') ) echo '<a rel="nofollow" target="_blank" class="weibo" href="'.dopt('d_rss_sina').'"><i class="fa fa-weibo"></i></a>';
+			if( dopt('d_rss_twitter_b') ) echo '<a rel="nofollow" target="_blank" class="twitter" href="'.dopt('d_rss_twitter').'"><i class="fa fa-twitter"></i></a>';
+			if( dopt('d_rss_google_b') ) echo '<a rel="nofollow" target="_blank" class="google" href="'.dopt('d_rss_google').'"><i class="fa fa-google-plus "></i></a>';
+			if( dopt('d_rss_facebook_b') ) echo '<a rel="nofollow" target="_blank" class="facebook" href="'.dopt('d_rss_facebook').'"><i class="fa fa-facebook"></i></a>';
+			if( dopt('d_rss_github_b') ) echo '<a rel="nofollow" target="_blank" class="github" href="'.dopt('d_rss_github').'"><i class="fa fa-github"></i></a>';
+			if( dopt('d_rss_tencent_b') ) echo '<a rel="nofollow" target="_blank" class="tweibo" href="'.dopt('d_rss_tencent').'"><i class="fa fa-tencent-weibo"></i></a>';
+			if( dopt('d_rss_linkedin_b') ) echo '<a rel="nofollow" target="_blank" class="linkedin" href="'.dopt('d_rss_linkedin').'"><i class="fa fa-linkedin"></i></a>';
 			//if( dopt('d_rss_b') ) echo '<a class="weixin" href="'.dopt('d_rss').'"><i class="fa fa-weixin"></i></a>';
 			echo '</div>';
 		}

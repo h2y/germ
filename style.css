@@ -2030,7 +2030,7 @@ thead tr {
 	color: #333;
 }
 
-#gotop,#qr {
+#gotop, #qr {
 	display: block;
 	background-color: #fff;
 	border-radius: 5px;
@@ -2043,6 +2043,10 @@ thead tr {
 	color: #47C2DC;
 	border-bottom: none;
 	z-index: 11;
+}
+
+#gotop:hover, #qr:hover {
+	color: #80DC47;
 }
 
 #qrimg {

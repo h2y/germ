@@ -338,9 +338,9 @@ $(document).ready(function(e) {
 	initgallary();
 	refresh_qrimg();
 	$('#qr').hover(function(){
-			$('#qrimg').stop().show(300);
+			$('#qrimg').stop().fadeIn('normal');
 		},function(){
-			$('#qrimg').stop().hide(300);
+			$('#qrimg').stop().fadeOut('normal');
 	});
 });
 

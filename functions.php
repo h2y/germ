@@ -61,16 +61,6 @@ remove_action('wp_head','wlwmanifest_link');//移除head中的rel="wlwmanifest"
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );//rel=pre
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
 
-//隐藏admin Bar
-function hide_admin_bar($flag) {
-	return false;
-}
-add_filter('show_admin_bar','hide_admin_bar');
-
-//remove_filter ('the_content', 'wpautop');
-
-remove_filter ('comment_text', 'wpautop');
-
 register_nav_menus(array('header-menu' => '顶部导航'));
 
 add_theme_support( 'post-formats', array( 'status', 'image', 'gallery', 'audio' ));

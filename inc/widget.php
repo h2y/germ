@@ -388,8 +388,8 @@ class mzw_search extends WP_Widget {
 		?>
 		<form id="searchform" class="searchform" action="<?php echo get_bloginfo ('url'); ?>" method="GET">
 			<div>
-				<input name="s" id="s" size="15" placeholder="Enter Keywords..." type="text">
-				<input value="Search" type="submit">
+				<input name="s" id="s" size="15" placeholder="输入关键字" type="text">
+				<input value="站内搜索" type="submit">
 			</div>
 		</form>
 <?php
@@ -398,11 +398,8 @@ class mzw_search extends WP_Widget {
 	function form($instance) {
 ?>
 		<p>
-			<label>
-			无选项
-			</label>
+			搜索小工具已启用, 无需额外设置.
 		</p>
-
 <?php
 	}
 }

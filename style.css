@@ -1634,6 +1634,14 @@ thead tr {
 	cursor: not-allowed
 }
 
+#commentform .replay_email, #commentform .replay_url {
+	display:none;
+}
+
+#commentform .text_area {
+	height: 150px;
+  margin-top: 15px;
+}
 
 /*respond*/
 #replytitle {

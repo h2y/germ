@@ -383,12 +383,12 @@ function ajax_comment(){
     $comment_type = '';
     if ( get_option('require_name_email') && !$user->exists() ) {
         if ( 6 > strlen($comment_author_email) || '' == $comment_author )
-            ajax_comment_err( 'Error: please fill the required fields (name, email).' );
+            ajax_comment_err( '失败, 发表留言不能没有署名~' );
         elseif ( !is_email($comment_author_email))
-            ajax_comment_err( 'Error: please enter a valid email address.' );
+            ajax_comment_err( '错误: 请输入有效的电子邮箱地址~' );
     }
     if ( '' == $comment_content )
-        ajax_comment_err( 'Error: please type a comment.' );
+        ajax_comment_err( '失败, 还没有开始写任何评论呢~' );
     $dupe = "SELECT comment_ID FROM $wpdb->comments WHERE comment_post_ID = '$comment_post_ID' AND ( comment_author = '$comment_author' ";
     if ( $comment_author_email ) $dupe .= "OR comment_author_email = '$comment_author_email' ";
     $dupe .= ") AND comment_content = '$comment_content' LIMIT 1";
@@ -446,7 +446,7 @@ function ajax_comment(){
 			</div>
 		</div>
 		<?php if ( '0' == $comment->comment_approved ) : ?>
-			<p class="comment-awaiting-moderation">您的评论正在排队等待审核，请稍后再来！</p>
+			<p class="comment-awaiting-moderation">您的评论已提交, 正在排队等待审核.</p>
 		<?php endif; ?>
 
 		<div class="comment-content">

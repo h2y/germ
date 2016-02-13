@@ -48,6 +48,9 @@ $options = array (
 	array( "name" => "文章分类信息显示","type" => "tit"),
 	array( "id" => "d_showcategory_b","type" => "checkbox" ),
 
+	array( "name" => "每条评论显示其发布日期","type" => "tit"),
+	array( "id" => "d_showreplayT_b","type" => "checkbox" ),
+
 	array( "name" => "禁止站内 pingback","type" => "tit"),
 	array( "id" => "d_nopingback_b","type" => "checkbox" ),
 

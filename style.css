@@ -1563,6 +1563,10 @@ thead tr {
 	margin-top: 1rem;
 }
 
+.comments.no-time time {
+	display: none;
+}
+
 .comment-meta .reply {
 	font-size: 0.8rem;
 	position: absolute;

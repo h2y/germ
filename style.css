@@ -1584,6 +1584,10 @@ li.comment:hover .reply {
 .comment-content .reply:hover {
 	background: #ddd;
 }
+ol.children .reply {
+	/*只显示一级评论的回复按钮*/
+	display: none!important;
+}
 
 .comment-content .fn, .comment-content .fn a {
 	color: #47c2dc;
@@ -1602,6 +1606,12 @@ li.comment:hover .reply {
 
 .comments-list > li {
 	border-bottom: 1px dotted #ccc;
+}
+
+ol.comments-list > li > ol.children {
+	/*只匹配第二级评论*/
+	position: relative;
+	left: 30px;
 }
 
 .commentnav {

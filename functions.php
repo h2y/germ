@@ -111,7 +111,7 @@ function pagenavi($range = 7){
 function comment($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment;
 ?>
-   <li <?php comment_class(); ?><?php if( $depth > 2){ echo ' style="margin-left:-50px;"';} ?> id="li-comment-<?php comment_ID() ?>">
+   <li <?php comment_class(); ?><?php //if( $depth > 2){ echo ' style="left:0;"';} ?> id="li-comment-<?php comment_ID() ?>">
 
 <article id="comment-<?php comment_ID(); ?>" class="comment-body">
 	<div class="comment-author vcard">

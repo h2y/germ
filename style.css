@@ -689,32 +689,9 @@ blockquote cite a {
 	float: right;
 }
 
-.post-tags {
-	float: left;
-	max-width: 60%;
-	font-size: 12px;
-	float: left;
-	height: 34px;
-	font-weight: 400;
-	overflow: hidden;
-	line-height: 34px;
-	color: #333;
-}
-
-.post-tags a {
-	color: #555;
-	background-color: #eee;
-	padding: 3px;
-	border-radius: 3px;
-}
-
 .post-more:hover a {
 	color: #47c2dc;
   border: 1px solid #47c2dc;
-}
-
-.post-tags a:hover {
-	color: #47C2DC;
 }
 
 .post-share {
@@ -780,6 +757,51 @@ blockquote cite a {
 
 .share-on>a {
 	border-radius: 0 0 3px 3px;
+}
+
+/* Tag links style */
+.tag-links.in-list a {
+	opacity: 0.3125;
+}
+.tag-links a {
+	background-color: #767676;
+	border-radius: 0 2px 2px 0;
+	color: #fff;
+	display: inline-block;
+	font-size: 11px;
+	line-height: 1.2727272727;
+	margin: 5px 4px 2px 10px;
+	padding: 3px 7px;
+	position: relative;
+	text-transform: uppercase;
+}
+.tag-links a:hover {
+	background-color: #47c2dc;
+	color: #fff;
+}
+.tag-links a:hover:before {
+	border-right-color: #47c2dc;
+}
+.tag-links a:before {
+	border-top: 10px solid transparent;
+	border-right: 8px solid #767676;
+	border-bottom: 10px solid transparent;
+	content: "";
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: -8px;
+	width: 0;
+}
+.tag-links a:after {
+	background-color: #fff;
+	border-radius: 50%;
+	content: "";
+	height: 4px;
+	position: absolute;
+	top: 8px;
+	left: -2px;
+	width: 4px;
 }
 
 .archive-meta {

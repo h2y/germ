@@ -21,6 +21,7 @@
         <?php the_content_nopic(); ?>
     </div>
 	<footer class="entry-footer clearfix">
+    <span class="tag-links"><?php the_tags( '', '', '' ); ?></span>
 		<div class="post-share">
 			<a href="javascript:;"><i class="fa fa-share-alt"></i><?php _e('share', 'quench');?></a>
 			<ul>
@@ -43,9 +44,6 @@
 			</span></a>
 		</div>
     <?php endif; ?>
-		<div class="post-tags">
-			<?php if ( get_the_tags() ) { echo 'Tags: '; the_tags('', ', ', ' ');}?>
-		</div>
 	</footer>
 	<div class="prev-next clearfix">
 		<?php if (get_previous_post()) {echo '<span class="prev">'; previous_post_link('<i class="fa fa-angle-left"></i>%link'); echo '</span>'; }?>

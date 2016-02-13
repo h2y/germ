@@ -25,6 +25,7 @@
     	?>
     </div>
     <footer class="entry-footer clearfix">
+    <span class="tag-links in-list"><?php the_tags( '', '', '' ); ?></span>
 		<div class="post-more">
 			<a href="<?php the_permalink(); ?>">阅读全文</a>
 		</div>

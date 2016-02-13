@@ -18,6 +18,7 @@ get_header();
         <?php the_content();; ?>
     </div>
 	<footer class="entry-footer clearfix">
+    <span class="tag-links"><?php the_tags( '', '', '' ); ?></span>
 		<div class="post-share">
 			<a href="javascript:;"><i class="fa fa-share-alt"></i><?php _e('share', 'quench');?></a>
 			<ul>

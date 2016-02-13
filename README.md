@@ -24,15 +24,15 @@
 - 免插件实现文章访问量显示
 
 
-## 主题下载
+## 相关链接
 
 Github 项目主页: <https://github.com/h2y/germ>
 
-最新版快照下载: <https://github.com/h2y/germ/archive/master.zip>
+最新版下载链接: <https://github.com/h2y/germ/archive/master.zip>
 
-稳定版下载: <https://github.com/h2y/germ/releases>
+《项目版本命名规范》: <https://github.com/h2y/verson-desc/blob/master/README.md>
 
 
 ## 注意事项
-1. 音乐文章使用的是虾米的链接, 可直接使用短代码 [xiami]id[/xiami] 插入。
+1. 音乐文章使用的是虾米的链接, 可直接使用短代码 `[xiami]id[/xiami]` 插入。
 2. 头像可能会出现不能访问的情况, 目前使用方法是调用 `https` 头像。 需要修改可用关键词 Gravatar WordPress 搜索解决。

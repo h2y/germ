@@ -1664,10 +1664,6 @@ thead tr {
 	width: 18rem;
 }
 
-.mzw_search {
-	padding: 20px 24px;
-}
-
 #searchform {
 	position: relative;
 }
@@ -1814,6 +1810,11 @@ thead tr {
 	background-color: #FFF;
 	padding: 20px 26px;
 	overflow: hidden;
+}
+
+.widget.mzw_search {
+  height: 36px;
+	padding: 18px 26px;
 }
 
 .widget,.widget a {

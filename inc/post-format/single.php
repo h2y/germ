@@ -4,7 +4,7 @@
 			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h2>
 		<ul class="entry-meta">
-			<li><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d g:h');?></li>
+			<li><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d H:i');?></li>
       <?php if( dopt('d_showcategory_b')!="" ) : ?>
 			   <li><i class="fa fa-pencil-square-o"></i> <?php the_category(','); ?></li>
       <?php endif; ?>

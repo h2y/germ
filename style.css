@@ -32,6 +32,12 @@ img {
 	-ms-interpolation-mode: bicubic;
 }
 
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 article, aside, details, figcaption, figure, footer, header, menu, nav, section {
 	display: block;
 }
@@ -302,12 +308,11 @@ blockquote {
 }
 
 blockquote p {
-	color: #001!important;
-	font-weight: 100!important
+	line-height: 1.5rem;
+  margin-bottom: 1rem;
 }
-
 blockquote p:last-child {
-	margin-bottom: 0!important
+	margin-bottom: 0
 }
 
 blockquote cite {

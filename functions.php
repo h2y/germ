@@ -114,21 +114,22 @@ function comment($comment, $args, $depth) {
    <li <?php comment_class(); ?><?php if( $depth > 2){ echo ' style="margin-left:-50px;"';} ?> id="li-comment-<?php comment_ID() ?>">
 
 <article id="comment-<?php comment_ID(); ?>" class="comment-body">
-	<div class="comment-meta clearfix">
-		<div class="comment-author vcard">
-			<?php echo get_avatar( $comment, $size = '40'); ?>
-		</div>
-		<div class="comment-metadata">
-			<b class="fn"><?php printf(__('%s'), get_comment_author_link()) ?></b>
-			<time datetime="<?php echo time_ago(); ?>"><?php echo time_ago(); ?></time>
-		</div>
+	<div class="comment-author vcard">
+		<?php echo get_avatar( $comment, $size = '40'); ?>
+	</div>
+	<div class="comment-content">
 		<div class="reply">
 			<?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
 		</div>
-	</div>
-
-	<div class="comment-content">
-		<?php comment_text() ?>
+		<div class="comment-metadata">
+			<b class="fn"><?php printf(__('%s'), get_comment_author_link()) ?></b>
+			<?php if(dopt('d_showreplayT_b') != '') : ?>
+				<time datetime="<?php echo time_ago(); ?>"><?php echo time_ago(); ?></time>
+			<?php endif; ?>
+		</div>
+		<div class="comment_text">
+			<?php comment_text() ?>
+		</div>
 	</div>
 </article>
 

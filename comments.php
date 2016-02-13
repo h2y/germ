@@ -1,4 +1,4 @@
-<div class="comments clearfix box <?php if(dopt('d_showreplayT_b') == '') echo 'no-time'; ?>">
+<div class="comments clearfix box">
 	<?php $comments = get_comments('post_id='.$post->ID.'&status=approve');?>
 	<h5 id="comments-title"><span><?php echo count($comments); ?> 条评论</span></h5>
 	<div class="commentshow">

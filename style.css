@@ -1558,65 +1558,41 @@ thead tr {
 	margin: 1rem 0;
 }
 
-.comment-meta {
-	position: relative;
-	margin-top: 1rem;
+.comment-author {
+	float: left;
 }
 
-.comments.no-time time {
+.comment-content .reply {
+	font-size: 0.8rem;
+	float: right;
+	bottom: 5px;
+	padding: 3px 10px;
+	background: #eee;
 	display: none;
 }
-
-.comment-meta .reply {
-	font-size: 0.8rem;
-	position: absolute;
-	right: 0;
-	bottom: 5px;
-	padding: 1px 5px;
-	background: #eee
+li.comment:hover .reply {
+	display: block;
 }
-
-.comment-meta .reply a {
+.comment-content .reply a {
 	color: #666;
 }
-
-.comment-meta .reply:hover {
+.comment-content .reply:hover {
 	background: #ddd;
 }
 
-.comment-author {
-	float: left;
-	margin-right: 10px;
-	width:40px;
+.comment-content .fn, .comment-content .fn a {
+	color: #47c2dc;
 }
-
-.comment-metadata {
-	float: left;
-}
-
-.comment-metadata .fn {
-	display: block;
-}
-
-.comment-metadata .fn a {
-	color: #999;
-}
-
-.comment-metadata .fn a:hover {
+.comment-content .fn a:hover {
 	color: #333;
 }
 
-.comment-metadata time {
+.comment-content time {
 	color: #ccc;
 }
 
-.comment-content,.comment-awaiting-moderation {
+.comment-content, .comment-awaiting-moderation {
 	padding-left: 50px;
-}
-
-.comments-list .children {
-	margin-left: 50px;
-	margin-top: 15px;
 }
 
 .comments-list > li {
@@ -1636,6 +1612,10 @@ thead tr {
 
 .commentnav span {
 	cursor: not-allowed
+}
+
+.comment-reply-link {
+	color:#47c2dc;
 }
 
 #commentform .replay_email, #commentform .replay_url {

@@ -85,11 +85,11 @@ $('#header .desc span').typing({
 jQuery(document).ready(function($) {
 
 	var $commentform = $('#commentform'),
-	txt1 = '<div id="loading"><img src="/wp-includes/images/spinner.gif">正在提交, 请稍候...</div>',
+	txt1 = '<div id="loading"><i class="fa fa-circle-o-notch fa-spin"></i> 正在提交, 请稍候...</div>',
 	txt2 = '<div id="error">#</div>',
 	txt3 = '">提交成功',
 	edt1 = ', 刷新页面之前可以<a rel="nofollow" class="comment-reply-link" href="#edit" onclick=\'return addComment.moveForm("',
-	edt2 = ')\'>再编辑</a>',
+	edt2 = ')\'>重新编辑</a>',
 	cancel_edit = '取消编辑',
 	edit,
 	num = 1,

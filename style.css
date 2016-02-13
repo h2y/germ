@@ -1,11 +1,18 @@
-﻿/*
-Theme Name:	Germ
-Theme URI:	http://hzy.pw/p/1933
-Author:			Moshel
-Author URI:	https://hzy.pw
-Description:An exquisite theme for you. Used PJAX and many advanced features. Besides, it looks well.
-Version: 		0.0.3.3
+﻿/*!
+	Theme Name:	Germ
+	Version: 0.0.4.4
+	Theme URI: http://hzy.pw/p/1933
+	Description: An exquisite theme for you. Used PJAX and many advanced features. Besides, it looks well.
+	Tags: Blue,Light,Responsive Layout,Two Columns,Right Sidebar,Theme Options,Custom Menu,Post Formats,Threaded Comments
+	Doing: Custom Background,Custom Colors,Sticky Post
+
+	Author: Moshel
+	Author URI:	https://hzy.pw/
+
+	License: MIT License
+	License URI: http://mit-license.org/
 */
+
 html {
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;

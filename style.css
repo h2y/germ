@@ -357,12 +357,18 @@ blockquote cite a {
 	padding-left: 2rem;
 }
 
+#header, .pagination, .post, .widget, .box, #qr, #gotop {
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+#header:hover, .pagination:hover, .post:hover, .widget:hover, .box:hover, #qr:hover, #gotop:hover, #qrimg {
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
 #header {
 	padding: 2rem;
 	background-color: #fff;
 	position: relative;
 	border-top: 4px solid #47C2DC;
-	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 #header .head {
@@ -541,12 +547,11 @@ blockquote cite a {
 	width: 0px;
 }
 
-.pagination, .post,.widget,.box {
+.pagination, .post, .widget, .box {
 	position: relative;
 	margin-bottom: 2rem;
 	background-color: #FFF;
 	overflow: hidden;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .pagination {

@@ -177,7 +177,7 @@ function ajaxreload_code() {
   refresh_qrimg();
   initgallary();
   initSlim();
-	text_autospace_init();
+  text_autospace_init();
 }
 
 function ajaxclick_code(thiss) {

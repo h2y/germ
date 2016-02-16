@@ -497,8 +497,7 @@ blockquote cite a {
 	top: 0;
 	z-index: 10;
 }
-
-#announcement a {
+#announcement span {
 	position: absolute;
 	z-index: 11;
 	top: 5px;
@@ -508,14 +507,6 @@ blockquote cite a {
 	line-height: 55px;
 	color: #fff;
 	font-size: 18px;
-}
-
-#announcement a.close {
-	color: #fff;
-}
-
-#announcement a.open {
-	color: #F7536B;
 }
 
 #container {

@@ -1,14 +1,3 @@
-jQuery('.openpre').click(function() {
-  if (jQuery(this).hasClass('close')) {
-    jQuery(this).removeClass('close');
-    jQuery(this).addClass('open');
-  } else {
-    jQuery(this).removeClass('open');
-    jQuery(this).addClass('close');
-  }
-  return false;
-});
-
 jQuery.fn.postLike = function() {
   if (jQuery(this).hasClass('done')) {
     return false;

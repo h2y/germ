@@ -601,7 +601,6 @@ blockquote cite a {
 	white-space: nowrap;
 	border-bottom: none;
 }
-
 .entry-header h2 a:after {
 	content: "";
 	position: absolute;
@@ -611,15 +610,17 @@ blockquote cite a {
 	width: 0;
 	transition: width 350ms, left 350ms;
 }
-
 .entry-header h2 a:hover {
 	color: #47C2DC;
 }
-
 .entry-header h2 a:hover:after {
 	left: 0;
 	width: 100%;
 	transition: width 350ms;
+}
+
+.entry-header .post-prefix {
+	color: #47C2DC;
 }
 
 .entry-header .entry-meta li {

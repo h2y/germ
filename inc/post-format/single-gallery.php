@@ -14,7 +14,7 @@
     </header>
 	<div class="flexslider">
 		<ul class="slides">
-			<?php if(postformat_gallery()) postformat_gallery();?>
+			<?php postformat_gallery(); ?>
 		</ul>
 	</div>
     <div class="entry-content" itemprop="description">

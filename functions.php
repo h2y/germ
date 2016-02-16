@@ -226,10 +226,10 @@ function postformat_gallery(){
             $src = $matches[$i][1];
             $images .= '<li data-thumb="'.$src.'"><img src="'.$src.'" /></li>';
         }
-		echo $images;
+				echo $images;
     } else {
-		return false;
-	}
+				return false;
+		}
 }
 
 

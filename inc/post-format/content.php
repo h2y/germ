@@ -1,7 +1,7 @@
 <article <?php post_class(); ?>>
     <header class="entry-header">
 		<h2 class="entry-name">
-			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
+			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h2>
 		<ul class="entry-meta">
 			<li><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d H:i');?></li>

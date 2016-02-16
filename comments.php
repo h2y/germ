@@ -14,7 +14,7 @@
 			<?php if ( $user_ID ) { ?>
 			<p style="margin-bottom:10px"><i class="fa fa-user"></i> 已登录为 <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>
 			&nbsp;|&nbsp;
-			<i class="fa fa-mail-reply"></i> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">登出 &raquo;</a></p>
+			<i class="fa fa-mail-reply"></i> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出登录">登出 &raquo;</a></p>
 			<?php } else { ?>
 			<p class="input-row replay_author"><input type="text" name="author" class="text_input" id="author" size="22" tabindex="1" placeholder="署名 *"/>
 			</p>

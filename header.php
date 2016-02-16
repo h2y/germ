@@ -43,7 +43,7 @@
 			?>
 
 			<div id="announcement">
-				<a href="#" class="openpre close" title="Announcement"><i class="fa fa-star"></i></a>
+				<a href="#" class="openpre close" title=""><i class="fa fa-star"></i></a>
 			</div>
 		</header>
 

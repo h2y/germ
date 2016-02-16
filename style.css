@@ -1361,8 +1361,8 @@ thead tr {
 
 .post-author .avatar {
 	position: absolute;
-	border-radius: 50px;
-	width:90px;
+	height: 90px;
+	width: auto;
 }
 
 .post-author .author-meta {
@@ -1370,10 +1370,6 @@ thead tr {
 	padding-left: 100px;
 	word-wrap: break-word;
 	margin: 5px 20px;
-}
-
-.post-author .author-meta .name {
-	font-size: 1.2rem;
 }
 
 /*page-tags*/

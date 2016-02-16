@@ -106,6 +106,9 @@ $options = array (
 	//首尾代码
 	array( "name" => "首尾代码","type" => "section" ),
 
+	array( "name" => "文章底部显示文字","type" => "tit"),
+	array( "id" => "d_post_bottom","type" => "textarea","std"=>"这部分代码显示在文章结束处，推荐放入 p 标签"),
+
 	array( "name" => "页底横幅公告","type" => "tit"),
 	array( "id" => "d_notice_bottom","type" => "textarea","std"=>"这部分代码显示在页面底部横幅内，推荐放入 p 标签"),
 

@@ -54,11 +54,9 @@
 <div class="post-author box clearfix">
 	<?php echo get_avatar( get_the_author_email(), $size = '80' , '' );?>
 	<div class="author-meta">
-		<p class="name"><?php the_author(); ?></p>
-		<p class="description"><?php the_author_description(); ?></p>
-
+		<?php echo dopt('d_post_bottom'); ?>
+    <p class="post-buttom-link">本页固定链接: <a href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></p>
 	</div>
-
 </div>
 
 <?php include_once('relatedpost.php')?>

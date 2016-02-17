@@ -9,7 +9,12 @@
       <?php if( dopt('d_showcategory_b')!="" ) : ?>
 			   <li><i class="fa fa-pencil-square-o"></i> <?php the_category(','); ?></li>
       <?php endif; ?>
-			<li class="comments_meta"><i class="fa fa-comments-o"></i> <?php comments_popup_link('暂无评论', '1 条评论', '% 条评论'); ?></li>
+			<li class="comments_meta"><i class="fa fa-comments-o"></i> <?php
+        if(comments_open())
+          comments_popup_link('暂无评论', '1 条评论', '% 条评论');
+        else
+          echo '<a href="javascript:;">评论关闭</a>';
+      ?></li>
 			<li class="views_meta"><i class="fa fa-eye"></i> <a><?php mzw_post_views(' 访问量');?></a></li>
 		</ul>
     </header>

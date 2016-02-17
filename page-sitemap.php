@@ -23,7 +23,7 @@ get_header();
         <div class="archives-content clearfix">
 
 				<div class="ordered-list">
-					<h3>Latest posts</h3>
+					<h3>最新文章</h3>
 					<ol>
 					<?php
 						$myposts = get_posts('numberposts=20&orderby=post_date&order=DESC');
@@ -39,21 +39,21 @@ get_header();
 				</div>
 
 				<div class="ordered-list">
-					<h3>Posts by month</h3>
+					<h3>按月查看</h3>
 					<ol>
 						<?php wp_get_archives(apply_filters('widget_archives_args', array('type' => 'monthly', 'limit' => 24))); ?>
 					</ol>
 				</div>
 
 				<div class="ordered-list">
-					<h3>Posts by year</h3>
+					<h3>按年查看</h3>
 					<ul>
 						<?php wp_get_archives(apply_filters('widget_archives_args', array('type' => 'yearly', 'limit' => 10))); ?>
 					</ul>
 				</div>
 
 				<div class="ordered-list">
-					<h3>Categories</h3>
+					<h3>分类</h3>
 					<ul>
 					<?php
 						$terms = get_terms('category', 'orderby=name&hide_empty=0' );
@@ -68,7 +68,7 @@ get_header();
 				</div>
 
 				<div class="ordered-list">
-					<h3>All pages</h3>
+					<h3>独立页面</h3>
 					<ul>
 					<?php
 						$myposts = get_posts('numberposts=-1&orderby=post_date&order=DESC&post_type=page');

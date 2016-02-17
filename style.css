@@ -1704,13 +1704,23 @@ ol.comments-list > li > ol.children {
 
 #searchform input[type="submit"] {
 	position: absolute;
-	top: 0px;
 	right: 0px;
-	border-radius: 0px 2px 2px 0px;
+	bottom: 0px;
+	border-radius: 5px;
+	padding: 7px 14px;
 }
 
 #searchform input[type="text"] {
 	width: 70%;
+	border-top: 0;
+	border-left: 0;
+	border-radius: 0;
+	border-bottom-color: #eee;
+	transition: border-bottom-color 200ms;
+}
+#searchform input[type="text"]:focus {
+	border-bottom-color: #47c2dc;
+	transition: border-bottom-color 200ms;
 }
 
 .mzw_admin {

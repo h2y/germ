@@ -5,7 +5,6 @@ function my_enqueue_scripts_frontpage() {
 	wp_enqueue_script( 'base', get_template_directory_uri() . '/js/global.min.js', array(), '1.00', true);
 	wp_enqueue_script( 'slider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array(), '1.00', true);
 	wp_enqueue_script( 'slimbox', get_template_directory_uri() . '/js/slimbox2.min.js', array(), '1.00', true);
-	wp_enqueue_script( 'jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array(), '1.00', true);
 	if( dopt('d_ajax_b') != '' )
 		wp_enqueue_script( 'ajax', get_template_directory_uri() . '/js/ajax.min.js', array(), '1.00', true);
 	if( dopt('d_autospace_b') != '' )
@@ -63,7 +62,7 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
 
 register_nav_menus(array('header-menu' => '顶部导航'));
 
-add_theme_support( 'post-formats', array( 'status', 'image', 'gallery', 'audio' ));
+add_theme_support( 'post-formats', array( 'status', 'image', 'gallery' ));
 
 function dopt($e){
     return stripslashes(get_option($e));
@@ -729,11 +728,6 @@ function dimox_breadcrumbs() {
     echo '</div>';
   }
 }
-
-function xmmusic($atts, $content=null, $code=""){
-    return '<div class="sb-xiami" songid="'.$content.'"><div class="sb-player"><div class="sb-cover"></div><div class="sb-info clearfix"><div class="sb-title left"></div><div class="play-timer right">--:--</div></div><div class="play-button"> </div><div class="play-prosess"><div class="play-prosess-bar"></div></div></div><div class="sb-jplayer"></div></div>';
-}
-add_shortcode('xiami','xmmusic');
 
 add_filter('the_content', 'addhighslideclass_replace');
 function addhighslideclass_replace ($content) {

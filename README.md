@@ -34,5 +34,4 @@ Github 项目主页: <https://github.com/h2y/germ>
 
 
 ## 注意事项
-1. 音乐文章使用的是虾米的链接, 可直接使用短代码 `[xiami]id[/xiami]` 插入。
-2. 头像可能会出现不能访问的情况, 目前使用方法是调用 `https` 头像。 需要修改可用关键词 Gravatar WordPress 搜索解决。
+1. 头像可能会出现不能访问的情况, 目前使用方法是调用 `https` 头像。 需要修改可用关键词 Gravatar WordPress 搜索解决。

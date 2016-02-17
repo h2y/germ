@@ -173,7 +173,6 @@ function ajaxcheck_ignore(url) {
 }
 
 function ajaxreload_code() {
-  loadjplayer();
   refresh_qrimg();
   initgallary();
   initSlim();

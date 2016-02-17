@@ -616,7 +616,7 @@ blockquote cite a {
 
 .entry-header.detail-page h2 {
 	text-align: center;
-  font-size: 1.8rem; 
+  font-size: 1.8rem;
 }
 
 .entry-header .post-prefix {
@@ -684,6 +684,10 @@ blockquote cite a {
 .entry-content ol li {
 	list-style-type: decimal;
 	margin-left: 2rem;
+}
+
+.post-password-form p {
+    margin-bottom: 1rem;
 }
 
 .post .entry-footer, .page .entry-footer {

@@ -306,23 +306,21 @@ jQuery(document).ready(function($) {
   }
 });
 
-$(document).on("click", ".post-share>a",
-  function(e) {
-    e.preventDefault();
-    if ($(this).parent().hasClass('share-on')) {
-      $(this).parent().removeClass('share-on')
-      $(this).next().hide();
-    } else {
-      $(this).parent().addClass('share-on')
-      $(this).next().show();
-    }
-    return false;
-  });
-$(document).on("click", ".post-share ul li a",
-  function(e) {
-    $(this).parent().parent().parent().removeClass('share-on')
-    $(this).parent().parent().hide();
-  });
+$(document).on("click", ".post-share>a", function(e) {
+  e.preventDefault();
+  if ($(this).parent().hasClass('share-on')) {
+    $(this).parent().removeClass('share-on')
+    $(this).next().hide();
+  } else {
+    $(this).parent().addClass('share-on')
+    $(this).next().show();
+  }
+  return false;
+});
+$(document).on("click", ".post-share ul li a", function(e) {
+  $(this).parent().parent().parent().removeClass('share-on')
+  $(this).parent().parent().hide();
+});
 
 var ajaxBinded = false;
 
@@ -358,10 +356,7 @@ jQuery(window).scroll(function() {
   })
 });
 jQuery("#gotop").click(function() {
-  return jQuery("body,html").animate({
-      scrollTop: 0
-    },
-    800), !1
+  return jQuery("body,html").animate({ scrollTop: 0 }, 800), !1
 });
 
 var rollbox = $('#sidebar .widget'),
@@ -388,58 +383,56 @@ if (0 < asr_1 <= rolllen && 0 < asr_2 <= rolllen) {
   })
 };
 
-$(document).on("click", ".commentnav a",
-  function() {
-    var baseUrl = $(this).attr("href"),
-      commentsHolder = $(".commentshow"),
-      id = $(this).parent().data("postid"),
-      page = 1,
-      concelLink = $("#cancel-comment-reply-link");
-    /comment-page-/i.test(baseUrl) ? page = baseUrl.split(/comment-page-/i)[1].split(/(\/|#|&).*jQuery/)[0] : /cpage=/i.test(baseUrl) && (page = baseUrl.split(/cpage=/)[1].split(/(\/|#|&).*jQuery/)[0]);
-    concelLink.click();
-    page = page.split('#')[0];
-    var ajax_data = {
-      action: "ajax_comment_page_nav",
-      um_post: id,
-      um_page: page
-    };
-    commentsHolder.html('<div>loading..</div>');
-    jQuery("body, html").animate({
-        scrollTop: commentsHolder.offset().top - 150
-      },
-      1e3);
-    //add loading
-    jQuery.post(ajax.ajax_url, ajax_data,
-      function(data) {
-        commentsHolder.html(data);
-        //remove loading
-        $("body, html").animate({
-            scrollTop: commentsHolder.offset().top - 50
-          },
-          1e3)
-      });
-    return false;
-  });
+$(document).on("click", ".commentnav a", function() {
+  var baseUrl = $(this).attr("href"),
+    commentsHolder = $(".commentshow"),
+    id = $(this).parent().data("postid"),
+    page = 1,
+    concelLink = $("#cancel-comment-reply-link");
+  /comment-page-/i.test(baseUrl) ? page = baseUrl.split(/comment-page-/i)[1].split(/(\/|#|&).*jQuery/)[0] : /cpage=/i.test(baseUrl) && (page = baseUrl.split(/cpage=/)[1].split(/(\/|#|&).*jQuery/)[0]);
+  concelLink.click();
+  page = page.split('#')[0];
+  var ajax_data = {
+    action: "ajax_comment_page_nav",
+    um_post: id,
+    um_page: page
+  };
+  commentsHolder.html('<div>loading..</div>');
+  jQuery("body, html").animate({
+      scrollTop: commentsHolder.offset().top - 150
+    },
+    1e3);
+  //add loading
+  jQuery.post(ajax.ajax_url, ajax_data,
+    function(data) {
+      commentsHolder.html(data);
+      //remove loading
+      $("body, html").animate({
+          scrollTop: commentsHolder.offset().top - 50
+        },
+        1e3)
+    });
+  return false;
+});
 
-jQuery(document).on("click", ".open-nav",
-  function() {
-    if (jQuery('body').hasClass('has-opened')) {
-      jQuery('body').removeClass('has-opened');
-      jQuery('#mobile-nav').delay(500).hide(100);
-    } else {
-      jQuery('#mobile-nav').show();
-      jQuery('body').addClass('has-opened');
-    }
-  });
-jQuery(document).on("touchstart", ".has-opened #wrap",
-  function() {
+jQuery(document).on("click", ".open-nav", function() {
+  if (jQuery('body').hasClass('has-opened')) {
     jQuery('body').removeClass('has-opened');
     jQuery('#mobile-nav').delay(500).hide(100);
-  });
+  } else {
+    jQuery('#mobile-nav').show();
+    jQuery('body').addClass('has-opened');
+  }
+});
+jQuery(document).on("touchstart", ".has-opened #wrap", function() {
+  jQuery('body').removeClass('has-opened');
+  jQuery('#mobile-nav').delay(500).hide(100);
+});
 
 jQuery(document).ready(function($) {
   jQuery('.archives ul.archives-monthlisting').hide();
   jQuery('.archives ul.archives-monthlisting:first').show();
+  //归档页面的开关
   jQuery('.archives .m-title').click(function() {
     jQuery(this).next().slideToggle('fast');
     return false;

@@ -84,6 +84,8 @@ get_header();
 	</footer>
 </article>
 
+<?php comments_template('', true); ?>
+
 <?php endwhile; endif;?>
 </div></div>
 	<?php get_sidebar(); ?>

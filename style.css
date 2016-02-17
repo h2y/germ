@@ -610,6 +610,15 @@ blockquote cite a {
 	transition: width 350ms;
 }
 
+.entry-header.detail-page {
+	margin-bottom: 20px;
+}
+
+.entry-header.detail-page h2 {
+	text-align: center;
+  font-size: 1.8rem; 
+}
+
 .entry-header .post-prefix {
 	color: #47C2DC;
 }

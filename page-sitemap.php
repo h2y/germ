@@ -9,7 +9,7 @@ get_header();
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 <article <?php post_class('box'); ?>>
-    <header class="entry-header">
+    <header class="entry-header detail-page">
 		<h2 class="entry-name">
 			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h2>

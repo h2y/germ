@@ -1,5 +1,5 @@
 <article <?php post_class(); ?>>
-    <header class="entry-header">
+    <header class="entry-header detail-page">
 		<h2 class="entry-name">
 			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h2>

@@ -327,22 +327,22 @@ function ajax_comment(){
     $post_author = $post->post_author;
     if ( empty($post->comment_status) ) {
         do_action('comment_id_not_found', $comment_post_ID);
-        ajax_comment_err('Invalid comment status.');
+        ajax_comment_err('评论的状态无效');
     }
     $status = get_post_status($post);
     $status_obj = get_post_status_object($status);
     if ( !comments_open($comment_post_ID) ) {
         do_action('comment_closed', $comment_post_ID);
-        ajax_comment_err('Sorry, comments are closed for this item.');
+        ajax_comment_err('抱歉, 此文章已不允许新增评论');
     } elseif ( 'trash' == $status ) {
         do_action('comment_on_trash', $comment_post_ID);
-        ajax_comment_err('Invalid comment status.');
+        ajax_comment_err('评论的状态无效');
     } elseif ( !$status_obj->public && !$status_obj->private ) {
         do_action('comment_on_draft', $comment_post_ID);
-        ajax_comment_err('Invalid comment status.');
+        ajax_comment_err('评论的状态无效');
     } elseif ( post_password_required($comment_post_ID) ) {
         do_action('comment_on_password_protected', $comment_post_ID);
-        ajax_comment_err('Password Protected');
+        ajax_comment_err('密码保护中');
     } else {
         do_action('pre_comment_on_post', $comment_post_ID);
     }
@@ -367,7 +367,7 @@ function ajax_comment(){
         }
     } else {
         if ( get_option('comment_registration') || 'private' == $status )
-            ajax_comment_err('Sorry, you must be logged in to post a comment.');
+            ajax_comment_err('抱歉, 在评论前必须登录');
     }
     $comment_type = '';
     if ( get_option('require_name_email') && !$user->exists() ) {
@@ -382,14 +382,14 @@ function ajax_comment(){
     if ( $comment_author_email ) $dupe .= "OR comment_author_email = '$comment_author_email' ";
     $dupe .= ") AND comment_content = '$comment_content' LIMIT 1";
     if ( $wpdb->get_var($dupe) ) {
-        ajax_comment_err('Duplicate comment detected; it looks as though you&#8217;ve already said that!');
+        ajax_comment_err('检测到重复的评论, 似乎你已经这样评论过了');
     }
     if ( $lasttime = $wpdb->get_var( $wpdb->prepare("SELECT comment_date_gmt FROM $wpdb->comments WHERE comment_author = %s ORDER BY comment_date DESC LIMIT 1", $comment_author) ) ) {
         $time_lastcomment = mysql2date('U', $lasttime, false);
         $time_newcomment  = mysql2date('U', current_time('mysql', 1), false);
         $flood_die = apply_filters('comment_flood_filter', false, $time_lastcomment, $time_newcomment);
         if ( $flood_die ) {
-            ajax_comment_err('You are posting comments too quickly.  Slow down.');
+            ajax_comment_err('你发表评论太快了, 慢点儿吧~');
         }
     }
     $comment_parent = isset($_POST['comment_parent']) ? absint($_POST['comment_parent']) : 0;

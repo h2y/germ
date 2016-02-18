@@ -62,7 +62,7 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
 
 register_nav_menus(array('header-menu' => '顶部导航'));
 
-add_theme_support( 'post-formats', array( 'status', 'image', 'gallery' ));
+add_theme_support( 'post-formats', array( 'status', 'gallery' ));
 
 function dopt($e){
     return stripslashes(get_option($e));

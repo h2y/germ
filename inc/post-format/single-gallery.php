@@ -23,6 +23,7 @@
 	<div class="flexslider">
 		<ul class="slides">
 			<?php postformat_gallery(); ?>
+      <?php wp_link_pages( array( 'before' => '<div class="content-pager"><span class="pager_text">分页 : </span>', 'after' => '</div>', 'link_before' => '<span class="page_link">', 'link_after' => '</span>' ) ); ?>
 		</ul>
 	</div>
     <div class="entry-content" itemprop="description">

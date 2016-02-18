@@ -13,7 +13,7 @@ get_header();
 			<li class="comments_meta"><i class="fa fa-comments-o"></i> <?php
         if(comments_open())
           comments_popup_link('暂无评论', '1 条评论', '% 条评论');
-        else { 
+        else {
           echo '<a href="';
           the_permalink();
           echo '">评论关闭</a>';
@@ -23,7 +23,8 @@ get_header();
 		</ul>
     </header>
     <div class="entry-content" itemprop="description">
-        <?php the_content();; ?>
+        <?php the_content(); ?>
+        <?php wp_link_pages( array( 'before' => '<div class="content-pager"><span class="pager_text">分页 : </span>', 'after' => '</div>', 'link_before' => '<span class="page_link">', 'link_after' => '</span>' ) ); ?>
     </div>
 	<footer class="entry-footer clearfix">
     <span class="tag-links"><?php the_tags( '', '', '' ); ?></span>

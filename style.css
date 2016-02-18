@@ -676,6 +676,27 @@ blockquote cite a {
 	margin-left: 2rem;
 }
 
+/*文章内分页*/
+.content-pager {
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0.7;
+}
+.content-pager .pager_text {
+	color: #47c2dc;
+}
+.content-pager .page_link {
+  padding: 4px 10px;
+  border: 1px solid #47c2dc;
+	color: #47c2dc;
+}
+.content-pager > .page_link,
+.content-pager > a > .page_link:hover {
+	color: #fff;
+	background-color: #47c2dc;
+}
+
 .post-password-form p {
     margin-bottom: 1rem;
 }

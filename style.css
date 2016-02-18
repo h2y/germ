@@ -1371,6 +1371,10 @@ thead tr {
 	margin: 5px 20px;
 }
 
+.author-meta p {
+	margin-top: 10px;
+}
+
 /*page-tags*/
 .tags-page li {
 	list-style-type: none !important;

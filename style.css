@@ -1292,34 +1292,29 @@ thead tr {
 	padding: 0 1.5rem 1rem 1.5rem;
 }
 
-.prev-next a {
-	color: #333;
+.prev-next span {
+	padding: 10px 20px;
+  background-color: #aaa;
+	transition: all 300ms;
+}
+.prev-next span:hover {
+	background-color: #47c2dc;
 }
 
-.prev-next .prev i {
-	padding-right: 0.5rem;
+.prev-next span a {
+	color: #fff;
 }
 
-.prev-next .next i {
-	padding-left: 0.5rem;
-}
+.prev-next .prev { float: left;  }
+.prev-next .next { float: right; }
 
-.prev-next .prev,.prev-next .next {
-	background-color: #ddd;
-	padding: 5px 10px;
+.prev-next .prev_link,
+.prev-next .next_link {
+	opacity: 0;
 }
-
-.prev-next .prev:hover,.prev-next .next:hover {
-	background-color: #eee;
-	padding: 5px 10px;
-}
-
-.prev-next .prev {
-	float: left;
-}
-
-.prev-next .next {
-	float: right;
+.prev:hover .prev_link,
+.next:hover .next_link {
+	opacity: 1;
 }
 
 .relatedpost ul li {

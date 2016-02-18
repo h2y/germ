@@ -54,8 +54,18 @@
     <?php endif; ?>
 	</footer>
 	<div class="prev-next clearfix">
-		<?php if (get_previous_post()) {echo '<span class="prev">'; previous_post_link('<i class="fa fa-angle-left"></i>%link'); echo '</span>'; }?>
-		<?php if (get_next_post()) {echo '<span class="next">'; next_post_link('%link<i class="fa fa-angle-right"></i>'); echo '</span>';}?>
+    <?php if (get_previous_post()) : ?>
+    <div class="prev">
+      <span class="prev_text"><?php previous_post_link('%link', '上一篇'); ?></span>
+      <span class="prev_link"><?php previous_post_link('%link'); ?></span>
+    </div>
+    <?php endif;
+          if (get_next_post()) : ?>
+    <div class="next">
+      <span class="next_link"><?php next_post_link('%link'); ?></span>
+      <span class="next_text"><?php next_post_link('%link', '下一篇'); ?></span>
+    </div>
+    <?php endif; ?>
 	</div>
 </article>
 

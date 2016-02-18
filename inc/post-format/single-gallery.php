@@ -59,7 +59,12 @@
 <div class="post-author box clearfix">
 	<?php echo get_avatar( get_the_author_email(), $size = '80' , '' );?>
 	<div class="author-meta">
-		<?php echo dopt('d_post_bottom'); ?>
+		<?php
+      if(dopt('d_post_bottom')!='')
+        echo dopt('d_post_bottom');
+      else
+        echo '<p>本站所有文章均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow">CC BY-SA 4.0</a> 进行许可, 转载请保留链接并遵守许可协议.</p>';
+    ?>
     <p class="post-buttom-link">本页固定链接: <a href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></p>
 	</div>
 </div>

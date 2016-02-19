@@ -9,7 +9,7 @@ get_header();
 			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h2>
 		<ul class="entry-meta">
-			<li><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d H:i');?></li>
+			<li class="time_meta"><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d H:i');?></li>
 			<li class="comments_meta"><i class="fa fa-comments-o"></i> <?php
         if(comments_open())
           comments_popup_link('暂无评论', '1 条评论', '% 条评论');

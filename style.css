@@ -1929,31 +1929,6 @@ ol.comments-list > li > ol.children {
 	border-color: #47C2DC;
 }
 
-.widget .sidebar_readers a {
-	display: inline-block;
-	margin-right: 12px;
-	overflow: hidden;
-}
-
-.widget .sidebar_readers a:nth-child(5n) {
-	margin-right: 0;
-}
-
-.widget .sidebar_readers a img {
-	border-radius: 18px;
-	-webkit-transition: all 0.8s ease-in-out;
-	-moz-transition: all 0.8s ease-in-out;
-	-o-transition: all 0.8s ease-in-out;
-	transition: all 0.8s ease-in-out;
-}
-
-.widget .sidebar_readers a img:hover {
-	-moz-transform: rotate(405deg);
-	-webkit-transform: rotate(405deg);
-	-o-transform: rotate(405deg);
-	transform: rotate(405deg);
-}
-
 .widget .smart_post li {
 	padding-bottom: 8px;
 	margin-bottom: 8px;

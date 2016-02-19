@@ -375,6 +375,10 @@ jQuery("#gotop").click(function() {
 
 var rollbox = $('#sidebar .widget'),
   rolllen = rollbox.length;
+if(asr_1!=-24 && asr_2!=-38) {
+  if(asr_1 < 1) asr_1 = 1;
+  if(asr_2 < 1) asr_2 = 1;
+}
 if (0 < asr_1 <= rolllen && 0 < asr_2 <= rolllen) {
   $(window).scroll(function() {
     var roll = document.documentElement.scrollTop + document.body.scrollTop;

@@ -1953,45 +1953,6 @@ ol.comments-list > li > ol.children {
 	font-size: 12px;
 }
 
-.widget .recentcomments {
-	padding-bottom: 8px;
-	margin-bottom: 8px;
-	border-bottom: 1px solid #F4F4F4;
-}
-
-.widget #recentcomments  li:last-child {
-	padding-bottom: 0;
-	margin-bottom: 0;
-	border-bottom: none;
-}
-
-.widget .recentcomments .alignleft {
-	float: left;
-}
-
-.widget .recentcomments .alignleft img {
-	border-radius: 2px;
-	width: 45px;
-	height: 45px;
-}
-
-.widget .recentcomments .comment-right {
-	padding-left: 60px;
-	font-size: 13px;
-	line-height: 19px;
-}
-
-.widget .recentcomments .comment-author {
-	color: #888;
-	font-weight: 600;
-	text-transform: capitalize;
-	margin-bottom: 1px;
-}
-
-.widget .recentcomments .comment-c {
-	display: inline;
-}
-
 .widget_calendar {
 	padding: 0 !important;
 }

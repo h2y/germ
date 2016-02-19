@@ -177,6 +177,7 @@ function add_nofollow($link, $args, $comment, $post){
 }
 add_filter('comment_reply_link', 'add_nofollow', 420, 4);
 
+
 function mzw_description() {
     global $s, $post;
     $description = '';

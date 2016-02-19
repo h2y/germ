@@ -9,29 +9,29 @@
 
 - 响应式设计, PC/平板/手机 均可正常浏览
 - 内置多种小工具
-- 内置图片灯箱
-- 内置图片延迟加载, 可加快多图页面的加载速度
-- 内置头像缓存
 - Ajax 评论
 - 全站 Ajax 浏览, 可开启/关闭
 - 汉字与拉丁字符间可自动添加空白间隙, 优化排版
-- 5 种文章格式
-- 3 种页面模板: 文章存档、标签云和网站地图
+- 2 种文章格式: 相册, 说说
+- 3 种页面模板: 文章存档, 标签云和网站地图
 - 侧边栏悬停, 可自由设置
 - 支持 3 种侧边栏, 对应不同页面
 - 显示网页的二维码, 以供跳转至手机浏览
 - 文章点赞功能
 - 免插件实现文章访问量显示
+- 显示 WP 编辑器中默认隐藏的一些按钮
+- 禁用了 WP 中自带的谷歌字体, 为国内网站而优化
 
 
 ## 相关链接
 
-Github 项目主页: <https://github.com/h2y/germ>
+Github 项目主页 : <https://github.com/h2y/germ>
 
-最新版下载链接: <https://github.com/h2y/germ/archive/master.zip>
+最新版下载链接 : <https://github.com/h2y/germ/archive/master.zip>
 
 《项目版本命名规范》: <https://github.com/h2y/verson-desc/blob/master/README.md>
 
 
 ## 注意事项
-1. 头像可能会出现不能访问的情况, 目前使用方法是调用 `https` 头像。 需要修改可用关键词 Gravatar WordPress 搜索解决。
+1. 头像可能会出现不能访问的情况, 目前使用方法是调用 `https` 头像. 需要修改可用关键词 Gravatar WordPress 搜索解决.
+2. 大部分功能默认关闭, 启用主题后请主题设置中进行相关配置.

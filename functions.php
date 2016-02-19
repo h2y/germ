@@ -19,6 +19,35 @@ function my_enqueue_scripts_frontpage() {
 //让WP自动添加页面title
 add_theme_support( 'title-tag' );
 
+//禁用谷歌字体
+function remove_open_sans() {
+	wp_deregister_style( 'open-sans' );
+	wp_register_style( 'open-sans', false );
+	wp_enqueue_style('open-sans','');
+}
+add_action( 'init', 'remove_open_sans' );
+
+//图片默认不连接到原始链接
+update_option('image_default_link_type', 'none');
+
+//编辑器添加按钮
+function enable_more_buttons($buttons) {
+	$buttons[] = 'sub';
+	$buttons[] = 'sup';
+	$buttons[] = 'fontselect';
+	$buttons[] = 'fontsizeselect';
+	$buttons[] = 'cleanup';
+	$buttons[] = 'styleselect';
+	$buttons[] = 'wp_page';
+	$buttons[] = 'anchor';
+	$buttons[] = 'backcolor';
+	return $buttons;
+}
+add_filter("mce_buttons_3", "enable_more_buttons");
+
+//禁用半角符号自动转换为全角
+remove_filter('the_content', 'wptexturize');
+
 function reset_emojis() {
 	remove_action('wp_head', 'print_emoji_detection_script', 7);
 	remove_action('admin_print_scripts', 'print_emoji_detection_script');

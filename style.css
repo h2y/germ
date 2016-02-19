@@ -508,6 +508,13 @@ blockquote cite a {
 	width: calc(100% - 20rem);
 }
 
+#container.full-width #content {
+	width: 100%;
+}
+#container.full-width #sidebar {
+	display: none;
+}
+
 #sidebar {
 	float: right;
 	width: 18rem;

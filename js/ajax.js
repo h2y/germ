@@ -17,7 +17,7 @@ var ajaxsearchPath = null;
 var ajaxua = jQuery.browser;
 
 jQuery(document).ready(function() {
-  ajaxloadPageInit("");
+    ajaxloadPageInit("");
 });
 
 
@@ -173,6 +173,10 @@ function ajaxcheck_ignore(url) {
 }
 
 function ajaxreload_code() {
+  if( jQuery('article.full-width').length )
+    jQuery('#container').addClass('full-width');
+  else
+    jQuery('#container').removeClass('full-width');
   refresh_qrimg();
   initgallary();
   initSlim();

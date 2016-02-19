@@ -2,8 +2,7 @@
 function my_enqueue_scripts_frontpage() {
 	//载入jquery库
 	wp_enqueue_script( 'jquery&migrate', get_template_directory_uri() . '/js/jquery&migrate-1.x.min.js', false, '1.13.0', false);
-	wp_enqueue_script( 'base', get_template_directory_uri() . '/js/global.min.js', array(), '1.00', true);
-	wp_enqueue_script( 'slider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array(), '1.00', true);
+	wp_enqueue_script( 'base', get_template_directory_uri() . '/js/global.min.js', array(), '2.0', true);
 	if( dopt('d_slimbox_b') != '' )
 		wp_enqueue_script( 'slimbox', get_template_directory_uri() . '/js/slimbox2.min.js', array(), '1.00', true);
 	if( dopt('d_ajax_b') != '' )

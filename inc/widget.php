@@ -2,18 +2,17 @@
 // 删除wp自带的小工具
 function unregister_default_wp_widgets() {
 	unregister_widget('WP_Widget_Pages');
-	//unregister_widget('WP_Widget_Calendar');
-	unregister_widget('WP_Widget_Archives');
-	unregister_widget('WP_Widget_Links');
-	unregister_widget('WP_Widget_Meta');
-	unregister_widget('WP_Widget_Search');
-	unregister_widget('WP_Widget_Text');
-	//unregister_widget('WP_Widget_Categories');
 	unregister_widget('WP_Widget_Recent_Posts');
-	unregister_widget('WP_Widget_Recent_Comments');
-	unregister_widget('WP_Widget_RSS');
-	unregister_widget('WP_Widget_Tag_Cloud');
-	unregister_widget('WP_Nav_Menu_Widget');
+	unregister_widget('WP_Widget_Archives');
+	unregister_widget('WP_Widget_Search');
+	//unregister_widget('WP_Widget_Calendar');
+	//unregister_widget('WP_Widget_Meta');
+	//unregister_widget('WP_Widget_Text');
+	//unregister_widget('WP_Widget_Categories');
+	//unregister_widget('WP_Widget_Recent_Comments');
+	//unregister_widget('WP_Widget_RSS');
+	//unregister_widget('WP_Widget_Tag_Cloud');
+	//unregister_widget('WP_Nav_Menu_Widget');
 }
 add_action('widgets_init', 'unregister_default_wp_widgets', 1);
 
@@ -22,10 +21,10 @@ function mzw_sidebar(){
     register_sidebar(array(
         'id'=>'index_sidebar',
         'name'=>'首页边栏',
-		'before_title' => '<h3 class="widget-title"><span>',
+				'before_title' => '<h3 class="widget-title"><span>',
         'after_title' => '</h3></span>',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</aside>',
     ));
 
 	if( dopt('d_same_sidebar_b') == '' ) {
@@ -40,7 +39,7 @@ function mzw_sidebar(){
 
 		register_sidebar(array(
 			'id'=>'page_sidebar',
-			'name'=>'页面边栏',
+			'name'=>'其他位置边栏',
 			'before_title' => '<h3 class="widget-title"><span>',
 			'after_title' => '</h3></span>',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -55,7 +54,7 @@ add_action('widgets_init', create_function('', 'return register_widget("mzw_side
 class mzw_siderbar_post extends WP_Widget {
 	function mzw_siderbar_post() {
 		global $prename;
-		$this->WP_Widget('mzw_siderbar_post', $prename.'文章列表', array( 'description' => '多功能文章列表，可按时间、评论、随机排序' ));
+		$this->WP_Widget('mzw_siderbar_post', 'Germ 文章列表', array( 'description' => '多功能文章列表，可按时间、评论、随机排序' ));
 	}
 	function widget($args, $instance) {
 		extract($args, EXTR_SKIP);
@@ -165,7 +164,7 @@ add_action('widgets_init', create_function('', 'return register_widget("mzw_side
 class mzw_siderbar_tags extends WP_Widget {
 	function mzw_siderbar_tags() {
 		global $prename;
-		$this->WP_Widget('mzw_siderbar_tags', $prename.'标签云', array( 'description' => '适配主题的标签云' ));
+		$this->WP_Widget('mzw_siderbar_tags', 'Germ 标签云', array( 'description' => '适配主题的标签云' ));
 	}
 	function widget($args, $instance) {
 		extract($args, EXTR_SKIP);
@@ -220,6 +219,7 @@ class mzw_siderbar_tags extends WP_Widget {
 				<input class="widefat" id="<?php echo $this->get_field_id('tag_limit'); ?>" name="<?php echo $this->get_field_name('tag_limit'); ?>" type="number" value="<?php echo attribute_escape($tag_limit); ?>" size="24" />
 			</label>
 		</p>
+		<p>会优先显示文章数量最多的标签.</p>
 
 <?php
 	}
@@ -230,7 +230,7 @@ add_action( 'widgets_init', create_function('', 'return register_widget("mzw_rea
 class mzw_reader extends WP_Widget {
 	function mzw_reader() {
 		$widget_ops = array( 'classname' => 'mzw_reader', 'description' => '显示近期评论频繁的网友头像等' );
-		$this->WP_Widget( 'mzw_reader', '活跃读者', $widget_ops, $control_ops );
+		$this->WP_Widget( 'mzw_reader', 'Germ 活跃读者', $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -306,19 +306,16 @@ function mzw_readers_list($out,$tim,$lim,$addlink){
 
 
 add_action( 'widgets_init', create_function('', 'return register_widget("mzw_recent_comment");'));
-
 class mzw_recent_comment extends WP_Widget {
 	function mzw_recent_comment() {
 		$widget_ops = array( 'classname' => 'mzw_recent_comment', 'description' => '显示近期评论' );
 		$this->WP_Widget( 'mzw_recent_comment', '最近评论', $widget_ops, $control_ops );
 	}
-
 	function widget( $args, $instance ) {
 		extract( $args );
 		$title = apply_filters('widget_name', $instance['title']);
 		$limit = $instance['limit'];
 		$addlink = $instance['addlink'];
-
 		echo $before_widget;
 		echo $before_title.$title.$after_title;
 		echo '<ul id="recentcomments">';
@@ -327,7 +324,6 @@ class mzw_recent_comment extends WP_Widget {
 		echo $after_widget;
 	}
 	function form($instance) {
-
 ?>
 		<p>
 			<label>
@@ -350,7 +346,6 @@ class mzw_recent_comment extends WP_Widget {
 <?php
 	}
 }
-
 function mzw_recent_comment_list($lim,$addlink){
 	$my_email = get_bloginfo ('admin_email');
 	$counts = get_comments('number=200&status=approve&type=comment');
@@ -379,7 +374,7 @@ add_action( 'widgets_init', create_function('', 'return register_widget("mzw_sea
 class mzw_search extends WP_Widget {
 	function mzw_search() {
 		$widget_ops = array( 'classname' => 'mzw_search', 'description' => '站内搜索' );
-		$this->WP_Widget( 'mzw_search', '站内搜索', $widget_ops, $control_ops );
+		$this->WP_Widget( 'mzw_search', 'Germ 站内搜索', $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -409,7 +404,7 @@ add_action( 'widgets_init', create_function('', 'return register_widget("mzw_adm
 class mzw_admin extends WP_Widget {
 	function mzw_admin() {
 		$widget_ops = array( 'classname' => 'mzw_admin', 'description' => '显示作者的信息机个人简介' );
-		$this->WP_Widget( 'mzw_admin', '作者信息', $widget_ops, $control_ops );
+		$this->WP_Widget( 'mzw_admin', 'Germ 作者信息', $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance ) {

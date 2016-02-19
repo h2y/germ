@@ -42,6 +42,9 @@ $options = array (
 	array( "name" => "中英文间自动添加空格","type" => "tit"),
 	array( "id" => "d_autospace_b","type" => "checkbox" ),
 
+	array( "name" => "文章中图片点击特效","type" => "tit"),
+	array( "id" => "d_slimbox_b","type" => "checkbox" ),
+
 	array( "name" => "文章点赞功能","type" => "tit"),
 	array( "id" => "d_ding_b","type" => "checkbox" ),
 

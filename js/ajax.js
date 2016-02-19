@@ -177,10 +177,12 @@ function ajaxreload_code() {
     jQuery('#container').addClass('full-width');
   else
     jQuery('#container').removeClass('full-width');
-  refresh_qrimg();
+  if(typeof(text_autospace_init)==="function")
+    text_autospace_init();
   initgallary();
-  initSlim();
-  text_autospace_init();
+  if(typeof(initSlim)==="function")
+    initSlim();
+  refresh_qrimg();
 }
 
 function ajaxclick_code(thiss) {

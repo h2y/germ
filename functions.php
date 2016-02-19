@@ -27,9 +27,6 @@ function remove_open_sans() {
 }
 add_action( 'init', 'remove_open_sans' );
 
-//图片默认不连接到原始链接
-update_option('image_default_link_type', 'none');
-
 //编辑器添加按钮
 function enable_more_buttons($buttons) {
 	$buttons[] = 'sub';

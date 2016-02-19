@@ -86,6 +86,52 @@ remove_action('wp_head','wlwmanifest_link');//移除head中的rel="wlwmanifest"
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );//rel=pre
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
 
+//禁用REST API
+add_filter('rest_enabled', '_return_false');
+add_filter('rest_jsonp_enabled', '_return_false');
+remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+
+
+//禁用embeds功能
+function disable_embeds_init() {
+    global $wp;
+    $wp->public_query_vars = array_diff( $wp->public_query_vars, array(
+        'embed',
+    ) );
+    remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+    add_filter( 'embed_oembed_discover', '__return_false' );
+    remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+    remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+    add_filter( 'tiny_mce_plugins', 'disable_embeds_tiny_mce_plugin' );
+    add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+}
+add_action( 'init', 'disable_embeds_init', 9999 );
+function disable_embeds_tiny_mce_plugin( $plugins ) {
+    return array_diff( $plugins, array( 'wpembed' ) );
+}
+function disable_embeds_rewrites( $rules ) {
+    foreach ( $rules as $rule => $rewrite ) {
+        if ( false !== strpos( $rewrite, 'embed=true' ) ) {
+            unset( $rules[ $rule ] );
+        }
+    }
+    return $rules;
+}
+function disable_embeds_remove_rewrite_rules() {
+    add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+    flush_rewrite_rules();
+}
+register_activation_hook( __FILE__, 'disable_embeds_remove_rewrite_rules' );
+function disable_embeds_flush_rewrite_rules() {
+    remove_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+    flush_rewrite_rules();
+}
+register_deactivation_hook( __FILE__, 'disable_embeds_flush_rewrite_rules' );
+//禁用embeds功能 END
+
+
 register_nav_menus(array('header-menu' => '顶部导航'));
 
 add_theme_support( 'post-formats', array( 'status', 'gallery' ));

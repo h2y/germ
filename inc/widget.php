@@ -150,7 +150,7 @@ function mzw_posts_list($orderby,$limit,$cat) {
 		echo '</a></h3><div class="post-meta"><span>';
 		comments_popup_link('暂无评论', '1 条评论', '% 条评论');
 		echo '</span> | <span>';
-		mzw_post_views(' Views');
+		mzw_post_views(' 访问量');
 		echo '</span></div></div>';
 		echo '</li>';
     endwhile; wp_reset_query();

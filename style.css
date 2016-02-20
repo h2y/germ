@@ -1909,7 +1909,8 @@ ol.comments-list > li > ol.children {
 	border-bottom: 1px solid #47C2DC;
 }
 
-.widget .tagcloud a {
+.widget .tagcloud a,
+.widget ul.menu a {
 	display: inline-block;
 	padding: 1px 8px;
 	color: #666;
@@ -1919,13 +1920,22 @@ ol.comments-list > li > ol.children {
 	font-size: 0.8rem !important;
 	transition: all 0.2s ease-in-out 0s;
 }
-
 .widget .tagcloud a:after {
 	content: "+";
 	margin-left: 0.3rem;
 }
-
-.widget .tagcloud a:hover {
+.widget ul.menu a:before {
+	content: "\f1d9";
+	margin-right: 0.3rem;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.widget .tagcloud a:hover,
+.widget ul.menu a:hover {
 	border-color: #47C2DC;
 }
 

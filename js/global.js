@@ -353,7 +353,7 @@ function refresh_qrimg() {
 }
 
 function initgallary() {
-  jQuery('.flexslider').flexslider({
+  $('.flexslider').flexslider({
     animation: "slide",
     controlNav: "thumbnails",
     smoothHeight: true,

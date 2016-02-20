@@ -57,7 +57,7 @@ get_header('full-width');
 	</footer>
 </article>
 
-<?php comments_template('', true); ?>
+<?php if(comments_open()) comments_template('', true); ?>
 
 <?php endwhile; endif;?>
 </div></div>

@@ -80,4 +80,4 @@
 
 <?php include_once('relatedpost.php')?>
 
-<?php comments_template('', true); ?>
+<?php if(comments_open()) comments_template('', true); ?>

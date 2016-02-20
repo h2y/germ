@@ -1350,6 +1350,8 @@ thead tr {
 	width: 50%;
 	color: #333;
 	margin: 2px 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .relatedpost ul li a {

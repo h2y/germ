@@ -2,7 +2,7 @@
 <h3 class="relatedtitle"><span><?php _e('Related Posts', 'quench');?></span></h3>
 	<ul>
 		<?php
-$post_num = 8;
+$post_num = 7;
 $exclude_id = $post->ID;
 $posttags = get_the_tags(); $i = 0;
 if ( $posttags ) {
@@ -40,7 +40,7 @@ if ( $i < $post_num ) {
 			<i class="fa fa-file-text-o"></i>
 			<a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a>
 		</li>
- 
+
 	<?php $i++;
 	} wp_reset_query();
 }

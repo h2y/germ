@@ -1663,6 +1663,7 @@ ol.comments-list > li > ol.children {
 	/*只匹配第二级评论*/
 	position: relative;
 	left: 30px;
+  padding-right: 30px;
 }
 
 .commentnav {

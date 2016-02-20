@@ -42,9 +42,6 @@ function enable_more_buttons($buttons) {
 }
 add_filter("mce_buttons_3", "enable_more_buttons");
 
-//禁用半角符号自动转换为全角
-remove_filter('the_content', 'wptexturize');
-
 function reset_emojis() {
 	remove_action('wp_head', 'print_emoji_detection_script', 7);
 	remove_action('admin_print_scripts', 'print_emoji_detection_script');

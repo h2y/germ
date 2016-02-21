@@ -39,10 +39,28 @@ img {
 	-ms-interpolation-mode: bicubic;
 }
 
+
+.alignleft {
+	float: left;
+	margin: 0.375em 1.75em 1.75em 0;
+}
+.alignright {
+	float: right;
+	margin: 0.375em 0 1.75em 1.75em;
+}
 .aligncenter {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+	clear: both;
+	display: block;
+	margin: 0 auto 1.75em;
+}
+blockquote.alignleft {
+	margin: 0.3157894737em 1.4736842105em 1.473684211em 0;
+}
+blockquote.alignright {
+	margin: 0.3157894737em 0 1.473684211em 1.4736842105em;
+}
+blockquote.aligncenter {
+	margin-bottom: 1.473684211em;
 }
 
 article, aside, details, figcaption, figure, footer, header, menu, nav, section {
@@ -510,6 +528,13 @@ blockquote cite a {
 #container.full-width #sidebar {
 	display: none;
 }
+
+/* 暂且空白 */
+.screen-reader-text {}
+.sticky {}
+.gallery-caption {}
+.wp-caption, .wp-caption-text {}
+.bypostauthor {}
 
 #sidebar {
 	float: right;

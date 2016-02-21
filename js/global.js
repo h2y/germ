@@ -90,6 +90,13 @@ $('#header .desc span').typing({
 
 jQuery(document).ready(function($) {
 
+  //顶部二级菜单展开
+  $('#main-nav li.menu-item-has-children').hover(function(){
+    $(this).find('.sub-menu').stop().show('normal');
+  }, function(){
+    $(this).find('.sub-menu').stop().hide('normal');
+  });
+
   var $commentform = $('#commentform'),
     txt1 = '<div id="loading"><i class="fa fa-circle-o-notch fa-spin"></i> 正在提交, 请稍候...</div>',
     txt2 = '<div id="error">#</div>',

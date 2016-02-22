@@ -383,6 +383,7 @@ jQuery("#gotop").click(function() {
 //侧边栏悬停
 var rollbox = $('#sidebar .widget'),
   rolllen = rollbox.length;
+var asr_1=parseInt(ajax.fly1), asr_2=parseInt(ajax.fly2);
 if ( asr_1!==-24 && asr_2!==-38 && rolllen!==0 && $('#sidebar').css('display')!=="none" ) {
   var sidebar_flying = false;
   $(window).scroll(function() {
@@ -483,5 +484,5 @@ function add_views() {
     'action': 'add_views',
     'post_ID': post_ID
   };
-	jQuery.post(admin_url, data);
+	jQuery.post(ajax.ajax_url, data);
 }

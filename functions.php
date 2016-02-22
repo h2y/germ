@@ -13,11 +13,34 @@ function my_enqueue_scripts_frontpage() {
 		wp_enqueue_script( 'ajax', get_template_directory_uri().'/js/ajax.min.js', false, $theme_ver, true);
 	if( dopt('d_autospace_b') != '' )
 		wp_enqueue_script( 'autospace', get_template_directory_uri().'/js/autospace.min.js', false, $theme_ver, true);
+}
+add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts_frontpage' );
 
-	wp_localize_script('base', 'ajax', array(
+//后端设置写入前端js变量
+add_action( 'wp_enqueue_scripts', 'echoJSvar' );
+function echoJSvar() {
+	$data = array(
 		'ajax_url' => admin_url('admin-ajax.php'),
 		'home' => home_url()
-	));
+	);
+	//侧边栏飞行设置
+	if( is_single() && dopt('d_sideroll_single_b') ){
+		$sr_1 = dopt('d_sideroll_single_1');
+		$sr_2 = dopt('d_sideroll_single_2');
+	}elseif( is_home() && dopt('d_sideroll_index_b') ){
+		$sr_1 = dopt('d_sideroll_index_1');
+		$sr_2 = dopt('d_sideroll_index_2');
+	}elseif( dopt('d_sideroll_page_b') ){
+		$sr_1 = dopt('d_sideroll_page_1');
+		$sr_2 = dopt('d_sideroll_page_2');
+	}else{
+		$sr_1 = -24;
+		$sr_2 = -38;
+	}
+	$data['fly1'] = $sr_1;
+	$data['fly2'] = $sr_2;
+
+	wp_localize_script('jQ', 'ajax', $data);
 }
 
 //让WP自动添加页面title
@@ -67,8 +90,6 @@ echo '<style type="text/css">
 	  </style>';
 }
 add_action('admin_head', 'fixed_activity_widget_avatar_style' );
-
-add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts_frontpage' );
 
 include_once('inc/widget.php');
 include_once('inc/themeset.php');

@@ -183,6 +183,7 @@ function ajaxreload_code() {
   if(typeof(initSlim)==="function")
     initSlim();
   refresh_qrimg();
+  add_views();
 }
 
 function ajaxclick_code(thiss) {

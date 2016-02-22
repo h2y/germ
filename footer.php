@@ -13,6 +13,7 @@
 if( dopt('d_track_b') != '' ) '<div class="static-hide">'.dopt('d_track').'</div>';
 if( dopt('d_footcode_b') != '' ) echo dopt('d_footcode');
 
+//后端设置to前端JS变量
 if( is_single() && dopt('d_sideroll_single_b') ){
 	$sr_1 = dopt('d_sideroll_single_1');
 	$sr_2 = dopt('d_sideroll_single_2');
@@ -26,7 +27,10 @@ if( is_single() && dopt('d_sideroll_single_b') ){
 	$sr_1 = -24;
 	$sr_2 = -38;
 }
-echo '<script>var asr_1 = '.$sr_1.',asr_2 = '.$sr_2.';</script>';
+echo "<script>
+var asr_1=$sr_1,asr_2 =$sr_2,
+  admin_url='".admin_url('admin-ajax.php')."';
+</script>";
 
 wp_footer();
 

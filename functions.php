@@ -301,8 +301,7 @@ function postformat_gallery(){
 		}
 }
 
-
-if ( ! function_exists( 'mzw_post_views' ) ) :
+/*
 function record_visitors(){
 	if (is_singular())
 	{
@@ -318,20 +317,42 @@ function record_visitors(){
 	  }
 	}
 }
-add_action('wp_head', 'record_visitors');
+add_action('wp_head', 'record_visitors'); */
 
+//打印访问量
 function mzw_post_views($after=''){
   global $post;
-  $post_ID = $post->ID;
-  $views = (int)get_post_meta($post_ID, 'views', true);
+  $views = (int)get_post_meta($post->ID, 'views', true);
   echo $views, $after;
 }
-endif;
+
+// 自动添加views属性
+add_action( 'save_post', 'views_add_postdata' );
+function views_add_postdata( $post_id ){
+	//add_post_meta($post_id, 'views', $post_id % 17 , true);
+	add_post_meta($post_id, 'views', 1 , true);
+}
+
+//响应ajax增加访问量
+function ajax_add_views() {
+	$post_ID = intval( $_POST['post_ID'] );
+	if($post_ID)
+	{
+		$post_views = (int)get_post_meta($post_ID, 'views', true);
+		if(!update_post_meta($post_ID, 'views', ($post_views+1)))
+		{
+			add_post_meta($post_ID, 'views', 1, true);
+		}
+	}
+	wp_die();
+}
+add_action('wp_ajax_add_views', 'ajax_add_views');
+add_action('wp_ajax_nopriv_add_views', 'ajax_add_views');
 
 
 add_action('wp_ajax_nopriv_mzw_like', 'mzw_like');
 add_action('wp_ajax_mzw_like', 'mzw_like');
-function mzw_like(){
+function mzw_like() {
     global $wpdb,$post;
     $id = $_POST["um_id"];
     $action = $_POST["um_action"];

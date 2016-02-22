@@ -380,13 +380,11 @@ jQuery("#gotop").click(function() {
   return jQuery("body,html").animate({ scrollTop: 0 }, 800), !1
 });
 
+//侧边栏悬停
 var rollbox = $('#sidebar .widget'),
   rolllen = rollbox.length;
-if(asr_1!=-24 && asr_2!=-38) {
-  if(asr_1 < 1) asr_1 = 1;
-  if(asr_2 < 1) asr_2 = 1;
-}
-if (0 < asr_1 <= rolllen && 0 < asr_2 <= rolllen) {
+if ( asr_1!==-24 && asr_2!==-38 && rolllen!==0 && $('#sidebar').css('display')!=="none" ) {
+  var sidebar_flying = false;
   $(window).scroll(function() {
     var roll = document.documentElement.scrollTop + document.body.scrollTop;
     if (roll > rollbox.eq(rolllen - 1).offset().top + rollbox.eq(rolllen - 1).height()) {
@@ -397,13 +395,17 @@ if (0 < asr_1 <= rolllen && 0 < asr_2 <= rolllen) {
           rollbox.eq(asr_2 - 1).clone().appendTo('.widgetRoller')
         $('.widgetRoller').css({
           position: 'fixed',
-          top: 10
+          top: 10,
+          display: 'none'
         });
-      } else {
-        $('.widgetRoller').fadeIn(300);
       }
+      if(!sidebar_flying)
+        $('.widgetRoller').fadeIn('normal');
+      sidebar_flying = true;
     } else {
-      $('.widgetRoller').hide();
+      if(sidebar_flying)
+        $('.widgetRoller').fadeOut('normal');
+      sidebar_flying = false;
     }
   })
 };

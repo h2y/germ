@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="<?php bloginfo('template_directory');?>/style.min.css" rel="stylesheet" media="screen">
-    <link href="<?php bloginfo('template_directory');?>/css/font-awesome.min.css" rel="stylesheet" media="screen">
     <?php wp_head(); ?>
 		<?php if( dopt('d_headcode_b') != '' ) echo dopt('d_headcode');?>
 </head>

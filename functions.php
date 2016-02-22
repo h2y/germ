@@ -1,14 +1,18 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-	//载入jquery库
-	wp_enqueue_script( 'jquery&migrate', get_template_directory_uri() . '/js/jquery&migrate-1.x.min.js', false, '1.13.0', false);
-	wp_enqueue_script( 'base', get_template_directory_uri() . '/js/global.min.js', array(), '2.0', true);
+	$theme_ver = "0.2.1.8";
+	//载入css
+	wp_enqueue_style( 'FA', get_template_directory_uri().'/css/font-awesome.min.css', false, $theme_ver);
+	wp_enqueue_style( 'Germ-style', get_template_directory_uri().'/style.min.css', "FA", $theme_ver);
+	//载入JS
+	wp_enqueue_script( 'jQ', get_template_directory_uri().'/js/jquery&migrate-1.x.min.js', false, $theme_ver, false);
+	wp_enqueue_script( 'base', get_template_directory_uri().'/js/global.min.js', 'jQ', $theme_ver, true);
 	if( dopt('d_slimbox_b') != '' )
-		wp_enqueue_script( 'slimbox', get_template_directory_uri() . '/js/slimbox2.min.js', array(), '1.00', true);
+		wp_enqueue_script( 'slimbox', get_template_directory_uri().'/js/slimbox2.min.js', 'jQ', $theme_ver, true);
 	if( dopt('d_ajax_b') != '' )
-		wp_enqueue_script( 'ajax', get_template_directory_uri() . '/js/ajax.min.js', array(), '2', true);
+		wp_enqueue_script( 'ajax', get_template_directory_uri().'/js/ajax.min.js', false, $theme_ver, true);
 	if( dopt('d_autospace_b') != '' )
-		wp_enqueue_script( 'autospace', get_template_directory_uri() . '/js/autospace.min.js', array(), '1.00', true);
+		wp_enqueue_script( 'autospace', get_template_directory_uri().'/js/autospace.min.js', false, $theme_ver, true);
 
 	wp_localize_script('base', 'ajax', array(
 		'ajax_url' => admin_url('admin-ajax.php'),

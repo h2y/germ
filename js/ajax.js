@@ -29,7 +29,7 @@ window.onpopstate = function(event) {
 
 function ajaxloadPageInit(scope) {
   jQuery(scope + "a").click(function(event) {
-    if (this.href.indexOf(ajax.home) >= 0 && this.href.indexOf(ajax.home) < 20 && ajaxcheck_ignore(this.href) == true) {
+    if (ajaxcheck_ignore(this.href, this) == true) {
       event.preventDefault();
 
       this.blur();
@@ -93,14 +93,14 @@ function ajaxloadPage(url, push, getData) {
           success: function(data) {
             ajaxisLoad = false;
 
-            datax = data.split('<title>');
-            titlesx = data.split('</title>');
-
-            if (datax.length == 2 || titlesx.length == 2) {
-              data = data.split('<title>')[1];
-              titles = data.split('</title>')[0];
-              jQuery(document).attr('title', (jQuery("<div/>").html(titles).text()));
+            var suzu = data.split('</title>', 2);
+            if (suzu.length >= 2) {
+              data = suzu[1];
+              var newTitle = suzu[0].split('<title>')[1];
+              //document.title = newTitle;
+              jQuery(document).attr('title', (jQuery("<div/>").html(newTitle).text()));
             }
+
             if (ajaxtrack_analytics == true) {
               if (typeof _gaq != "undefined") {
                 if (typeof getData == "undefined") {
@@ -112,6 +112,11 @@ function ajaxloadPage(url, push, getData) {
               }
             }
             data = data.split('id="' + ajaxcontent + '"')[1];
+            if(!data){
+              //该页面并非Germ的页面,无法写入当前页面中
+              location.href = url;
+              return;
+            }
             data = data.substring(data.indexOf('>') + 1);
             var depth = 1;
             var output = '';
@@ -163,12 +168,18 @@ function submitSearch(param) {
   }
 }
 
-function ajaxcheck_ignore(url) {
-  for (var i in ajaxignore) {
-    if (url.indexOf(ajaxignore[i]) >= 0) {
+function ajaxcheck_ignore(url, dom) {
+  //非本域
+  if( dom.href.indexOf(ajax.home)!==0 && dom.href.indexOf('/')!==0 )
+    return false;
+  //target=_blank
+  if(dom.target==="_blank")
+    return false;
+  //黑名单
+  for (var i in ajaxignore)
+    if (url.indexOf(ajaxignore[i]) >= 0)
       return false;
-    }
-  }
+
   return true;
 }
 

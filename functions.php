@@ -6,7 +6,7 @@ function my_enqueue_scripts_frontpage() {
 	if( dopt('d_slimbox_b') != '' )
 		wp_enqueue_script( 'slimbox', get_template_directory_uri() . '/js/slimbox2.min.js', array(), '1.00', true);
 	if( dopt('d_ajax_b') != '' )
-		wp_enqueue_script( 'ajax', get_template_directory_uri() . '/js/ajax.min.js', array(), '1.00', true);
+		wp_enqueue_script( 'ajax', get_template_directory_uri() . '/js/ajax.min.js', array(), '2', true);
 	if( dopt('d_autospace_b') != '' )
 		wp_enqueue_script( 'autospace', get_template_directory_uri() . '/js/autospace.min.js', array(), '1.00', true);
 

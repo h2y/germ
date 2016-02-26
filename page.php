@@ -10,15 +10,9 @@ get_header();
 		</h2>
 		<ul class="entry-meta">
 			<li class="time_meta"><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d H:i');?></li>
-			<li class="comments_meta"><i class="fa fa-comments-o"></i> <?php
-        if(comments_open())
-          comments_popup_link('暂无评论', '1 条评论', '% 条评论');
-        else {
-          echo '<a href="';
-          the_permalink();
-          echo '">评论关闭</a>';
-        }
-      ?></li>
+            <?php if(comments_open()) : ?>
+			    <li class="comments_meta"><i class="fa fa-comments-o"></i> <?php comments_popup_link('暂无评论', '1 条评论', '% 条评论'); ?></li>
+            <?php endif; ?>
 			<li class="views_meta"><i class="fa fa-eye"></i> <a><?php mzw_post_views(' 访问量');?></a></li>
 		</ul>
     </header>

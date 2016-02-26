@@ -20,7 +20,7 @@ get_header();
     </header>
     <div class="entry-content" itemprop="description">
         <div class="archives-content clearfix">
-                <?php $postid0 = $post->ID; ?>
+                <?php $post0 = $post; ?>
 				<div class="ordered-list">
 					<h3>最新文章</h3>
 					<ol>
@@ -112,7 +112,7 @@ get_header();
 </article>
 
 <?php
-    $post->ID = $postid0;
+    $post = $post0;
     if(comments_open())
         comments_template('', true);
 ?>

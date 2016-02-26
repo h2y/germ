@@ -20,8 +20,7 @@ get_header();
     </header>
     <div class="entry-content" itemprop="description">
         <div class="archives">
-        <?php
-        $postid0 = $post->ID;
+        <?php $post0 = $post;
         $previous_year = $year = 0;
         $previous_month = $month = 0;
         $ul_open = false;
@@ -85,7 +84,7 @@ get_header();
 </article>
 
 <?php
-    $post->ID = $postid0;
+    $post = $post0;
     if(comments_open())
         comments_template('', true);
 ?>

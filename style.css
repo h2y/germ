@@ -316,8 +316,8 @@ pre:hover {
 blockquote {
 	position: relative;
 	overflow: hidden;
-	margin: 10px 0 10px 20px;
-	padding: 15px 10px;
+    margin: 10px 0;
+    padding: 15px 10px 15px 24px;
 	background: #f9f9f9;
 	color: #001;
 	border-left: 10px solid #ccc;

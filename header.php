@@ -4,4 +4,4 @@
 
 <div id="container" class="clearfix">
   <div id="content">
-    <div <?php body_class();?>>
+    <div <?php body_class(); ?>>

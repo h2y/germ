@@ -1,14 +1,14 @@
 <article <?php post_class(); ?>>
     <header class="entry-header">
-		<h2 class="entry-name">
-			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-		</h2>
-		<ul class="entry-meta">
-			<li class="time_meta"><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d H:i');?></li>
+        <h2 class="entry-name">
+            <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+        </h2>
+        <ul class="entry-meta">
+            <li class="time_meta"><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d H:i');?></li>
       <?php if( dopt('d_showcategory_b')!="" ) : ?>
-			   <li class="cat_meta"><i class="fa fa-pencil-square-o"></i> <?php the_category(','); ?></li>
+               <li class="cat_meta"><i class="fa fa-pencil-square-o"></i> <?php the_category(','); ?></li>
       <?php endif; ?>
-			<li class="comments_meta"><i class="fa fa-comments-o"></i> <?php
+            <li class="comments_meta"><i class="fa fa-comments-o"></i> <?php
         if(comments_open())
           comments_popup_link('暂无评论', '1 条评论', '% 条评论');
         else {
@@ -17,8 +17,8 @@
           echo '">评论关闭</a>';
         }
       ?></li>
-			<li class="views_meta"><i class="fa fa-eye"></i> <a><?php mzw_post_views(' 访问量');?></a></li>
-		</ul>
+            <li class="views_meta"><i class="fa fa-eye"></i> <a><?php mzw_post_views(' 访问量');?></a></li>
+        </ul>
     </header>
     <div class="entry-content" itemprop="description">
       <?php
@@ -34,21 +34,21 @@
     </div>
     <footer class="entry-footer clearfix">
     <span class="tag-links in-list"><?php the_tags( '', '', '' ); ?></span>
-		<div class="post-more">
-			<a href="<?php the_permalink(); ?>">阅读全文</a>
-		</div>
+        <div class="post-more">
+            <a href="<?php the_permalink(); ?>">阅读全文</a>
+        </div>
     <?php if( dopt('d_ding_b') != '' ) : ?>
-		<div class="post-love">
-			<a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="点个赞"><i class="fa fa-heart-o"></i>
-			<span class="love-count">
-				<?php
+        <div class="post-love">
+            <a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="点个赞"><i class="fa fa-heart-o"></i>
+            <span class="love-count">
+                <?php
           if( get_post_meta($post->ID,'mzw_ding',true) )
             echo get_post_meta($post->ID,'mzw_ding',true);
           else
             echo '0';
         ?>
-			</span></a>
-		</div>
+            </span></a>
+        </div>
     <?php endif; ?>
-	</footer>
+    </footer>
 </article>

@@ -1,46 +1,46 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-	$theme_ver = "0.2.2.9";
-	//载入css
-	wp_enqueue_style( 'FA', get_template_directory_uri().'/css/font-awesome.min.css', false, $theme_ver);
-	wp_enqueue_style( 'Germ-style', get_template_directory_uri().'/style.min.css', "FA", $theme_ver);
-	//载入JS
-	wp_enqueue_script( 'jQ', get_template_directory_uri().'/js/jquery&migrate-1.x.min.js', false, $theme_ver, false);
-	wp_enqueue_script( 'base', get_template_directory_uri().'/js/global.min.js', 'jQ', $theme_ver, true);
-	if( dopt('d_slimbox_b') != '' )
-		wp_enqueue_script( 'slimbox', get_template_directory_uri().'/js/slimbox2.min.js', 'jQ', $theme_ver, true);
-	if( dopt('d_ajax_b') != '' )
-		wp_enqueue_script( 'ajax', get_template_directory_uri().'/js/ajax.min.js', false, $theme_ver, true);
-	if( dopt('d_autospace_b') != '' )
-		wp_enqueue_script( 'autospace', get_template_directory_uri().'/js/autospace.min.js', false, $theme_ver, true);
+    $theme_ver = "0.2.2.9";
+    //载入css
+    wp_enqueue_style( 'FA', get_template_directory_uri().'/css/font-awesome.min.css', false, $theme_ver);
+    wp_enqueue_style( 'Germ-style', get_template_directory_uri().'/style.min.css', "FA", $theme_ver);
+    //载入JS
+    wp_enqueue_script( 'jQ', get_template_directory_uri().'/js/jquery&migrate-1.x.min.js', false, $theme_ver, false);
+    wp_enqueue_script( 'base', get_template_directory_uri().'/js/global.min.js', 'jQ', $theme_ver, true);
+    if( dopt('d_slimbox_b') != '' )
+        wp_enqueue_script( 'slimbox', get_template_directory_uri().'/js/slimbox2.min.js', 'jQ', $theme_ver, true);
+    if( dopt('d_ajax_b') != '' )
+        wp_enqueue_script( 'ajax', get_template_directory_uri().'/js/ajax.min.js', false, $theme_ver, true);
+    if( dopt('d_autospace_b') != '' )
+        wp_enqueue_script( 'autospace', get_template_directory_uri().'/js/autospace.min.js', false, $theme_ver, true);
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts_frontpage' );
 
 //后端设置写入前端js变量
 add_action( 'wp_enqueue_scripts', 'echoJSvar' );
 function echoJSvar() {
-	$data = array(
-		'ajax_url' => admin_url('admin-ajax.php'),
-		'home' => home_url()
-	);
-	//侧边栏飞行设置
-	if( is_single() && dopt('d_sideroll_single_b') ){
-		$sr_1 = dopt('d_sideroll_single_1');
-		$sr_2 = dopt('d_sideroll_single_2');
-	}elseif( is_home() && dopt('d_sideroll_index_b') ){
-		$sr_1 = dopt('d_sideroll_index_1');
-		$sr_2 = dopt('d_sideroll_index_2');
-	}elseif( dopt('d_sideroll_page_b') ){
-		$sr_1 = dopt('d_sideroll_page_1');
-		$sr_2 = dopt('d_sideroll_page_2');
-	}else{
-		$sr_1 = -24;
-		$sr_2 = -38;
-	}
-	$data['fly1'] = $sr_1;
-	$data['fly2'] = $sr_2;
+    $data = array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'home' => home_url()
+    );
+    //侧边栏飞行设置
+    if( is_single() && dopt('d_sideroll_single_b') ){
+        $sr_1 = dopt('d_sideroll_single_1');
+        $sr_2 = dopt('d_sideroll_single_2');
+    }elseif( is_home() && dopt('d_sideroll_index_b') ){
+        $sr_1 = dopt('d_sideroll_index_1');
+        $sr_2 = dopt('d_sideroll_index_2');
+    }elseif( dopt('d_sideroll_page_b') ){
+        $sr_1 = dopt('d_sideroll_page_1');
+        $sr_2 = dopt('d_sideroll_page_2');
+    }else{
+        $sr_1 = -24;
+        $sr_2 = -38;
+    }
+    $data['fly1'] = $sr_1;
+    $data['fly2'] = $sr_2;
 
-	wp_localize_script('jQ', 'ajax', $data);
+    wp_localize_script('jQ', 'ajax', $data);
 }
 
 //让WP自动添加页面title
@@ -48,46 +48,46 @@ add_theme_support( 'title-tag' );
 
 //禁用谷歌字体
 function remove_open_sans() {
-	wp_deregister_style( 'open-sans' );
-	wp_register_style( 'open-sans', false );
-	wp_enqueue_style('open-sans','');
+    wp_deregister_style( 'open-sans' );
+    wp_register_style( 'open-sans', false );
+    wp_enqueue_style('open-sans','');
 }
 add_action( 'init', 'remove_open_sans' );
 
 //编辑器添加按钮
 function enable_more_buttons($buttons) {
-	$buttons[] = 'sub';
-	$buttons[] = 'sup';
-	$buttons[] = 'fontselect';
-	$buttons[] = 'fontsizeselect';
-	$buttons[] = 'cleanup';
-	$buttons[] = 'styleselect';
-	$buttons[] = 'wp_page';
-	$buttons[] = 'anchor';
-	$buttons[] = 'backcolor';
-	return $buttons;
+    $buttons[] = 'sub';
+    $buttons[] = 'sup';
+    $buttons[] = 'fontselect';
+    $buttons[] = 'fontsizeselect';
+    $buttons[] = 'cleanup';
+    $buttons[] = 'styleselect';
+    $buttons[] = 'wp_page';
+    $buttons[] = 'anchor';
+    $buttons[] = 'backcolor';
+    return $buttons;
 }
 add_filter("mce_buttons_3", "enable_more_buttons");
 
 function reset_emojis() {
-	remove_action('wp_head', 'print_emoji_detection_script', 7);
-	remove_action('admin_print_scripts', 'print_emoji_detection_script');
-	remove_action('wp_print_styles', 'print_emoji_styles');
-	remove_action('admin_print_styles', 'print_emoji_styles');
-	add_filter('the_content', 'wp_staticize_emoji');
-	add_filter('comment_text', 'wp_staticize_emoji',50);
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    add_filter('the_content', 'wp_staticize_emoji');
+    add_filter('comment_text', 'wp_staticize_emoji',50);
 }
 add_action('init', 'reset_emojis');
 
 function fixed_activity_widget_avatar_style(){
 echo '<style type="text/css">
-		#activity-widget #the-comment-list .avatar {
-		position: absolute;
-		top: 13px;
-		width: 50px;
-		height: 50px;
-	  }
-	  </style>';
+        #activity-widget #the-comment-list .avatar {
+        position: absolute;
+        top: 13px;
+        width: 50px;
+        height: 50px;
+      }
+      </style>';
 }
 add_action('admin_head', 'fixed_activity_widget_avatar_style' );
 
@@ -163,31 +163,31 @@ function dopt($e){
 }
 
 function no_self_ping( &$links ) {
-	$home = get_option( 'home' );
-	foreach ( $links as $l => $link )
-		if ( 0 === strpos( $link, $home ) )
-	unset($links[$l]);
+    $home = get_option( 'home' );
+    foreach ( $links as $l => $link )
+        if ( 0 === strpos( $link, $home ) )
+    unset($links[$l]);
 }
 if(dopt('d_nopingback_b')){
-	add_action( 'pre_ping', 'no_self_ping' );
+    add_action( 'pre_ping', 'no_self_ping' );
 }
 
 function pagenavi($range = 7){
-	global $paged, $wp_query;
-	if ( !$max_page ) {$max_page = $wp_query->max_num_pages;}
-	if($max_page > 1){if(!$paged){$paged = 1;}
-	if($paged>1) echo '<a href="' . get_pagenum_link($paged-1) .'"><</a>';
+    global $paged, $wp_query;
+    if ( !$max_page ) {$max_page = $wp_query->max_num_pages;}
+    if($max_page > 1){if(!$paged){$paged = 1;}
+    if($paged>1) echo '<a href="' . get_pagenum_link($paged-1) .'"><</a>';
     if($max_page > $range){
-		if($paged < $range){for($i = 1; $i <= ($range + 1); $i++){echo "<a href='" . get_pagenum_link($i) ."'";
-		if($i==$paged)echo " class='current'";echo ">$i</a>";}}
+        if($paged < $range){for($i = 1; $i <= ($range + 1); $i++){echo "<a href='" . get_pagenum_link($i) ."'";
+        if($i==$paged)echo " class='current'";echo ">$i</a>";}}
     elseif($paged >= ($max_page - ceil(($range/2)))){
-		for($i = $max_page - $range; $i <= $max_page; $i++){echo "<a href='" . get_pagenum_link($i) ."'";
-		if($i==$paged)echo " class='current'";echo ">$i</a>";}}
-	elseif($paged >= $range && $paged < ($max_page - ceil(($range/2)))){
-		for($i = ($paged - ceil($range/2)); $i <= ($paged + ceil(($range/2))); $i++){echo "<a href='" . get_pagenum_link($i) ."'";if($i==$paged) echo " class='current'";echo ">$i</a>";}}}
+        for($i = $max_page - $range; $i <= $max_page; $i++){echo "<a href='" . get_pagenum_link($i) ."'";
+        if($i==$paged)echo " class='current'";echo ">$i</a>";}}
+    elseif($paged >= $range && $paged < ($max_page - ceil(($range/2)))){
+        for($i = ($paged - ceil($range/2)); $i <= ($paged + ceil(($range/2))); $i++){echo "<a href='" . get_pagenum_link($i) ."'";if($i==$paged) echo " class='current'";echo ">$i</a>";}}}
     else{for($i = 1; $i <= $max_page; $i++){echo "<a href='" . get_pagenum_link($i) ."'";
     if($i==$paged)echo " class='current'";echo ">$i</a>";}}
-	if($paged<$max_page) echo '<a href="' . get_pagenum_link($paged+1) .'">></a>';
+    if($paged<$max_page) echo '<a href="' . get_pagenum_link($paged+1) .'">></a>';
    }
 }
 
@@ -197,23 +197,23 @@ function comment($comment, $args, $depth) {
    <li <?php comment_class(); ?><?php //if( $depth > 2){ echo ' style="left:0;"';} ?> id="li-comment-<?php comment_ID() ?>">
 
 <article id="comment-<?php comment_ID(); ?>" class="comment-body">
-	<div class="comment-author vcard">
-		<?php echo get_avatar( $comment, $size = '40'); ?>
-	</div>
-	<div class="comment-content">
-		<div class="reply">
-			<?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
-		</div>
-		<div class="comment-metadata">
-			<b class="fn"><?php printf(__('%s'), get_comment_author_link()) ?></b>
-			<?php if(dopt('d_showreplayT_b') != '') : ?>
-				<time datetime="<?php echo time_ago(); ?>"><?php echo time_ago(); ?></time>
-			<?php endif; ?>
-		</div>
-		<div class="comment_text">
-			<?php comment_text() ?>
-		</div>
-	</div>
+    <div class="comment-author vcard">
+        <?php echo get_avatar( $comment, $size = '40'); ?>
+    </div>
+    <div class="comment-content">
+        <div class="reply">
+            <?php comment_reply_link(array_merge( $args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
+        </div>
+        <div class="comment-metadata">
+            <b class="fn"><?php printf(__('%s'), get_comment_author_link()) ?></b>
+            <?php if(dopt('d_showreplayT_b') != '') : ?>
+                <time datetime="<?php echo time_ago(); ?>"><?php echo time_ago(); ?></time>
+            <?php endif; ?>
+        </div>
+        <div class="comment_text">
+            <?php comment_text() ?>
+        </div>
+    </div>
 </article>
 
 
@@ -223,25 +223,25 @@ function comment($comment, $args, $depth) {
 
 
 function time_ago( $type = 'commennt', $day = 30 ) {
-	$d = $type == 'post' ? 'get_post_time' : 'get_comment_time';
-	$timediff = time() - $d('U');
-	if ($timediff <= 60*60*24*$day) {
-		echo  human_time_diff($d('U'), strtotime(current_time('mysql', 0))), '前';
-	}
-	if ($timediff > 60*60*24*$day) {
-		echo  date('Y/m/d',get_comment_date('U')), ' ', get_comment_time('H:i');
-	};
+    $d = $type == 'post' ? 'get_post_time' : 'get_comment_time';
+    $timediff = time() - $d('U');
+    if ($timediff <= 60*60*24*$day) {
+        echo  human_time_diff($d('U'), strtotime(current_time('mysql', 0))), '前';
+    }
+    if ($timediff > 60*60*24*$day) {
+        echo  date('Y/m/d',get_comment_date('U')), ' ', get_comment_time('H:i');
+    };
 }
 
 // 新窗口打开评论链接
 function hu_popuplinks($text) {
-	$text = preg_replace('/<a (.+?)>/i', "<a $1 target='_blank'>", $text);
-	return $text;
+    $text = preg_replace('/<a (.+?)>/i', "<a $1 target='_blank'>", $text);
+    return $text;
 }
 add_filter('get_comment_author_link', 'hu_popuplinks', 6);
 
 function add_nofollow($link, $args, $comment, $post){
-	return preg_replace( '/href=\'(.*(\?|&)replytocom=(\d+)#respond)/', 'href=\'#comment-$3', $link );
+    return preg_replace( '/href=\'(.*(\?|&)replytocom=(\d+)#respond)/', 'href=\'#comment-$3', $link );
 }
 add_filter('comment_reply_link', 'add_nofollow', 420, 4);
 
@@ -249,39 +249,39 @@ add_filter('comment_reply_link', 'add_nofollow', 420, 4);
 function mzw_description() {
     global $s, $post;
     $description = '';
-		$keywords = "";
+        $keywords = "";
     $blog_name = get_bloginfo('name');
     if ( is_singular() ) {
-	    if ($post->post_excerpt)
-	      $description = $post->post_excerpt;
-			else
-				$description = mb_substr(strip_tags($post->post_content),0,210,'utf-8') .'......';
-			$tags = wp_get_post_tags($post->ID);
-	    foreach ($tags as $tag )
-		    $keywords .= $tag->name . ",";
+        if ($post->post_excerpt)
+          $description = $post->post_excerpt;
+            else
+                $description = mb_substr(strip_tags($post->post_content),0,210,'utf-8') .'......';
+            $tags = wp_get_post_tags($post->ID);
+        foreach ($tags as $tag )
+            $keywords .= $tag->name . ",";
     } elseif ( is_home () )    {
-			$description = dopt('d_description');
-			$keywords = dopt('d_keywords');
+            $description = dopt('d_description');
+            $keywords = dopt('d_keywords');
     } elseif ( is_tag() )      {
-			$keywords = single_tag_title('', false);
-			$description = "标签: [$keywords] | $blog_name";
+            $keywords = single_tag_title('', false);
+            $description = "标签: [$keywords] | $blog_name";
     } elseif ( is_category() ) {
-			$keywords = single_cat_title('', false);
-			$description = "分类: [$keywords] | $blog_name";
+            $keywords = single_cat_title('', false);
+            $description = "分类: [$keywords] | $blog_name";
     } elseif ( is_archive() )  {
-	    if ($post->post_excerpt)
-	      $description = $post->post_excerpt;
-			else
-				$description = mb_substr(strip_tags($post->post_content),0,210,'utf-8') .'......';
+        if ($post->post_excerpt)
+          $description = $post->post_excerpt;
+            else
+                $description = mb_substr(strip_tags($post->post_content),0,210,'utf-8') .'......';
     } elseif ( is_search() )   {
-			$keywords = esc_html( $s, 1 );
-			$description = $blog_name . ": [$keywords] 的搜索結果";
+            $keywords = esc_html( $s, 1 );
+            $description = $blog_name . ": [$keywords] 的搜索結果";
     }
     $description = mb_substr( $description, 0, 220, 'utf-8' );
-		if($description!="")
+        if($description!="")
     	echo "<meta name='description' content='$description'>\n";
-		if($keywords!="")
-			echo "<meta name='keywords' content='$keywords'>\n";
+        if($keywords!="")
+            echo "<meta name='keywords' content='$keywords'>\n";
 }
 add_action('wp_head','mzw_description');
 
@@ -300,11 +300,11 @@ function catch_that_image() {
 
 //删除内容中的图片
 function the_content_nopic($more_link_text = null, $stripteaser = false) {
-	$content = get_the_content($more_link_text, $stripteaser);
-	$content = apply_filters('the_content', $content);
-	$content = str_replace(']]>', ']]&gt;', $content);
-	$content = preg_replace('/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i', "", $content);
-	echo $content;
+    $content = get_the_content($more_link_text, $stripteaser);
+    $content = apply_filters('the_content', $content);
+    $content = str_replace(']]>', ']]&gt;', $content);
+    $content = preg_replace('/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i', "", $content);
+    echo $content;
 }
 
 function postformat_gallery(){
@@ -320,27 +320,27 @@ function postformat_gallery(){
             $src = $matches[$i][1];
             $images .= '<li data-thumb="'.$src.'"><img src="'.$src.'" /></li>';
         }
-				echo $images;
+                echo $images;
     } else {
-				return false;
-		}
+                return false;
+        }
 }
 
 /*
 function record_visitors(){
-	if (is_singular())
-	{
-	  global $post;
-	  $post_ID = $post->ID;
-	  if($post_ID)
-	  {
-		  $post_views = (int)get_post_meta($post_ID, 'views', true);
-		  if(!update_post_meta($post_ID, 'views', ($post_views+1)))
-		  {
-			add_post_meta($post_ID, 'views', 1, true);
-		  }
-	  }
-	}
+    if (is_singular())
+    {
+      global $post;
+      $post_ID = $post->ID;
+      if($post_ID)
+      {
+          $post_views = (int)get_post_meta($post_ID, 'views', true);
+          if(!update_post_meta($post_ID, 'views', ($post_views+1)))
+          {
+            add_post_meta($post_ID, 'views', 1, true);
+          }
+      }
+    }
 }
 add_action('wp_head', 'record_visitors'); */
 
@@ -354,22 +354,22 @@ function mzw_post_views($after=''){
 // 自动添加views属性
 add_action( 'save_post', 'views_add_postdata' );
 function views_add_postdata( $post_id ){
-	//add_post_meta($post_id, 'views', $post_id % 17 , true);
-	add_post_meta($post_id, 'views', 1 , true);
+    //add_post_meta($post_id, 'views', $post_id % 17 , true);
+    add_post_meta($post_id, 'views', 1 , true);
 }
 
 //响应ajax增加访问量
 function ajax_add_views() {
-	$post_ID = intval( $_POST['post_ID'] );
-	if($post_ID)
-	{
-		$post_views = (int)get_post_meta($post_ID, 'views', true);
-		if(!update_post_meta($post_ID, 'views', ($post_views+1)))
-		{
-			add_post_meta($post_ID, 'views', 1, true);
-		}
-	}
-	wp_die();
+    $post_ID = intval( $_POST['post_ID'] );
+    if($post_ID)
+    {
+        $post_views = (int)get_post_meta($post_ID, 'views', true);
+        if(!update_post_meta($post_ID, 'views', ($post_views+1)))
+        {
+            add_post_meta($post_ID, 'views', 1, true);
+        }
+    }
+    wp_die();
 }
 add_action('wp_ajax_add_views', 'ajax_add_views');
 add_action('wp_ajax_nopriv_add_views', 'ajax_add_views');
@@ -406,29 +406,29 @@ function post_thumbnail( $width = 180,$height = 180 ,$flag = true){
     if( has_post_thumbnail() ){
         $timthumb_src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'full');
         if($flag) {
-			$post_timthumb = '<a href="'.get_permalink().'"><img src="'.get_bloginfo("template_url").'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" title="'.get_the_title().'"/></a>';
-		} else {
-			$post_timthumb = '<img src="'.get_bloginfo("template_url").'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" title="'.get_the_title().'"/>';
-		}
+            $post_timthumb = '<a href="'.get_permalink().'"><img src="'.get_bloginfo("template_url").'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" title="'.get_the_title().'"/></a>';
+        } else {
+            $post_timthumb = '<img src="'.get_bloginfo("template_url").'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" title="'.get_the_title().'"/>';
+        }
         return $post_timthumb;
     } else {
-		$content = $post->post_content;
-		preg_match_all('/<img.*?(?: |\\t|\\r|\\n)?src=[\'"]?(.+?)[\'"]?(?:(?: |\\t|\\r|\\n)+.*?)?>/sim', $content, $strResult, PREG_PATTERN_ORDER);
-		$n = count($strResult[1]);
-		if($n > 0){
-			if($flag) {
-				return '<a href="'.get_permalink().'"><img src="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/></a>';
-			} else {
-				return '<img src="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/>';
-			}
-		} else {
-			if($flag) {
-				return '<a href="'.get_permalink().'"><img class="rounded" src="'.get_bloginfo('template_url').'/images/random/'.rand(1,7).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'"/></a>';
-			} else {
-				return '<img class="rounded" src="'.get_bloginfo('template_url').'/images/random/'.rand(1,7).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'" width="'.$width.'" height="'.$height.'"/>';
-			}
-		}
-	}
+        $content = $post->post_content;
+        preg_match_all('/<img.*?(?: |\\t|\\r|\\n)?src=[\'"]?(.+?)[\'"]?(?:(?: |\\t|\\r|\\n)+.*?)?>/sim', $content, $strResult, PREG_PATTERN_ORDER);
+        $n = count($strResult[1]);
+        if($n > 0){
+            if($flag) {
+                return '<a href="'.get_permalink().'"><img src="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/></a>';
+            } else {
+                return '<img src="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/>';
+            }
+        } else {
+            if($flag) {
+                return '<a href="'.get_permalink().'"><img class="rounded" src="'.get_bloginfo('template_url').'/images/random/'.rand(1,7).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'"/></a>';
+            } else {
+                return '<img class="rounded" src="'.get_bloginfo('template_url').'/images/random/'.rand(1,7).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'" width="'.$width.'" height="'.$height.'"/>';
+            }
+        }
+    }
 }
 
 
@@ -466,7 +466,7 @@ function ajax_comment(){
     $comment_author_email = ( isset($_POST['email']) )   ? trim($_POST['email']) : null;
     $comment_author_url   = ( isset($_POST['url']) )     ? trim($_POST['url']) : null;
     $comment_content      = ( isset($_POST['comment']) ) ? trim($_POST['comment']) : null;
-	$edit_id              = ( isset($_POST['edit_id']) ) ? $_POST['edit_id'] : null; // 提取 edit_id
+    $edit_id              = ( isset($_POST['edit_id']) ) ? $_POST['edit_id'] : null; // 提取 edit_id
     $user = wp_get_current_user();
     if ( $user->exists() ) {
         if ( empty( $user->display_name ) )
@@ -512,22 +512,22 @@ function ajax_comment(){
     $commentdata = compact('comment_post_ID', 'comment_author', 'comment_author_email', 'comment_author_url', 'comment_content', 'comment_type', 'comment_parent', 'user_ID');
 
     if ( $edit_id )
-	{
-		$comment_id = $commentdata['comment_ID'] = $edit_id;
-		if( ihacklog_user_can_edit_comment($commentdata,$comment_id) )
-		{
-			wp_update_comment( $commentdata );
-		}
-		else
-		{
-			ajax_comment_err( 'Cheatin&#8217; uh?' );
-		}
+    {
+        $comment_id = $commentdata['comment_ID'] = $edit_id;
+        if( ihacklog_user_can_edit_comment($commentdata,$comment_id) )
+        {
+            wp_update_comment( $commentdata );
+        }
+        else
+        {
+            ajax_comment_err( 'Cheatin&#8217; uh?' );
+        }
 
-	}
-	else
-	{
-	$comment_id = wp_new_comment( $commentdata );
-	}
+    }
+    else
+    {
+    $comment_id = wp_new_comment( $commentdata );
+    }
 
     $comment = get_comment($comment_id);
     do_action('set_comment_cookies', $comment, $user);
@@ -540,24 +540,24 @@ function ajax_comment(){
     $GLOBALS['comment'] = $comment;
     ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-	<article id="comment-<?php comment_ID(); ?>" class="comment-body">
-		<div class="comment-meta clearfix">
-			<div class="comment-author vcard">
-				<?php echo get_avatar( $comment, $size = '40'); ?>
-			</div>
-			<div class="comment-metadata">
-				<b class="fn"><?php printf(__('%s'), get_comment_author_link()) ?></b>
-				<time datetime="<?php echo time_ago(); ?>"><?php echo time_ago(); ?></time>
-			</div>
-		</div>
-		<?php if ( '0' == $comment->comment_approved ) : ?>
-			<p class="comment-awaiting-moderation">您的评论已提交, 正在排队等待审核.</p>
-		<?php endif; ?>
+    <article id="comment-<?php comment_ID(); ?>" class="comment-body">
+        <div class="comment-meta clearfix">
+            <div class="comment-author vcard">
+                <?php echo get_avatar( $comment, $size = '40'); ?>
+            </div>
+            <div class="comment-metadata">
+                <b class="fn"><?php printf(__('%s'), get_comment_author_link()) ?></b>
+                <time datetime="<?php echo time_ago(); ?>"><?php echo time_ago(); ?></time>
+            </div>
+        </div>
+        <?php if ( '0' == $comment->comment_approved ) : ?>
+            <p class="comment-awaiting-moderation">您的评论已提交, 正在排队等待审核.</p>
+        <?php endif; ?>
 
-		<div class="comment-content">
-			<?php comment_text() ?>
-		</div>
-	</article>
+        <div class="comment-content">
+            <?php comment_text() ?>
+        </div>
+    </article>
 
     <?php die();
 
@@ -703,7 +703,7 @@ function specs_show_tags() {
                 foreach($tagi as $tag){
                     $output .= "<a href='".get_tag_link($tag->term_id)."'>".$tag->name."<span class='number'>(".specs_post_count_by_tag($tag->term_id).")</span></a>";
                 }
-				$output .= '</div>';
+                $output .= '</div>';
             }
         }
         for($i=48;$i<=57;$i++){
@@ -713,7 +713,7 @@ function specs_show_tags() {
                 foreach($tagi as $tag){
                     $output .= "<a href='".get_tag_link($tag->term_id)."'>".$tag->name."<span class='number'>(".specs_post_count_by_tag($tag->term_id).")</span></a>";
                 }
-				$output .= '</div>';
+                $output .= '</div>';
             }
         }
         $output .= "</ul>";
@@ -747,17 +747,17 @@ function comment_mail_notify($comment_id) {
     $wp_email = 'no-reply@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])); //e-mail 发出点, no-reply 可改为可用的 e-mail.
     $to = trim(get_comment($parent_id)->comment_author_email);
     $subject = '您在 [' . get_option("blogname") . '] 的留言有了回复';
-	$message = '
-	<div style="background-color:#eef2fa; border:1px solid #d8e3e8; color:#111; padding:0 15px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px; border-radius:5px;">
-	<p><strong>' . trim(get_comment($parent_id)->comment_author) . ', 你好!</strong></p>
-	<p><strong>您曾在《' . get_the_title($comment->comment_post_ID) . '》的留言为:</strong><br />'
-	. trim(get_comment($parent_id)->comment_content) . '</p>
-	<p><strong>' . trim($comment->comment_author) . ' 给你的回复是:</strong><br />'
-	. trim($comment->comment_content) . '<br /></p>
-	<p>你可以点击此链接 <a href="' . htmlspecialchars(get_comment_link($parent_id)) . '">查看完整内容</a></p><br />
-	<p>欢迎再次来访<a href="' . get_option('home') . '">' . get_option('blogname') . '</a></p>
-	<p>(此邮件为系统自动发送，请勿直接回复.)</p>
-	</div>';
+    $message = '
+    <div style="background-color:#eef2fa; border:1px solid #d8e3e8; color:#111; padding:0 15px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px; border-radius:5px;">
+    <p><strong>' . trim(get_comment($parent_id)->comment_author) . ', 你好!</strong></p>
+    <p><strong>您曾在《' . get_the_title($comment->comment_post_ID) . '》的留言为:</strong><br />'
+    . trim(get_comment($parent_id)->comment_content) . '</p>
+    <p><strong>' . trim($comment->comment_author) . ' 给你的回复是:</strong><br />'
+    . trim($comment->comment_content) . '<br /></p>
+    <p>你可以点击此链接 <a href="' . htmlspecialchars(get_comment_link($parent_id)) . '">查看完整内容</a></p><br />
+    <p>欢迎再次来访<a href="' . get_option('home') . '">' . get_option('blogname') . '</a></p>
+    <p>(此邮件为系统自动发送，请勿直接回复.)</p>
+    </div>';
     $from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
     $headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
     wp_mail( $to, $subject, $message, $headers );
@@ -766,8 +766,8 @@ function comment_mail_notify($comment_id) {
 add_action('comment_post','comment_mail_notify');
 
 function get_ssl_avatar($avatar) {
-	$avatar = str_replace(array("www.gravatar.com", "0.gravatar.com", "1.gravatar.com", "2.gravatar.com"), "o0skf43s7.qnssl.com", $avatar);
-	return $avatar;
+    $avatar = str_replace(array("www.gravatar.com", "0.gravatar.com", "1.gravatar.com", "2.gravatar.com"), "o0skf43s7.qnssl.com", $avatar);
+    return $avatar;
 }
 add_filter('get_avatar', 'get_ssl_avatar');
 
@@ -847,20 +847,20 @@ function dimox_breadcrumbs() {
 
 add_filter('the_content', 'addhighslideclass_replace');
 function addhighslideclass_replace ($content) {
-	global $post;
-	$pattern = "/<a(.*?)href=('|\")([^>]*).(bmp|gif|jpeg|jpg|png|swf)('|\")(.*?)>(.*?)<\/a>/i";
-	$replacement = '<a$1href=$2$3.$4$5 class="slimbox2" $6>$7</a>';
-	$content = preg_replace($pattern, $replacement, $content);
-	return $content;
+    global $post;
+    $pattern = "/<a(.*?)href=('|\")([^>]*).(bmp|gif|jpeg|jpg|png|swf)('|\")(.*?)>(.*?)<\/a>/i";
+    $replacement = '<a$1href=$2$3.$4$5 class="slimbox2" $6>$7</a>';
+    $content = preg_replace($pattern, $replacement, $content);
+    return $content;
 }
 
 
 add_filter('pre_get_posts','search_filter');
 function search_filter($query) {
-	if ($query->is_search) {
-		$query->set('post_type', 'post');
-	}
-	return $query;
+    if ($query->is_search) {
+        $query->set('post_type', 'post');
+    }
+    return $query;
 }
 
 /*
@@ -871,180 +871,180 @@ function my_author_link() {
 }*/
 
 function is_mobile() {
-	$user_agent = $_SERVER['HTTP_USER_AGENT'];
-	$mobile_browser = Array(
-		"mqqbrowser", //手机QQ浏览器
-		"opera mobi", //手机opera
-		"juc","iuc",//uc浏览器
-		"fennec","ios","applewebKit/420","applewebkit/525","applewebkit/532","ipad","iphone","ipaq","ipod",
-		"iemobile", "windows ce",//windows phone
-		"240x320","480x640","acer","android","anywhereyougo.com","asus","audio","blackberry","blazer","coolpad" ,"dopod", "etouch", "hitachi","htc","huawei", "jbrowser", "lenovo","lg","lg-","lge-","lge", "mobi","moto","nokia","phone","samsung","sony","symbian","tablet","tianyu","wap","xda","xde","zte"
-	);
-	$is_mobile = false;
-	foreach ($mobile_browser as $device) {
-		if (stristr($user_agent, $device)) {
-			$is_mobile = true;
-			break;
-		}
-	}
-	return $is_mobile;
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    $mobile_browser = Array(
+        "mqqbrowser", //手机QQ浏览器
+        "opera mobi", //手机opera
+        "juc","iuc",//uc浏览器
+        "fennec","ios","applewebKit/420","applewebkit/525","applewebkit/532","ipad","iphone","ipaq","ipod",
+        "iemobile", "windows ce",//windows phone
+        "240x320","480x640","acer","android","anywhereyougo.com","asus","audio","blackberry","blazer","coolpad" ,"dopod", "etouch", "hitachi","htc","huawei", "jbrowser", "lenovo","lg","lg-","lge-","lge", "mobi","moto","nokia","phone","samsung","sony","symbian","tablet","tianyu","wap","xda","xde","zte"
+    );
+    $is_mobile = false;
+    foreach ($mobile_browser as $device) {
+        if (stristr($user_agent, $device)) {
+            $is_mobile = true;
+            break;
+        }
+    }
+    return $is_mobile;
 }
 
 
 function my_wp_list_comments( $args = array(), $comments = null) {
-	global $wp_query, $comment_alt, $comment_depth, $comment_thread_alt, $overridden_cpage, $in_comment_loop;
+    global $wp_query, $comment_alt, $comment_depth, $comment_thread_alt, $overridden_cpage, $in_comment_loop;
 
-	$in_comment_loop = true;
+    $in_comment_loop = true;
 
-	$comment_alt = $comment_thread_alt = 0;
-	$comment_depth = 1;
+    $comment_alt = $comment_thread_alt = 0;
+    $comment_depth = 1;
 
-	$defaults = array(
-		'walker'            => null,
-		'max_depth'         => '',
-		'style'             => 'ul',
-		'callback'          => null,
-		'end-callback'      => null,
-		'type'              => 'all',
-		'page'              => '',
-		'per_page'          => '',
-		'avatar_size'       => 32,
-		'reverse_top_level' => null,
-		'reverse_children'  => '',
-		'format'            => current_theme_supports( 'html5', 'comment-list' ) ? 'html5' : 'xhtml',
-		'short_ping'        => false,
-		'echo'              => true,
-	);
+    $defaults = array(
+        'walker'            => null,
+        'max_depth'         => '',
+        'style'             => 'ul',
+        'callback'          => null,
+        'end-callback'      => null,
+        'type'              => 'all',
+        'page'              => '',
+        'per_page'          => '',
+        'avatar_size'       => 32,
+        'reverse_top_level' => null,
+        'reverse_children'  => '',
+        'format'            => current_theme_supports( 'html5', 'comment-list' ) ? 'html5' : 'xhtml',
+        'short_ping'        => false,
+        'echo'              => true,
+    );
 
-	$r = wp_parse_args( $args, $defaults );
+    $r = wp_parse_args( $args, $defaults );
 
-	/**
-	 * Filter the arguments used in retrieving the comment list.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @see wp_list_comments()
-	 *
-	 * @param array $r An array of arguments for displaying comments.
-	 */
-	$r = apply_filters( 'wp_list_comments_args', $r );
+    /**
+     * Filter the arguments used in retrieving the comment list.
+     *
+     * @since 4.0.0
+     *
+     * @see wp_list_comments()
+     *
+     * @param array $r An array of arguments for displaying comments.
+     */
+    $r = apply_filters( 'wp_list_comments_args', $r );
 
-	/*
-	 * If 'page' or 'per_page' has been passed, and does not match what's in $wp_query,
-	 * perform a separate comment query and allow Walker_Comment to paginate.
-	 */
-	//var_dump($r);
-	/*if ( is_singular() && ( $r['page'] || $r['per_page'] ) ) {
-		$current_cpage = get_query_var( 'cpage' );
-		if ( ! $current_cpage ) {
-			$current_cpage = 'newest' === get_option( 'default_comments_page' ) ? 1 : $wp_query->max_num_comment_pages;
-		}
+    /*
+     * If 'page' or 'per_page' has been passed, and does not match what's in $wp_query,
+     * perform a separate comment query and allow Walker_Comment to paginate.
+     */
+    //var_dump($r);
+    /*if ( is_singular() && ( $r['page'] || $r['per_page'] ) ) {
+        $current_cpage = get_query_var( 'cpage' );
+        if ( ! $current_cpage ) {
+            $current_cpage = 'newest' === get_option( 'default_comments_page' ) ? 1 : $wp_query->max_num_comment_pages;
+        }
 
-		$current_per_page = get_query_var( 'comments_per_page' );
-		if ( $r['page'] != $current_cpage || $r['per_page'] != $current_per_page ) {
+        $current_per_page = get_query_var( 'comments_per_page' );
+        if ( $r['page'] != $current_cpage || $r['per_page'] != $current_per_page ) {
 
-			$comments = get_comments( array(
-				'post_id' => $id,
-				'orderby' => 'comment_date_gmt',
-				'order' => 'ASC',
-				'status' => 'all',
-			) );
-		}
-	}*/
+            $comments = get_comments( array(
+                'post_id' => $id,
+                'orderby' => 'comment_date_gmt',
+                'order' => 'ASC',
+                'status' => 'all',
+            ) );
+        }
+    }*/
 
-	// Figure out what comments we'll be looping through ($_comments)
-	if ( null !== $comments ) {
-		$comments = (array) $comments;
-		if ( empty($comments) )
-			return;
-		if ( 'all' != $r['type'] ) {
-			$comments_by_type = separate_comments($comments);
-			if ( empty($comments_by_type[$r['type']]) )
-				return;
-			$_comments = $comments_by_type[$r['type']];
-		} else {
-			$_comments = $comments;
-		}
-	} else {
-		if ( empty($wp_query->comments) )
-			return;
-		if ( 'all' != $r['type'] ) {
-			if ( empty($wp_query->comments_by_type) )
-				$wp_query->comments_by_type = separate_comments($wp_query->comments);
-			if ( empty($wp_query->comments_by_type[$r['type']]) )
-				return;
-			$_comments = $wp_query->comments_by_type[$r['type']];
-		} else {
-			$_comments = $wp_query->comments;
-		}
+    // Figure out what comments we'll be looping through ($_comments)
+    if ( null !== $comments ) {
+        $comments = (array) $comments;
+        if ( empty($comments) )
+            return;
+        if ( 'all' != $r['type'] ) {
+            $comments_by_type = separate_comments($comments);
+            if ( empty($comments_by_type[$r['type']]) )
+                return;
+            $_comments = $comments_by_type[$r['type']];
+        } else {
+            $_comments = $comments;
+        }
+    } else {
+        if ( empty($wp_query->comments) )
+            return;
+        if ( 'all' != $r['type'] ) {
+            if ( empty($wp_query->comments_by_type) )
+                $wp_query->comments_by_type = separate_comments($wp_query->comments);
+            if ( empty($wp_query->comments_by_type[$r['type']]) )
+                return;
+            $_comments = $wp_query->comments_by_type[$r['type']];
+        } else {
+            $_comments = $wp_query->comments;
+        }
 
-		// Pagination is already handled by `WP_Comment_Query`, so we tell Walker not to bother.
-		if ( $wp_query->max_num_comment_pages ) {
-			$default_comments_page = get_option( 'default_comments_page' );
-			$cpage = get_query_var( 'cpage' );
-			if ( 'newest' === $default_comments_page ) {
-				$r['cpage'] = $cpage;
+        // Pagination is already handled by `WP_Comment_Query`, so we tell Walker not to bother.
+        if ( $wp_query->max_num_comment_pages ) {
+            $default_comments_page = get_option( 'default_comments_page' );
+            $cpage = get_query_var( 'cpage' );
+            if ( 'newest' === $default_comments_page ) {
+                $r['cpage'] = $cpage;
 
-			// When first page shows oldest comments, post permalink is the same as the comment permalink.
-			} elseif ( $cpage == 1 ) {
-				$r['cpage'] = '';
-			} else {
-				$r['cpage'] = $cpage;
-			}
+            // When first page shows oldest comments, post permalink is the same as the comment permalink.
+            } elseif ( $cpage == 1 ) {
+                $r['cpage'] = '';
+            } else {
+                $r['cpage'] = $cpage;
+            }
 
-			$r['page'] = 0;
-			$r['per_page'] = 0;
-		}
-	}
+            $r['page'] = 0;
+            $r['per_page'] = 0;
+        }
+    }
 
-	if ( '' === $r['per_page'] && get_option( 'page_comments' ) ) {
-		$r['per_page'] = get_query_var('comments_per_page');
-	}
+    if ( '' === $r['per_page'] && get_option( 'page_comments' ) ) {
+        $r['per_page'] = get_query_var('comments_per_page');
+    }
 
-	if ( empty($r['per_page']) ) {
-		$r['per_page'] = 0;
-		$r['page'] = 0;
-	}
+    if ( empty($r['per_page']) ) {
+        $r['per_page'] = 0;
+        $r['page'] = 0;
+    }
 
-	if ( '' === $r['max_depth'] ) {
-		if ( get_option('thread_comments') )
-			$r['max_depth'] = get_option('thread_comments_depth');
-		else
-			$r['max_depth'] = -1;
-	}
+    if ( '' === $r['max_depth'] ) {
+        if ( get_option('thread_comments') )
+            $r['max_depth'] = get_option('thread_comments_depth');
+        else
+            $r['max_depth'] = -1;
+    }
 
-	if ( '' === $r['page'] ) {
-		if ( empty($overridden_cpage) ) {
-			$r['page'] = get_query_var('cpage');
-		} else {
-			$threaded = ( -1 != $r['max_depth'] );
-			$r['page'] = ( 'newest' == get_option('default_comments_page') ) ? get_comment_pages_count($_comments, $r['per_page'], $threaded) : 1;
-			set_query_var( 'cpage', $r['page'] );
-		}
-	}
-	// Validation check
-	$r['page'] = intval($r['page']);
-	if ( 0 == $r['page'] && 0 != $r['per_page'] )
-		$r['page'] = 1;
+    if ( '' === $r['page'] ) {
+        if ( empty($overridden_cpage) ) {
+            $r['page'] = get_query_var('cpage');
+        } else {
+            $threaded = ( -1 != $r['max_depth'] );
+            $r['page'] = ( 'newest' == get_option('default_comments_page') ) ? get_comment_pages_count($_comments, $r['per_page'], $threaded) : 1;
+            set_query_var( 'cpage', $r['page'] );
+        }
+    }
+    // Validation check
+    $r['page'] = intval($r['page']);
+    if ( 0 == $r['page'] && 0 != $r['per_page'] )
+        $r['page'] = 1;
 
-	if ( null === $r['reverse_top_level'] )
-		$r['reverse_top_level'] = ( 'desc' == get_option('comment_order') );
+    if ( null === $r['reverse_top_level'] )
+        $r['reverse_top_level'] = ( 'desc' == get_option('comment_order') );
 
-	if ( empty( $r['walker'] ) ) {
-		$walker = new Walker_Comment;
-	} else {
-		$walker = $r['walker'];
-	}
+    if ( empty( $r['walker'] ) ) {
+        $walker = new Walker_Comment;
+    } else {
+        $walker = $r['walker'];
+    }
 
-	$output = $walker->paged_walk( $_comments, $r['max_depth'], $r['page'], $r['per_page'], $r );
+    $output = $walker->paged_walk( $_comments, $r['max_depth'], $r['page'], $r['per_page'], $r );
 
-	$in_comment_loop = false;
+    $in_comment_loop = false;
 
-	if ( $r['echo'] ) {
-		echo $output;
-	} else {
-		return $output;
-	}
+    if ( $r['echo'] ) {
+        echo $output;
+    } else {
+        return $output;
+    }
 }
 
 ?>

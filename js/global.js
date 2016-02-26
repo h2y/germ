@@ -484,5 +484,5 @@ function add_views() {
     'action': 'add_views',
     'post_ID': post_ID
   };
-	jQuery.post(ajax.ajax_url, data);
+    jQuery.post(ajax.ajax_url, data);
 }

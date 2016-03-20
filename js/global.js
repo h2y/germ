@@ -470,19 +470,19 @@ jQuery(document).ready(function($) {
 
 //AJAX增加访问量
 function add_views() {
-  var tmp = jQuery('article');
-  if(tmp.length!=1)
-    return;
-  tmp = tmp.attr('class');
+    var tmp = jQuery('#content>div>article');
+    if(tmp.length!=1)
+        return;
+    tmp = tmp.attr('class');
 
-  var suzu = tmp.match(/post-([0-9]*)/);
-  if(suzu===null || suzu.length<2 )
-    return;
-  var post_ID = suzu[1];
+    var suzu = tmp.match(/post-([0-9]*)/);
+    if(suzu===null || suzu.length<2 )
+        return;
+    var post_ID = suzu[1];
 
-  var data = {
-    'action': 'add_views',
-    'post_ID': post_ID
-  };
+    var data = {
+        'action': 'add_views',
+        'post_ID': post_ID
+    };
     jQuery.post(ajax.ajax_url, data);
 }

@@ -12,7 +12,7 @@
 
 
 
-jQuery.fn.postLike = function() {
+jQuery(".favorite").click(function() {
     if (jQuery(this).hasClass('done')) {
         return false;
     } else {
@@ -25,15 +25,11 @@ jQuery.fn.postLike = function() {
             um_id: id,
             um_action: action
         };
-        jQuery.post(ajax.ajax_url, ajax_data,
-            function(data) {
-                jQuery(rateHolder).html(data);
-            });
+        jQuery.post(ajax.ajax_url, ajax_data, function(data) {
+            jQuery(rateHolder).html(data);
+        });
         return false;
     }
-};
-jQuery(document).on("click", ".favorite", function() {
-    jQuery(this).postLike()
 });
 
 $.fn.typing = function(n) {

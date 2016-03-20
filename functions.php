@@ -361,11 +361,10 @@ function views_add_postdata( $post_id ){
 //响应ajax增加访问量
 function ajax_add_views() {
     $post_ID = intval( $_POST['post_ID'] );
-    if($post_ID)
-    {
+    if($post_ID) {
         $post_views = (int)get_post_meta($post_ID, 'views', true);
-        if(!update_post_meta($post_ID, 'views', ($post_views+1)))
-        {
+        $add_views = (dopt('d_moreviews_b') != '')? 3:1;
+        if( !update_post_meta($post_ID, 'views', $post_views+$add_views) ) {
             add_post_meta($post_ID, 'views', 1, true);
         }
     }

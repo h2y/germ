@@ -57,6 +57,9 @@ $options = array (
     array( "name" => "禁止站内 pingback","type" => "tit"),
     array( "id" => "d_nopingback_b","type" => "checkbox" ),
 
+    array( "name" => "文章访问量作弊 (x3)", "type" => "tit"),
+    array( "id" => "d_moreviews_b","type" => "checkbox" ),
+
     array( "type" => "endtag"),
 
 

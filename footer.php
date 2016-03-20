@@ -9,12 +9,15 @@
     <a id="qr" href="javascript:;"><i class="fa fa-qrcode"></i></a>
     <a id="gotop" title="点击返回页顶" href="javascript:;"><i class="fa fa-arrow-up"></i></a>
 
-<?php
-if( dopt('d_track_b') != '' ) '<div class="static-hide">'.dopt('d_track').'</div>';
-if( dopt('d_footcode_b') != '' ) echo dopt('d_footcode');
+    <?php
+        if( dopt('d_track_b') != '' )
+            echo '<div class="static-hide">'.dopt('d_track').'</div>';
 
-wp_footer();
-?>
+        wp_footer();
+
+        if( dopt('d_footcode_b') != '' )
+            echo dopt('d_footcode');
+    ?>
 
 </body>
 </html>

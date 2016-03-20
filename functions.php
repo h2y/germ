@@ -198,7 +198,12 @@ function comment($comment, $args, $depth) {
 
 <article id="comment-<?php comment_ID(); ?>" class="comment-body">
     <div class="comment-author vcard">
-        <?php echo get_avatar( $comment, $size = '40'); ?>
+        <?php
+            if(dopt('d_defaultavatar_b'))
+                echo get_avatar( $comment, '40');
+            else
+                echo get_random_avatar( $comment, '40');
+        ?>
     </div>
     <div class="comment-content">
         <div class="reply">
@@ -430,6 +435,31 @@ function post_thumbnail( $width = 180,$height = 180 ,$flag = true){
     }
 }
 
+/*
+    return random <img> head by author name
+*/
+function get_random_avatar($comment, $size=40) {
+    //print_r($comment);
+    $comment_writer = $comment->comment_author;
+    if (strtoupper($comment_writer) == "MOSHEL" || $comment_writer == "Mσѕнєℓ") {
+        //custom for hzy.pw
+        $rnd_src = "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
+    }
+    else if( $comment->comment_author_email && $comment->comment_author_email == get_the_author_email() ) {
+        //writer's reply
+        if(dopt('d_myavatar') != '')
+            $rnd_src = dopt('d_myavatar');
+        else
+            $rnd_src = "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
+    }
+    else if (ord($comment_writer)%2)
+        $rnd_src = "https://robohash.org/$comment_writer?set=set3&size=".$size."x".$size."&bgset=bg".ord($comment_writer)%3;
+    else
+        $rnd_src = "http://identicon.relucks.org/$comment_writer?size=$size";
+
+    return "<img src='$rnd_src' class='avatar avatar-$size photo' height='$size' width='$size'>";
+}
+
 
 /*ajax comment submit*/
 add_action('wp_ajax_nopriv_ajax_comment', 'ajax_comment');
@@ -542,7 +572,12 @@ function ajax_comment(){
     <article id="comment-<?php comment_ID(); ?>" class="comment-body">
         <div class="comment-meta clearfix">
             <div class="comment-author vcard">
-                <?php echo get_avatar( $comment, $size = '40'); ?>
+                <?php
+                    if(dopt('d_defaultavatar_b'))
+                        echo get_avatar( $comment, '40');
+                    else
+                        echo get_random_avatar( $comment, '40');
+                ?>
             </div>
             <div class="comment-metadata">
                 <b class="fn"><?php printf(__('%s'), get_comment_author_link()) ?></b>

@@ -12,6 +12,9 @@ $options = array (
     array( "name" => "[SEO] 网站关键字","type" => "tit"),
     array( "id" => "d_keywords","type" => "text","std" => "会作为 meta 添加到 head 中。在这里输入你的网站关键字，用英文逗号','间隔"),
 
+    array( "name" => "站长头像地址","type" => "tit"),
+    array( "id" => "d_myavatar","type" => "text","class" => "d_inp_short","std" => "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100"),
+
     array( "name" => "首页、文章、页面，都使用同一个侧边栏","type" => "tit"),
     array( "id" => "d_same_sidebar_b","type" => "checkbox" ),
 
@@ -36,10 +39,10 @@ $options = array (
     //功能开关
     array( "name" => "功能开关","type" => "section"),
 
-    array( "name" => "开启全站 Ajax","type" => "tit"),
+    array( "name" => "开启全站 Ajax (推荐开启)","type" => "tit"),
     array( "id" => "d_ajax_b","type" => "checkbox" ),
 
-    array( "name" => "中英文间自动添加空格","type" => "tit"),
+    array( "name" => "全站中英文间自动添加空格 (推荐开启)","type" => "tit"),
     array( "id" => "d_autospace_b","type" => "checkbox" ),
 
     array( "name" => "文章中图片点击特效","type" => "tit"),
@@ -60,13 +63,16 @@ $options = array (
     array( "name" => "文章访问量作弊 (x3)", "type" => "tit"),
     array( "id" => "d_moreviews_b","type" => "checkbox" ),
 
+    array( "name" => "使用 WP 自带的方法获取 avatar 头像 (推荐关闭)", "type" => "tit"),
+    array( "id" => "d_defaultavatar_b","type" => "checkbox" ),
+
     array( "type" => "endtag"),
 
 
 
     //SNS设置
     array( "name" => "小工具设置","type" => "section" ),
-  array( "name" => "联系方式总开关","type" => "tit"),
+    array( "name" => "联系方式总开关","type" => "tit"),
     array( "id" => "d_sns_open","type" => "checkbox" ),
 
     array( "name" => "RSS 订阅地址","type" => "tit"),

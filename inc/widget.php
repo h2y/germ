@@ -272,7 +272,14 @@ class mzw_admin extends WP_Widget {
         <img src="<?php bloginfo('template_directory'); ?>/images/bg_small.jpg">
         <div class="author-body">
             <div class="author_img">
-            <?php echo get_avatar( get_the_author_email(), $size = '80' , '' );?>
+            <?php 
+                if(dopt('d_defaultavatar_b'))
+                    echo get_avatar( get_the_author_email(), $size = '80' , '' );
+                else {
+                    $head_src = dopt('d_myavatar') ? dopt('d_myavatar') : "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
+                    echo '<img src="'.$head_src.'" class="avatar avatar-80 photo" height="80" width="80">';
+                }
+            ?>
             </div>
             <div class="author_bio">
                 <h3><?php the_author_meta('nickname');?> </h3>

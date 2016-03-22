@@ -633,7 +633,7 @@ article.sticky h2.entry-name::before {
 
 .entry-header.detail-page h2 {
     text-align: center;
-  font-size: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .entry-header .post-prefix {
@@ -679,14 +679,15 @@ article.sticky h2.entry-name::before {
     padding-bottom: 0.5rem;
 }
 
-.entry-content h2,.entry-content h3 {
-    margin-bottom: 8px;
-    padding-bottom: 5px;
-    border-bottom: 1px dotted #4682B4;
+.entry-content h2, .entry-content h3 {
+    margin-bottom:  8px;
+    padding-bottom: 10px;
+    border-bottom:  1px dotted #4682B4;
 }
 
 .entry-content h2 {
     font-size: 1.5rem;
+    line-height: 2rem;
 }
 
 .entry-content h3 {

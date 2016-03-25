@@ -51,16 +51,13 @@ img {
 .aligncenter {
     clear: both;
     display: block;
-    margin: 0 auto 1.75em;
+    margin: 0 auto;
 }
 blockquote.alignleft {
     margin: 0.3157894737em 1.4736842105em 1.473684211em 0;
 }
 blockquote.alignright {
     margin: 0.3157894737em 0 1.473684211em 1.4736842105em;
-}
-blockquote.aligncenter {
-    margin-bottom: 1.473684211em;
 }
 
 article, aside, details, figcaption, figure, footer, header, menu, nav, section {
@@ -328,10 +325,6 @@ blockquote {
 
 blockquote p {
     line-height: 1.5rem;
-  margin-bottom: 1rem;
-}
-blockquote p:last-child {
-    margin-bottom: 0
 }
 
 blockquote cite {
@@ -675,11 +668,13 @@ article.sticky h2.entry-name::before {
     color:#47C2DC;
 }
 
-.entry-content>p {
+.entry-content p {
     padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
 }
 
 .entry-content h2, .entry-content h3 {
+    margin-top: 1rem;
     margin-bottom:  8px;
     padding-bottom: 10px;
     border-bottom:  1px dotted #4682B4;

@@ -154,6 +154,17 @@ register_deactivation_hook( __FILE__, 'disable_embeds_flush_rewrite_rules' );
 //禁用embeds功能 END
 
 
+// 结果只有一篇文章时自动跳转到文章
+add_action('template_redirect', 'redirect_single_post');
+function redirect_single_post() {
+    if (is_search()) {
+        global $wp_query;
+        if ($wp_query->post_count == 1 && $wp_query->max_num_pages == 1) {
+            wp_redirect( get_permalink( $wp_query->posts['0']->ID ) );
+            exit;
+}	}   }
+
+
 register_nav_menus(array('header-menu' => '顶部导航'));
 
 add_theme_support( 'post-formats', array( 'status', 'gallery' ));

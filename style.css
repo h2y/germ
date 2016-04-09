@@ -2267,6 +2267,10 @@ body.nav-open #wrap {
         display: none
     }
 
+    .entry-content {
+        padding: 0 15px;
+    }
+
     .headline a {
         float: none;
         font-size: 20px;

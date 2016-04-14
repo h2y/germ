@@ -1,6 +1,6 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "0.3.0.11";
+    $theme_ver = "0.3.1.12";
     //载入css
     wp_enqueue_style( 'FA', get_template_directory_uri().'/css/font-awesome.min.css', false, $theme_ver);
     wp_enqueue_style( 'Germ-style', get_template_directory_uri().'/style.min.css', "FA", $theme_ver);

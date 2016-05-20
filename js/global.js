@@ -396,7 +396,8 @@ if (asr_1 !== -24 && asr_2 !== -38 && rolllen !== 0 && $('#sidebar').css('displa
                 $('.widgetRoller').css({
                     position: 'fixed',
                     top: 10,
-                    display: 'none'
+                    display: 'none'/*,
+                    width: $('#sidebar').width()*/
                 });
             }
             if (!sidebar_flying)

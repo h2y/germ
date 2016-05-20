@@ -338,8 +338,8 @@ blockquote cite a {
 }
 
 #wrap {
-    width: 100%;
-    max-width: 1080px;
+    width: 90%;
+    /*max-width: 1080px;*/
     margin: 0 auto;
 }
 
@@ -506,7 +506,7 @@ blockquote cite a {
 
 #content {
     float: left;
-    width: calc(100% - 20rem);
+    width: 70%;
 }
 
 #container.full-width #content {
@@ -525,7 +525,7 @@ blockquote cite a {
 
 #sidebar {
     float: right;
-    width: 18rem;
+    width: 28%;
 }
 
 .widget:before,.post:before, .box:before {
@@ -1670,7 +1670,7 @@ ol.comments-list > li > ol.children {
 
 /*widget*/
 .widgetRoller {
-    width: 18rem;
+    width: 25.2%;
 }
 
 #searchform {
@@ -2243,12 +2243,18 @@ body.nav-open #wrap {
 .static-hide{display:none;}
 
 /*响应式布局开始*/
+
+@media (max-width: 1025px)
+    #qr, #gotop, #qrimg {
+        display: none;
+    }
+}
 @media (min-width: 651px) and (max-width: 980px) {
     #content {
         width: 100%
     }
 
-    #sidebar {
+    #sideba {
         display: none
     }
 }
@@ -2260,7 +2266,8 @@ body.nav-open #wrap {
     }
 
     #wrap {
-        margin: 0
+        margin: 0;
+        width: 100%
     }
 
     #main-nav {
@@ -2356,10 +2363,6 @@ body.nav-open #wrap {
 
     .text_area {
         width: 100%;
-    }
-
-    #qr,#gotop,#qrimg {
-        display: none;
     }
 
     #footer p.left {

@@ -805,6 +805,18 @@ article.sticky h2.entry-name::before {
     border-top: 1px solid #47C2DC;
 }
 
+hr {
+    border: none;
+}
+hr:after {
+    content: "...";
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 20px;
+    font-size: 20px;
+}
+
 .share-on>a {
     border-radius: 0 0 3px 3px;
 }
@@ -2221,7 +2233,8 @@ body.nav-open #wrap {
 }
 
 .mm-search {
-    padding: 10px
+    padding: 10px;
+    width: 38%;
 }
 
 .mm-search input {
@@ -2244,7 +2257,7 @@ body.nav-open #wrap {
 
 /*响应式布局开始*/
 
-@media (max-width: 1025px)
+@media (max-width: 1025px) {
     #qr, #gotop, #qrimg {
         display: none;
     }

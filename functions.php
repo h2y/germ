@@ -1,20 +1,25 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "0.3.1.12";
+    $theme_ver = "1.0.0.13";
+    $theme_dir = get_template_directory_uri();
+
     //载入css
-    wp_enqueue_style( 'FA', get_template_directory_uri().'/css/font-awesome.min.css', false, $theme_ver);
-    wp_enqueue_style( 'Germ-style', get_template_directory_uri().'/style.min.css', "FA", $theme_ver);
+    wp_enqueue_style( 'FA', $theme_dir.'/css/font-awesome.min.css', false, $theme_ver);
+    wp_enqueue_style( 'Germ-style', $theme_dir.'/style.min.css', "FA", $theme_ver);
+
     //载入JS
-    wp_enqueue_script( 'jQ', get_template_directory_uri().'/js/jquery&migrate-1.x.min.js', false, $theme_ver, false);
-    wp_enqueue_script( 'base', get_template_directory_uri().'/js/global.min.js', 'jQ', $theme_ver, true);
+    wp_enqueue_script( 'jQ', $theme_dir.'/js/jquery-1.x.min.js', false, $theme_ver, false);
+    wp_enqueue_script( 'base', $theme_dir.'/js/global.min.js', 'jQ', $theme_ver, true);
+
     if( dopt('d_slimbox_b') != '' )
-        wp_enqueue_script( 'slimbox', get_template_directory_uri().'/js/slimbox2.min.js', 'jQ', $theme_ver, true);
+        wp_enqueue_script( 'slimbox', $theme_dir.'/js/slimbox2.min.js', 'jQ', $theme_ver, true);
     if( dopt('d_ajax_b') != '' )
-        wp_enqueue_script( 'ajax', get_template_directory_uri().'/js/ajax.min.js', false, $theme_ver, true);
+        wp_enqueue_script( 'ajax', $theme_dir.'/js/ajax.min.js', false, $theme_ver, true);
     if( dopt('d_autospace_b') != '' )
-        wp_enqueue_script( 'autospace', get_template_directory_uri().'/js/autospace.min.js', false, $theme_ver, true);
+        wp_enqueue_script( 'autospace', $theme_dir.'/js/autospace.min.js', false, $theme_ver, true);
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts_frontpage' );
+
 
 //后端设置写入前端js变量
 add_action( 'wp_enqueue_scripts', 'echoJSvar' );
@@ -43,8 +48,10 @@ function echoJSvar() {
     wp_localize_script('jQ', 'ajax', $data);
 }
 
+
 //让WP自动添加页面title
 add_theme_support( 'title-tag' );
+
 
 //禁用谷歌字体
 function remove_open_sans() {
@@ -53,6 +60,7 @@ function remove_open_sans() {
     wp_enqueue_style('open-sans','');
 }
 add_action( 'init', 'remove_open_sans' );
+
 
 //编辑器添加按钮
 function enable_more_buttons($buttons) {
@@ -99,6 +107,7 @@ function my_theme_setup(){
     load_theme_textdomain('quench', get_template_directory() . '/languages');
 }
 
+
 //head信息精简
 remove_action('wp_head', 'feed_links_extra', 3 ); //去除评论feed
 remove_action('wp_head', 'feed_links', 2 ); //去除文章feed
@@ -107,6 +116,7 @@ remove_action('wp_head','rsd_link');//移除head中的rel="EditURI"
 remove_action('wp_head','wlwmanifest_link');//移除head中的rel="wlwmanifest"
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );//rel=pre
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
+
 
 //禁用REST API
 add_filter('rest_enabled', '_return_false');
@@ -171,16 +181,6 @@ add_theme_support( 'post-formats', array( 'status', 'gallery' ));
 
 function dopt($e){
     return stripslashes(get_option($e));
-}
-
-function no_self_ping( &$links ) {
-    $home = get_option( 'home' );
-    foreach ( $links as $l => $link )
-        if ( 0 === strpos( $link, $home ) )
-    unset($links[$l]);
-}
-if(dopt('d_nopingback_b')){
-    add_action( 'pre_ping', 'no_self_ping' );
 }
 
 function pagenavi($range = 7){
@@ -463,9 +463,9 @@ function get_random_avatar($comment, $size=40) {
         else
             $rnd_src = "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
     }
-    else if (ord($comment_writer)%2)
+    else if ($comment->comment_type == "pingback")
         $rnd_src = "https://robohash.org/$comment_writer?set=set3&size=".$size."x".$size."&bgset=bg".ord($comment_writer)%3;
-    else
+    else //normal comments
         $rnd_src = "http://identicon.relucks.org/$comment_writer?size=$size";
 
     return "<img src='$rnd_src' class='avatar avatar-$size photo' height='$size' width='$size'>";
@@ -647,7 +647,7 @@ function ajax_comment_page_nav(){
         $baseLink = '&base=' . user_trailingslashit(get_permalink($postid) . 'comment-page-%#%', 'commentpaged');
     }
     echo '<ol class="comments-list">';
-    my_wp_list_comments('type=comment&style=ol&callback=comment&page=' . $pageid . '&per_page=' . get_option('comments_per_page'), $comments);
+    my_wp_list_comments('style=ol&callback=comment&page=' . $pageid . '&per_page=' . get_option('comments_per_page'), $comments);
     echo '</ol>';
     echo '<nav class="commentnav" data-postid="'.$postid.'">';
     paginate_comments_links('total=' . get_comment_pages_count($comments). '&current=' . $pageid . '&prev_text=«&next_text=»');

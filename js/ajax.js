@@ -8,7 +8,7 @@ var ajaxscroll_top = true;
 
 var ajaxloading_code = '<div class="spinner"></div>';
 //var ajaxloading_code = '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
-var ajaxloading_error_code = '<div class="box"><p style="padding:20px;">出错啦，请刷新当前页面。</p></div>';
+var ajaxloading_error_code = '<div class="box"><p style="padding:20px;">页面加载中......</p></div>';
 var ajaxreloadDocumentReady = false;
 
 var ajaxisLoad = false;
@@ -43,6 +43,8 @@ function ajaxloadPageInit(scope) {
             } catch (err) {}
             ajaxloadPage(this.href);
         }
+
+        bodyChangeColor();
     });
 
     jQuery('.' + ajaxsearch_class).each(function(index) {
@@ -153,8 +155,9 @@ function ajaxloadPage(url, push, getData) {
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         ajaxisLoad = false;
-                        document.title = "Error loading requested page!";
+                        document.title = "Loading...";
                         document.getElementById(ajaxcontent).innerHTML = ajaxloading_error_code;
+                        document.location.reload();
                     }
                 });
             });
@@ -169,6 +172,9 @@ function submitSearch(param) {
 }
 
 function ajaxcheck_ignore(url, dom) {
+    //特殊情况（其他链接访问到该页）
+    if(location.href.indexOf(ajax.home) !== 0)
+        return false;
     //非本域
     if (dom.href.indexOf(ajax.home) !== 0 && dom.href.indexOf('/') !== 0)
         return false;
@@ -202,4 +208,18 @@ function ajaxclick_code(thiss) {
         jQuery(this).removeClass('current-menu-item');
     });
     jQuery(thiss).parents('li').addClass('current-menu-item');
+}
+
+//背景变色
+var bodyChangeColor = function(){};
+var body_width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+if(body_width>650) {
+    var rndColor = 200;
+    bodyChangeColor = function() {
+        rndColor += 60 + Math.floor(241*Math.random());
+        if(rndColor>=360) rndColor-=360;
+        document.body.style.backgroundColor = 'hsl('+rndColor+',20%,70%)';
+        //setTimeout(changeColor, 15000);
+    };
+    bodyChangeColor();
 }

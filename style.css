@@ -1,6 +1,6 @@
 ﻿/*!
     Theme Name:	Germ
-    Version: 0.3.1.12
+    Version: 1.0.0.13
     Theme URI: http://hzy.pw/p/1933
     Description: An exquisite theme for you. Used PJAX and many advanced features. Besides, it looks well.
     Tags: Blue,Light,Responsive Layout,Two Columns,Right Sidebar,Theme Options,Custom Menu,Post Formats,Threaded Comments
@@ -204,11 +204,13 @@ textarea,input {
 body {
     font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
     font-size: 0.875rem;
-    background-color: #eee;
-    background-image: url('images/bg.jpg');
+    background-color: hsl(200,20%,70%);
+    transition: background-color 5s linear;
+    -webkit-transition: background-color 5s linear;
+    /*background-image: url('images/bg.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100%;*/
 }
 
 .f12 {
@@ -354,9 +356,11 @@ blockquote cite a {
 
 #header, .pagination, .post, .widget, .box, #qr, #gotop {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 1s;
+    -webkit-transition: box-shadow 1s;
 }
 #header:hover, .pagination:hover, .post:hover, .widget:hover, .box:hover, #qr:hover, #gotop:hover, #qrimg {
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0);
 }
 
 #header {
@@ -677,15 +681,20 @@ article.sticky h2.entry-name::before {
     margin-top: 1rem;
     margin-bottom:  8px;
     padding-bottom: 10px;
-    border-bottom:  1px dotted #4682B4;
 }
 
 .entry-content h2 {
     font-size: 1.5rem;
     line-height: 2rem;
+    border-bottom:  1px dotted #4682B4;
+    font-weight: bold;
 }
 
 .entry-content h3 {
+    font-size: 1.4rem;
+}
+
+.entry-content h4 {
     font-size: 1.2rem;
 }
 
@@ -840,6 +849,7 @@ hr:after {
 .tag-links a:hover {
     background-color: #47c2dc;
     color: #fff;
+    opacity: 1;
 }
 .tag-links a:hover:before {
     border-right-color: #47c2dc;
@@ -1307,17 +1317,14 @@ thead tr {
     float: left;
     width: 50%;
     color: #333;
-    margin: 2px 0;
-  overflow: hidden;
-  white-space: nowrap;
+    margin: 5px 0;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .relatedpost ul li a {
     color: #333;
     -webkit-transition: .3s ease-in-out;
-    -moz-transition: .3s ease-in-out;
-    -ms-transition: .3s ease-in-out;
-    -o-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
 }
 

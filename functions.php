@@ -1,24 +1,33 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "1.0.0.13";
+    $theme_ver = "1.0.1.14";
     $theme_dir = get_template_directory_uri();
 
     //载入css
     wp_enqueue_style( 'FA', $theme_dir.'/css/font-awesome.min.css', false, $theme_ver);
-    wp_enqueue_style( 'Germ-style', $theme_dir.'/style.min.css', "FA", $theme_ver);
+    wp_enqueue_style( 'Germ-style', $theme_dir.'/style.min.css', array('FA'), $theme_ver);
 
     //载入JS
-    wp_enqueue_script( 'jQ', $theme_dir.'/js/jquery-1.x.min.js', false, $theme_ver, false);
-    wp_enqueue_script( 'base', $theme_dir.'/js/global.min.js', 'jQ', $theme_ver, true);
+    wp_enqueue_script( 'base', $theme_dir.'/js/global.min.js', array('jquery'), $theme_ver, true);
 
     if( dopt('d_slimbox_b') != '' )
-        wp_enqueue_script( 'slimbox', $theme_dir.'/js/slimbox2.min.js', 'jQ', $theme_ver, true);
+        wp_enqueue_script( 'slimbox', $theme_dir.'/js/slimbox2.min.js', array('jquery'), $theme_ver, true);
     if( dopt('d_ajax_b') != '' )
-        wp_enqueue_script( 'ajax', $theme_dir.'/js/ajax.min.js', false, $theme_ver, true);
+        wp_enqueue_script( 'ajax', $theme_dir.'/js/ajax.min.js', array('jquery'), $theme_ver, true);
     if( dopt('d_autospace_b') != '' )
-        wp_enqueue_script( 'autospace', $theme_dir.'/js/autospace.min.js', false, $theme_ver, true);
+        wp_enqueue_script( 'autospace', $theme_dir.'/js/autospace.min.js', array('jquery'), $theme_ver, true);
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts_frontpage' );
+
+
+//remove jquery_migrate
+function cedaro_dequeue_jquery_migrate( $scripts ) {
+	if ( ! is_admin() && ! empty( $scripts->registered['jquery'] ) ) {
+		$jquery_dependencies = $scripts->registered['jquery']->deps;
+		$scripts->registered['jquery']->deps = array_diff( $jquery_dependencies, array( 'jquery-migrate' ) );
+	}
+}
+add_action( 'wp_default_scripts', 'cedaro_dequeue_jquery_migrate' );
 
 
 //后端设置写入前端js变量
@@ -45,7 +54,7 @@ function echoJSvar() {
     $data['fly1'] = $sr_1;
     $data['fly2'] = $sr_2;
 
-    wp_localize_script('jQ', 'ajax', $data);
+    wp_localize_script('jquery', 'ajax', $data);
 }
 
 
@@ -454,19 +463,19 @@ function get_random_avatar($comment, $size=40) {
     $comment_writer = $comment->comment_author;
     if (strtoupper($comment_writer) == "MOSHEL" || $comment_writer == "Mσѕнєℓ") {
         //custom for hzy.pw
-        $rnd_src = "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
+        $rnd_src = dopt('d_myavatar');
     }
     else if( $comment->comment_author_email && $comment->comment_author_email == get_the_author_email() ) {
         //writer's reply
         if(dopt('d_myavatar') != '')
             $rnd_src = dopt('d_myavatar');
         else
-            $rnd_src = "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
+            $rnd_src = "https://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
     }
     else if ($comment->comment_type == "pingback")
-        $rnd_src = "https://robohash.org/$comment_writer?set=set3&size=".$size."x".$size."&bgset=bg".ord($comment_writer)%3;
+        $rnd_src = "https://robohash.org/$comment_writer?size=".$size."x".$size;
     else //normal comments
-        $rnd_src = "http://identicon.relucks.org/$comment_writer?size=$size";
+        $rnd_src = "https://robohash.org/$comment_writer?set=set3&size=".$size."x".$size."&bgset=bg2";
 
     return "<img src='$rnd_src' class='avatar avatar-$size photo' height='$size' width='$size'>";
 }

@@ -1,7 +1,7 @@
 ﻿/*!
     Theme Name:	Germ
-    Version: 1.0.0.13
-    Theme URI: http://hzy.pw/p/1933
+    Version: 1.0.1.14
+    Theme URI: https://hzy.pw/p/1933
     Description: An exquisite theme for you. Used PJAX and many advanced features. Besides, it looks well.
     Tags: Blue,Light,Responsive Layout,Two Columns,Right Sidebar,Theme Options,Custom Menu,Post Formats,Threaded Comments
     Doing: Custom Background,Custom Colors,Sticky Post
@@ -1261,7 +1261,8 @@ thead tr {
 }
 
 .left {
-    float: left
+    float: left;
+    color: #888;
 }
 
 .sb-info {

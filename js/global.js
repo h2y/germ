@@ -1,3 +1,5 @@
+window.$ = jQuery;
+
 /*
  * jQuery FlexSlider v2.6.0
  * Copyright 2012 WooThemes
@@ -32,7 +34,7 @@ jQuery(".favorite").click(function() {
     }
 });
 
-$.fn.typing = function(n) {
+jQuery.fn.typing = function(n) {
     var options = {
         speed: 100,
         range: 0,
@@ -352,7 +354,7 @@ $(document).ready(function(e) {
 });
 
 function refresh_qrimg() {
-    $('#qrimg').attr('src', 'http://s.jiathis.com/qrcode.php?url=' + location.href);
+    $('#qrimg').attr('src', 'https://api.lwl12.com/img/qrcode/get?ct='+location.href+'&w=140&h=140');
 }
 
 function initgallary() {

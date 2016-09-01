@@ -602,8 +602,6 @@ article.sticky h2.entry-name::before {
 }
 
 .entry-header h2 a {
-    position: relative;
-    white-space: nowrap;
     border-bottom: none;
 }
 .entry-header h2 a:after {
@@ -2292,6 +2290,10 @@ body.nav-open #wrap {
 
     #main-nav {
         display: none
+    }
+
+    .entry-header {
+        padding: 1rem 15px;
     }
 
     .entry-content {

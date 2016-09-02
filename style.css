@@ -602,6 +602,7 @@ article.sticky h2.entry-name::before {
 }
 
 .entry-header h2 a {
+    position: relative;
     border-bottom: none;
 }
 .entry-header h2 a:after {

@@ -13,26 +13,35 @@ window.$ = jQuery;
 
 
 
+window.favorite_link_init = function() {
+    jQuery(".favorite").click(function() {
+        var rateHolder = jQuery(this).children('.love-count'),
+            heart = jQuery(this).children('.fa');
+        if (jQuery(this).hasClass('done')) {
+            rateHolder.html('已经点过赞啦');
+            heart.hide().fadeIn(500);
+            return false;
+        } else {
+            jQuery(this).addClass('done');
+            heart.hide().fadeIn(700);
+            rateHolder.hide().fadeIn(300);
+            rateHolder.html('谢谢喜欢');
 
-jQuery(".favorite").click(function() {
-    if (jQuery(this).hasClass('done')) {
-        return false;
-    } else {
-        jQuery(this).addClass('done');
-        var id = jQuery(this).data("id"),
-            action = jQuery(this).data('action'),
-            rateHolder = jQuery(this).children('.love-count');
-        var ajax_data = {
-            action: "mzw_like",
-            um_id: id,
-            um_action: action
-        };
-        jQuery.post(ajax.ajax_url, ajax_data, function(data) {
-            jQuery(rateHolder).html(data);
-        });
-        return false;
-    }
-});
+            var id = jQuery(this).data("id"),
+                action = jQuery(this).data('action');
+            var ajax_data = {
+                action: "mzw_like",
+                um_id: id,
+                um_action: action
+            };
+            jQuery.post(window.ajax.ajax_url, ajax_data, function(data) {
+                rateHolder.html( data );
+            });
+            return false;
+        }
+    });
+};
+window.favorite_link_init();
 
 jQuery.fn.typing = function(n) {
     var options = {
@@ -41,7 +50,7 @@ jQuery.fn.typing = function(n) {
         repeat: true,
         flashback: true,
         flicker: false
-    }
+    };
     $.extend(options, n);
     var _this = $(this);
     var str = $(this).text().split('');

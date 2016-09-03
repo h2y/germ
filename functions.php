@@ -1,6 +1,6 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "1.0.1.14";
+    $theme_ver = "1.0.2.15";
     $theme_dir = get_template_directory_uri();
 
     //载入css
@@ -656,6 +656,7 @@ function ajax_comment_page_nav(){
         $baseLink = '&base=' . user_trailingslashit(get_permalink($postid) . 'comment-page-%#%', 'commentpaged');
     }
     echo '<ol class="comments-list">';
+    //wp_list_comments('style=ol&callback=comment&page=' . $pageid . '&per_page=' . get_option('comments_per_page'), $comments);
     my_wp_list_comments('style=ol&callback=comment&page=' . $pageid . '&per_page=' . get_option('comments_per_page'), $comments);
     echo '</ol>';
     echo '<nav class="commentnav" data-postid="'.$postid.'">';

@@ -49,7 +49,7 @@ function ajaxloadPageInit(scope) {
 
     jQuery('.' + ajaxsearch_class).each(function(index) {
         if (jQuery(this).attr("action")) {
-            ajaxsearchPath = jQuery(this).attr("action");;
+            ajaxsearchPath = jQuery(this).attr("action");
             jQuery(this).submit(function() {
                 submitSearch(jQuery(this).serialize());
                 return false;
@@ -70,10 +70,10 @@ function ajaxloadPage(url, push, getData) {
         }
         ajaxisLoad = true;
         ajaxstarted = true;
-        nohttp = url.replace("http://", "").replace("https://", "");
-        firstsla = nohttp.indexOf("/");
-        pathpos = url.indexOf(nohttp);
-        path = url.substring(pathpos + firstsla);
+        var nohttp = url.replace("http://", "").replace("https://", ""),
+            firstsla = nohttp.indexOf("/"),
+            pathpos = url.indexOf(nohttp),
+            path = url.substring(pathpos + firstsla);
 
         if (push != 1) {
             if (typeof window.history.pushState == "function") {
@@ -195,12 +195,13 @@ function ajaxreload_code() {
     else
         jQuery('#container').removeClass('full-width');
     if (typeof(text_autospace_init) === "function")
-        text_autospace_init();
-    initgallary();
+        window.text_autospace_init();
+    window.initgallary();
     if (typeof(initSlim) === "function")
-        initSlim();
-    refresh_qrimg();
-    add_views();
+        window.initSlim();
+    window.favorite_link_init();
+    window.refresh_qrimg();
+    window.add_views();
 }
 
 function ajaxclick_code(thiss) {

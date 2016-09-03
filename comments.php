@@ -3,7 +3,9 @@
     <h5 id="comments-title"><span><?php echo count($comments); ?> 条评论</span></h5>
     <div class="commentshow">
         <ol class="comments-list">
-            <?php wp_list_comments('callback=comment&max_depth=1000&style=ol'); ?>
+            <?php
+                wp_list_comments('callback=comment&max_depth=1000&style=ol&per_page=' . get_option('comments_per_page')); 
+            ?>
         </ol>
         <nav class="commentnav" data-postid="<?php echo $post->ID?>"><?php paginate_comments_links('prev_text=«&next_text=»');?></nav>
     </div>

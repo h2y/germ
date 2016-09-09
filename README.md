@@ -12,9 +12,9 @@ WordPress Theme Germ
 - Ajax 评论
 - 全站 Ajax 浏览, 可开启/关闭
 - 汉字与拉丁字符间可自动添加空白间隙, 优化排版
-- 2 种文章格式: [相册](http://hzy.pw/p/1988), 说说
+- 2 种文章格式: [相册](https://hzy.pw/p/1988), 说说
 - 可选择全宽页面模版
-- 3 种特殊页面模板: [文章存档](http://hzy.pw/germ-archives), [标签云](http://hzy.pw/germ-tagspage) 和 [网站地图](http://hzy.pw/germ-sitemap)
+- 3 种特殊页面模板: [文章存档](https://hzy.pw/germ-archives), [标签云](https://hzy.pw/germ-tagspage) 和 [网站地图](https://hzy.pw/germ-sitemap)
 - 侧边栏悬停, 可自由设置
 - 支持 3 种侧边栏, 对应不同页面
 - 显示网页的二维码, 以供跳转至手机浏览
@@ -44,8 +44,8 @@ WordPress Theme Germ
 效果预览
 -------
 
-主题预览请访问我的个人网站, 不会让你失望: <http://hzy.pw/>
+主题预览请访问我的个人网站, 不会让你失望: <https://hzy.pw/>
 
-![](http://hzy.pw/wp-content/uploads/2016/02/QQ截图20160229191513.jpg)
+![](https://hzy.pw/wp-content/uploads/2016/02/QQ截图20160229191513.jpg)
 
-![](http://hzy.pw/wp-content/uploads/2016/02/吃我安利-百度脑图-在线web应用-–-中原驿站.png)
+![](https://hzy.pw/wp-content/uploads/2016/02/吃我安利-百度脑图-在线web应用-–-中原驿站.png)

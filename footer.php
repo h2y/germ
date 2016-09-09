@@ -1,7 +1,7 @@
         </div>
         <footer id="footer" class="yahei clearfix">
   		<p class="left"><?php echo dopt('d_notice_bottom');?></p>
-            <p class="right">Powered by <a href="https://cn.wordpress.org/" target="_blank" rel="nofollow">WordPress</a>, and theme by <a href="http://hzy.pw/p/1933" target="_blank">Moshel</a>.</p>
+            <p class="right">Powered by <a href="https://cn.wordpress.org" target="_blank" rel="nofollow">WordPress</a>, and theme by <a href="https://hzy.pw/p/1933" target="_blank">Moshel</a>.</p>
         </footer>
     </div>
 

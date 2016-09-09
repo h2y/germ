@@ -32,6 +32,8 @@ function ajaxloadPageInit(scope) {
         if (ajaxcheck_ignore(this.href, this) == true) {
             event.preventDefault();
 
+            document.title = 'Loading...';
+
             this.blur();
 
             var caption = this.title || this.name || "";

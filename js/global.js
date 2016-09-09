@@ -25,7 +25,9 @@ window.favorite_link_init = function() {
             jQuery(this).addClass('done');
             heart.hide().fadeIn(700);
             rateHolder.hide().fadeIn(300);
+            var num = +rateHolder.html();
             rateHolder.html('谢谢喜欢');
+            setTimeout(function(){ rateHolder.html(num+1); }, 2000);
 
             var id = jQuery(this).data("id"),
                 action = jQuery(this).data('action');
@@ -34,57 +36,43 @@ window.favorite_link_init = function() {
                 um_id: id,
                 um_action: action
             };
-            jQuery.post(window.ajax.ajax_url, ajax_data, function(data) {
-                rateHolder.html( data );
-            });
+            jQuery.post(window.ajax.ajax_url, ajax_data);
             return false;
         }
     });
 };
 window.favorite_link_init();
 
+
+//网站描述 打字效果
 jQuery.fn.typing = function(n) {
     var options = {
-        speed: 100,
-        range: 0,
-        repeat: true,
-        flashback: true,
-        flicker: false
+        speed: 200,
+        show: 5000
     };
     $.extend(options, n);
     var _this = $(this);
-    var str = $(this).text().split('');
     var index = 0;
     var direction = 1;
-    $(str).each(function(i, k) {
-        str[i] = (str[i - 1] ? str[i - 1] : '') + str[i];
-    });
+    var str = [];
+    var text = $(this).text();
+    for(var i=0; i<=text.length; i++) {
+        str[i] = text.substr(0, i);
+    }
     _this.css('border-right', '1px solid #000');
     setTimeout(init, options.speed);
 
     function init() {
         _this.text(str[index]);
-        if (index >= (str.length - 1) && options.repeat) {
-            if (options.flashback) {
-                direction = -1;
-            } else {
-                index = 0;
-            }
-            if (options.flicker) {
-                _this.delay(200).fadeOut(1).delay(400).fadeIn(1).delay(200).fadeOut(1).delay(400).fadeIn(1);
-            }
-            setTimeout(init, 2000);
-        } else if (index >= (str.length - 1) && !options.repeat) {
-            if (options.flicker) {
-                _this.delay(200).fadeOut(1).delay(400).fadeIn(1).delay(200).fadeOut(1).delay(400).fadeIn(1);
-            }
-            _this.css('border-right', '');
+        if (index >= (str.length - 1)) {
+            direction = -1;
+            setTimeout(init, options.show);
         } else if (index < 0) {
             index = 0;
             direction = 1;
-            setTimeout(init, Math.random() * options.range + options.speed);
+            setTimeout(init, options.speed);
         } else {
-            setTimeout(init, Math.random() * options.range + options.speed);
+            setTimeout(init, options.speed);
         }
         index += direction;
     }
@@ -92,8 +80,9 @@ jQuery.fn.typing = function(n) {
 
 $('#header .desc span').typing({
     range: 200,
-    repeat: true
+    show: 5000
 });
+
 
 jQuery(document).ready(function($) {
 
@@ -447,9 +436,8 @@ $(document).on("click", ".commentnav a", function() {
             commentsHolder.html(data);
             //remove loading
             $("body, html").animate({
-                    scrollTop: commentsHolder.offset().top - 50
-                },
-                1e3)
+                scrollTop: commentsHolder.offset().top - 50
+            }, 'normal');
         });
     return false;
 });

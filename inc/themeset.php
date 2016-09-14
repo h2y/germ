@@ -120,6 +120,9 @@ $options = array (
     array( "name" => "页底横幅公告","type" => "tit"),
     array( "id" => "d_notice_bottom","type" => "textarea","std"=>"这部分代码显示在页面底部横幅内，推荐放入 p 标签"),
 
+    array( "name" => "页底横幅随机名人名言", "type" => "tit"),
+    array( "id" => "d_saying_bottom", "type" => "checkbox" ),
+
     array( "name" => "流量统计代码","type" => "tit"),
     array( "id" => "d_track_b","type" => "checkbox" ),
     array( "id" => "d_track","type" => "textarea","std" => "贴入百度统计、CNZZ、51啦、量子统计代码等等"),

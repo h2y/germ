@@ -485,3 +485,18 @@ function add_views() {
     };
     jQuery.post(ajax.ajax_url, data);
 }
+
+
+//页底随机名言
+var $saying = $('#footer .saying-bottom');
+var saying_refresh = function() {
+    $saying.html('<i class="fa fa-circle-o-notch fa-spin"></i> Refrshing...');
+    $.get('https://api.hzy.pw/saying/v1/youdao', function(json) {
+        var html = '<i class="fa fa-paw" aria-hidden="true"></i> ' + json.cnFix;
+        $saying.hide().html(html).attr('title', json.en).fadeIn('slow');
+    });
+};
+if($saying.length) {
+    saying_refresh();
+    $saying.click(saying_refresh);
+}

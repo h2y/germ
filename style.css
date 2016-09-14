@@ -1,6 +1,6 @@
 ﻿/*!
     Theme Name:	Germ
-    Version: 1.0.3.16
+    Version: 1.1.0.17
     Theme URI: https://hzy.pw/p/1933
     Description: An exquisite theme for you. Used PJAX and many advanced features. Besides, it looks well.
     Tags: Blue,Light,Responsive Layout,Two Columns,Right Sidebar,Theme Options,Custom Menu,Post Formats,Threaded Comments
@@ -359,7 +359,7 @@ blockquote cite a {
     transition: box-shadow 1s;
     -webkit-transition: box-shadow 1s;
 }
-#header:hover, .pagination:hover, .post:hover, .widget:hover, .box:hover, #qr:hover, #gotop:hover, #qrimg {
+#header:hover, .pagination:hover, .post:hover, .widget:hover, .box:hover, #qr:hover, #gotop:hover {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0);
 }
 
@@ -2029,6 +2029,7 @@ ol.comments-list > li > ol.children {
 
 #qrimg {
     background-color: #fff;
+    box-shadow: 0 0 10px #000;
     border-radius: 5px;
     position: fixed;
     bottom: 120px;
@@ -2385,7 +2386,7 @@ body.nav-open #wrap {
         width: 100%;
     }
 
-    #footer p.left {
+    #footer .left {
         display: none;
     }
 

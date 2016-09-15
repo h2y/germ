@@ -1,6 +1,6 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "1.1.0.17";
+    $theme_ver = "1.2.0.18";
     $theme_dir = get_template_directory_uri();
 
     //载入css
@@ -8,7 +8,8 @@ function my_enqueue_scripts_frontpage() {
     wp_enqueue_style( 'Germ-style', $theme_dir.'/style.min.css', array('FA'), $theme_ver);
 
     //载入JS
-    wp_enqueue_script( 'base', $theme_dir.'/js/global.min.js', array('jquery'), $theme_ver, true);
+    wp_enqueue_script( 'FlexSlider', $theme_dir.'/js/jquery.flexslider-min.js', array('jquery'), '2.6.3', true);
+    wp_enqueue_script( 'base', $theme_dir.'/js/global.min.js', array('jquery', 'FlexSlider'), $theme_ver, true);
 
     if( dopt('d_slimbox_b') != '' )
         wp_enqueue_script( 'slimbox', $theme_dir.'/js/slimbox2.min.js', array('jquery'), $theme_ver, true);

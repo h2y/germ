@@ -24,7 +24,11 @@
       <header id="header" class="clearfix">
   		<div class="head">
   			<h1><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name')?></a></h1>
-  			<p class="desc yahei"><span><?php bloginfo('description')?>&nbsp;</span></p>
+  			<p class="desc yahei">
+                <span class="<?php echo dopt('d_saying_title')?'saying-title':''?>">
+                    <?php bloginfo('description')?>
+                </span>
+            </p>
   		</div>
 
             <?php

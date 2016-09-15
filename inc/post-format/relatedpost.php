@@ -44,7 +44,7 @@ if ( $i < $post_num ) {
     <?php $i++;
     } wp_reset_query();
 }
-if ( $i  == 0 )  echo '<li>没有相关文章!</li>';
+if ( $i  == 0 )  echo '<li>没有相关文章 :(</li>';
 ?>
     </ul>
 </div>

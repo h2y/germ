@@ -80,7 +80,7 @@ $options = array (
     array( "id" => "d_mail_b","type" => "checkbox" ),
     array( "id" => "d_mail","type" => "text","class" => "d_inp_short","std" => "mailto://i@hzy.pw"),
 
-  array( "name" => "新浪微博","type" => "tit"),
+    array( "name" => "新浪微博","type" => "tit"),
     array( "id" => "d_rss_sina_b","type" => "checkbox" ),
     array( "id" => "d_rss_sina","type" => "text","class" => "d_inp_short","std" => "http://weibo.com/moshel"),
 
@@ -117,11 +117,14 @@ $options = array (
     array( "name" => "文章底部显示文字","type" => "tit"),
     array( "id" => "d_post_bottom","type" => "textarea","std"=>'<p>本站所有文章均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.zh_TW" target="_blank" rel="nofollow">CC BY-SA 4.0</a> 进行许可, 转载请保留链接并遵守许可协议.</p>'),
 
-    array( "name" => "页底横幅公告","type" => "tit"),
-    array( "id" => "d_notice_bottom","type" => "textarea","std"=>"这部分代码显示在页面底部横幅内，推荐放入 p 标签"),
+    array( "name" => "顶部小标题随机名人名言", "type" => "tit"),
+    array( "id" => "d_saying_title", "type" => "checkbox" ),
 
     array( "name" => "页底横幅随机名人名言", "type" => "tit"),
     array( "id" => "d_saying_bottom", "type" => "checkbox" ),
+
+    array( "name" => "页底横幅公告","type" => "tit"),
+    array( "id" => "d_notice_bottom","type" => "textarea","std"=>"如果没有开启名人名言功能，这部分文字将显示在页面底部横幅内"),
 
     array( "name" => "流量统计代码","type" => "tit"),
     array( "id" => "d_track_b","type" => "checkbox" ),

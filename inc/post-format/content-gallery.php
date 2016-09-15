@@ -12,9 +12,9 @@
             <li class="comments_meta"><i class="fa fa-comments-o"></i> <?php
                 if(comments_open())
                   comments_popup_link('暂无评论', '1 条评论', '% 条评论');
-                else {  
+                else {
                   echo '<a href="';
-                  the_permalink();
+                  the_permalink();  
                   echo '">评论关闭</a>';
                 }
             ?></li>

@@ -37,10 +37,8 @@ get_header();
             <a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite post-love-link <?php if(isset($_COOKIE['mzw_ding_'.$post->ID])) echo ' done';?>" title="点个赞"><i class="fa fa-heart-o"></i>
             <span class="love-count">
                 <?php
-                  if( get_post_meta($post->ID,'mzw_ding',true) )
-                    echo get_post_meta($post->ID,'mzw_ding',true);
-                  else
-                    echo '0';
+                  $ding_num = get_post_meta($post->ID,'mzw_ding',true);
+                  echo $ding_num? $ding_num : '0';
                 ?>
             </span></a>
         </div>
@@ -52,5 +50,6 @@ get_header();
 
 <?php endwhile; endif;?>
 </div></div>
-    <?php get_sidebar(); ?>
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

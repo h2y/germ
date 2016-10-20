@@ -13,7 +13,7 @@ get_header('full-width');
             <li class="time_meta"><i class="fa fa-clock-o"></i> <?php the_time('Y-m-d H:i');?></li>
         </ul>
     </header>
-    <div class="entry-content" itemprop="description">
+    <div class="entry-content att-page" itemprop="description">
         <?php the_attachment_link( $post->ID, true ); ?>
         <?php the_content(); ?>
     </div>

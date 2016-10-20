@@ -71,7 +71,7 @@ jQuery.fn.typing = function(n) {
     }
 
     function refresh_saying() {
-        $.get('https://api.hzy.pw/saying/v1/youdao', function(json){
+        $.get('https://api.hzy.pw/saying/v1/ciba', function(json){
             text2 = json.cnFix;
         })
         .fail(function() {

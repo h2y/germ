@@ -129,11 +129,12 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
 
 
 //禁用REST API
+/*
 add_filter('rest_enabled', '_return_false');
 add_filter('rest_jsonp_enabled', '_return_false');
 remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
-
+*/
 
 //禁用embeds功能
 function disable_embeds_init() {

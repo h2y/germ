@@ -461,7 +461,6 @@ function post_thumbnail( $width = 180,$height = 180 ,$flag = true){
     return random <img> head by author name
 */
 function get_random_avatar($comment, $size=40) {
-    //print_r($comment);
     $comment_writer = $comment->comment_author;
     if (strtoupper($comment_writer) == "MOSHEL" || $comment_writer == "Mσѕнєℓ") {
         //custom for hzy.pw
@@ -475,9 +474,11 @@ function get_random_avatar($comment, $size=40) {
             $rnd_src = "https://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
     }
     else if ($comment->comment_type == "pingback")
-        $rnd_src = "https://robohash.org/$comment_writer?size=".$size."x".$size;
-    else //normal comments
-        $rnd_src = "https://robohash.org/$comment_writer?set=set3&size=".$size."x".$size."&bgset=bg2";
+        $rnd_src = get_template_directory_uri().'/images/robot.jpg';
+    else { //normal comments use svg
+        $rnd_src = "https://api.hzy.pw/avatar/v1/$size/$comment_writer";
+        return "<embed src='$rnd_src' class='avatar avatar-$size photo' width='$size' height='$size' type='image/svg+xml'/>";
+    }
 
     return "<img src='$rnd_src' class='avatar avatar-$size photo' height='$size' width='$size'>";
 }

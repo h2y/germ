@@ -141,9 +141,9 @@ function mzw_posts_list($orderby,$limit,$cat) {
         the_post();
         global $post;
         echo '<li class="clearfix">';
-        echo '<div class="post-thumb">';
+        echo '<div class="post-thumb"><a href="'.get_permalink().'">';
         echo post_thumbnail(45, 45, false);
-        echo '</div>';
+        echo '</a></div>';
         echo '<div class="post-right">';
         echo '<h3><a href="'.get_permalink().'">';
         the_title();
@@ -153,7 +153,8 @@ function mzw_posts_list($orderby,$limit,$cat) {
         mzw_post_views(' 访问量');
         echo '</span></div></div>';
         echo '</li>';
-    endwhile; wp_reset_query();
+    endwhile;
+    wp_reset_query();
     echo '</ul></div>';
 }
 
@@ -272,7 +273,7 @@ class mzw_admin extends WP_Widget {
         <img src="<?php bloginfo('template_directory'); ?>/images/bg_small.jpg">
         <div class="author-body">
             <div class="author_img">
-            <?php 
+            <?php
                 if(dopt('d_defaultavatar_b'))
                     echo get_avatar( get_the_author_email(), $size = '80' , '' );
                 else {

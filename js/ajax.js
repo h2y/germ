@@ -72,7 +72,7 @@ function ajaxloadPage(url, push, getData) {
         }
         ajaxisLoad = true;
         ajaxstarted = true;
-        var nohttp = url.replace("http://", "").replace("https://", ""),
+        var nohttp = url.replace(/^https?:\/\//, ""),
             firstsla = nohttp.indexOf("/"),
             pathpos = url.indexOf(nohttp),
             path = url.substring(pathpos + firstsla);
@@ -92,7 +92,7 @@ function ajaxloadPage(url, push, getData) {
                     type: "GET",
                     url: url,
                     data: getData,
-                    cache: false,
+                    cache: true,
                     dataType: "html",
                     success: function(data) {
                         ajaxisLoad = false;

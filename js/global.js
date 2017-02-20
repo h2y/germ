@@ -34,17 +34,19 @@ window.favorite_link_init();
 
 //网站描述 打字效果
 jQuery.fn.typing = function(n) {
+    var _this = $(this);
+    var rnd_saying = _this.hasClass('saying-title');
+    if(!rnd_saying) return;
+
     var options = {
         speed: 200,
         delSpeed: 100,
         show: 5000
     };
     $.extend(options, n);
-    var _this = $(this);
     var index = 1;
     var direction = 1;
     _this.css('border-right', '1px solid #000');
-    var rnd_saying = _this.hasClass('saying-title');
 
     var text = $(this).text().trim(),
         text2 = text;
@@ -52,11 +54,11 @@ jQuery.fn.typing = function(n) {
     setTimeout(init, options.speed);
     function init() {
         _this.html(text.substr(0, index));
-
-        if (index == text.length) {
+        
+        if (index >= text.length) {
             direction = -1;
             setTimeout(init, options.show);
-        } else if (index == 0) {
+        } else if (index <= 0) {
             direction = 1;
             setTimeout(init, options.speed);
             if(rnd_saying && text2!=text) {
@@ -67,6 +69,7 @@ jQuery.fn.typing = function(n) {
             setTimeout(init, options.speed);
         else
             setTimeout(init, options.delSpeed);
+
         index += direction;
     }
 

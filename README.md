@@ -12,17 +12,20 @@ WordPress Theme Germ
 - Ajax 评论
 - 全站 Ajax 浏览, 可开启/关闭
 - 汉字与拉丁字符间可自动添加空白间隙, 优化排版
-- 2 种文章格式: [相册](https://hzy.pw/p/1988), 说说
+- 2 种文章格式: [相册](https://hzy.pw/p/1988), [说说](https://hzy.pw/p/tag/%E8%AF%B4%E8%AF%B4)
 - 可选择全宽页面模版
 - 3 种特殊页面模板: [文章存档](https://hzy.pw/germ-archives), [标签云](https://hzy.pw/germ-tagspage) 和 [网站地图](https://hzy.pw/germ-sitemap)
 - 侧边栏悬停, 可自由设置
-- 支持 3 种侧边栏, 对应不同页面
+- 支持 3 种侧边栏, 自定义对应着不同的页面
 - 显示网页的二维码, 以供跳转至手机浏览
 - 文章点赞功能
 - 免插件实现文章访问量显示
 - 显示 WP 编辑器中默认隐藏的一些按钮
 - 禁用了 WP 中自带的谷歌字体, 为国内网站而优化
-- 重写了评论头像随机生成功能, 美观炫酷, 还彻底解决了 Gravatar 水土不服的问题
+- 重写了[评论头像](https://hzy.pw/liuyanban#comments)随机生成功能, 美观炫酷, 还彻底解决了 Gravatar 水土不服的问题 *
+- 页面顶部底部随机名人名言滚动效果 *
+
+_带有 * 的功能由[我的 API 服务](https://github.com/h2y/apis)免费为大家提供。_
 
 
 相关链接

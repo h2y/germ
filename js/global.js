@@ -73,6 +73,7 @@ jQuery.fn.typing = function(n) {
         index += direction;
     }
 
+    refresh_saying();
     function refresh_saying() {
         $.get('https://api.hzy.pw/saying/v1/ciba', function(json){
             text2 = json.cnFix;
@@ -81,7 +82,6 @@ jQuery.fn.typing = function(n) {
             setTimeout(refresh_saying, 2000);
         });
     }
-    if(rnd_saying) refresh_saying();
 };
 
 if($(window).width()>650)

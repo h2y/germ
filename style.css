@@ -306,7 +306,7 @@ pre {
 pre:hover {
     border: 1px dashed #4682b4;
     background-color: #eee;
-    transitiona: background-color .25s linear;
+    transition: background-color .25s linear;
     -webkit-transition: background-color .25s linear;
     -moz-transition: background-color .25s linear;
 }
@@ -442,7 +442,6 @@ blockquote cite a {
 #main-nav ul ul li {
     margin: 0;
     padding: 0;
-    float: none;
     position: relative;
     border-bottom: 1px solid #EBEBEB;
     display: inline;
@@ -519,13 +518,6 @@ blockquote cite a {
     display: none;
 }
 
-/* 暂且空白 */
-.screen-reader-text {}
-.sticky {}
-.gallery-caption {}
-.wp-caption, .wp-caption-text {}
-.bypostauthor {}
-
 #sidebar {
     float: right;
     width: 28%;
@@ -591,6 +583,17 @@ article.sticky h2.entry-name::before {
     content: "[置顶] ";
     color: #47c2dc;
 }
+
+
+article.page-404 {
+    padding: 1.5rem;
+}
+article.page-404 input.search {
+    margin: 1rem 0;
+    width: 25rem;
+    max-width: 90%;
+}
+
 
 .entry-header h2 {
     font-size: 1.5rem;
@@ -852,7 +855,7 @@ article.sticky h2.entry-name::before {
     height: 0;
     position: absolute;
     top: 0;
-    left: -8px;
+    left: -7px;
     width: 0;
 }
 .tag-links a:after {
@@ -862,7 +865,7 @@ article.sticky h2.entry-name::before {
     height: 4px;
     position: absolute;
     top: 8px;
-    left: -2px;
+    left: 0;
     width: 4px;
 }
 
@@ -888,7 +891,6 @@ article.sticky h2.entry-name::before {
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent #eee transparent;
-    _border-color: #eee white white;
     overflow: hidden;
     position: absolute;
     left: 30px;
@@ -1026,10 +1028,6 @@ article.sticky h2.entry-name::before {
 .btn-secondary {
     background: rgb(66, 184, 221);
  /* this is a light blue */
-}
-
-table {
-    //border: 1px solid #DDD;
 }
 
 table caption {

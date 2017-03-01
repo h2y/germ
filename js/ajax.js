@@ -7,8 +7,6 @@ var ajaxtrack_analytics = false;
 var ajaxscroll_top = true;
 
 var ajaxloading_code = '<div class="spinner"></div>';
-//var ajaxloading_code = '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>';
-var ajaxloading_error_code = '<div class="box"><p style="padding:20px;">页面加载中......</p></div>';
 var ajaxreloadDocumentReady = false;
 
 var ajaxisLoad = false;
@@ -22,8 +20,10 @@ jQuery(document).ready(function() {
 
 
 window.onpopstate = function(event) {
-    if (ajaxstarted === true && ajaxcheck_ignore(document.location.toString()) == true) {
-        ajaxloadPage(document.location.toString(), 1);
+    //location.reload();
+    if(ajaxstarted === true) {
+        var url = document.location.toString();
+        ajaxloadPage(url, true);
     }
 };
 
@@ -62,8 +62,7 @@ function ajaxloadPageInit(scope) {
     jQuery('.' + ajaxsearch_class).attr("action");
 }
 
-function ajaxloadPage(url, push, getData) {
-
+function ajaxloadPage(url, noPush, getData) {
     if (!ajaxisLoad) {
         if (ajaxscroll_top == true) {
             jQuery('html,body').animate({
@@ -76,13 +75,13 @@ function ajaxloadPage(url, push, getData) {
             firstsla = nohttp.indexOf("/"),
             pathpos = url.indexOf(nohttp),
             path = url.substring(pathpos + firstsla);
-
-        if (push != 1) {
-            if (typeof window.history.pushState == "function") {
+            
+        if(!noPush) {
+            if(history.pushState) {
                 var stateObj = {
                     foo: 1000 + Math.random() * 1001
                 };
-                history.pushState(stateObj, "ajax page loaded...", path);
+                history.pushState(stateObj, "", path);
             }
         }
         jQuery('body').append(ajaxloading_code);
@@ -155,11 +154,10 @@ function ajaxloadPage(url, push, getData) {
                         jQuery('#' + ajaxcontent).fadeTo("slow", 1, function() {});
                         jQuery('.spinner').remove();
                     },
+                    
                     error: function(jqXHR, textStatus, errorThrown) {
-                        ajaxisLoad = false;
-                        document.title = "Loading...";
-                        document.getElementById(ajaxcontent).innerHTML = ajaxloading_error_code;
-                        document.location.reload();
+                        document.location = url;
+                        return;
                     }
                 });
             });
@@ -196,15 +194,26 @@ function ajaxreload_code() {
         jQuery('#container').addClass('full-width');
     else
         jQuery('#container').removeClass('full-width');
+        
     if (typeof(text_autospace_init) === "function")
         window.text_autospace_init();
-    window.initgallary();
-    if (typeof(initSlim) === "function")
+        
+    if(window.initgallary)
+        window.initgallary();
+    
+    if (window.initSlim)
         window.initSlim();
-    window.favorite_link_init();
-    window.refresh_qrimg();
-    window.add_views();
+    
+    if(window.favorite_link_init)    
+        window.favorite_link_init();
+    
+    if(window.refresh_qrimg)
+        window.refresh_qrimg();
+    
+    if(window.add_views)
+        window.add_views();
 }
+
 
 function ajaxclick_code(thiss) {
     jQuery('ul.nav li').each(function() {
@@ -214,15 +223,13 @@ function ajaxclick_code(thiss) {
 }
 
 //背景变色
-var bodyChangeColor = function(){};
 var body_width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 if(body_width>650) {
     var rndColor = 200;
-    bodyChangeColor = function() {
+    var bodyChangeColor = function() {
         rndColor += 60 + Math.floor(241*Math.random());
         if(rndColor>=360) rndColor-=360;
         document.body.style.backgroundColor = 'hsl('+rndColor+',20%,70%)';
-        //setTimeout(changeColor, 15000);
     };
     bodyChangeColor();
 }

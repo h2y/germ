@@ -46,7 +46,8 @@ function ajaxloadPageInit(scope) {
             ajaxloadPage(this.href);
         }
 
-        bodyChangeColor();
+        if(typeof(bodyChangeColor)==='function')
+            bodyChangeColor();
     });
 
     jQuery('.' + ajaxsearch_class).each(function(index) {

@@ -446,19 +446,27 @@ $(document).on("click", ".commentnav a", function() {
     return false;
 });
 
+
+//开关手机边栏
 jQuery(document).on("click", ".open-nav", function() {
-    if (jQuery('body').hasClass('has-opened')) {
-        jQuery('body').removeClass('has-opened');
-        jQuery('#mobile-nav').delay(500).hide(100);
+    var $body = $(document.body);
+    if ($body.hasClass('has-opened')) {
+        $body.removeClass('has-opened');
+        $('#mobile-nav').hide('fast');
     } else {
-        jQuery('#mobile-nav').show();
-        jQuery('body').addClass('has-opened');
+        $('#mobile-nav').show('fast');
+        $body.addClass('has-opened');
     }
 });
-jQuery(document).on("touchstart", ".has-opened #wrap", function() {
-    jQuery('body').removeClass('has-opened');
-    jQuery('#mobile-nav').delay(500).hide(100);
-});
+
+//关闭手机边栏
+function closeMobileSidebar() {
+    $('body').removeClass('has-opened');
+    $('#mobile-nav').hide('fast');
+}
+jQuery(document).on("touchstart", ".has-opened #wrap", closeMobileSidebar);
+jQuery(document).on("click", "#mobile-nav li>a[href]", closeMobileSidebar);
+
 
 jQuery(document).ready(function($) {
     jQuery('.archives ul.archives-monthlisting').hide();

@@ -22,18 +22,20 @@ WordPress Theme Germ
 - 免插件实现文章访问量显示
 - 显示 WP 编辑器中默认隐藏的一些按钮
 - 禁用了 WP 中自带的谷歌字体, 为国内网站而优化
-- 重写了[评论头像](https://hzy.pw/liuyanban#comments)随机生成功能, 美观炫酷, 还彻底解决了 Gravatar 水土不服的问题 *
+- 重写了 [评论头像](https://hzy.pw/liuyanban#comments) 随机生成功能, 美观炫酷, 还彻底解决了 Gravatar 水土不服的问题 *
 - 页面顶部底部随机名人名言滚动效果 *
 
-_带有 * 的功能由[我的 API 服务](https://github.com/h2y/apis)免费为大家提供。_
+_带有 * 的功能由 [我的 API 服务器](https://github.com/h2y/apis) 免费为大家提供。_
 
 
 相关链接
 -------
 
-最新版下载链接 : <https://github.com/h2y/germ/archive/master.zip>
+**最新版下载链接 : <https://github.com/h2y/germ/archive/master.zip>**
 
-《项目版本命名规范》: <https://github.com/h2y/verson-desc/blob/master/README.md>
+欢迎大家反馈意见，我会尽力实现：<https://github.com/h2y/germ/issues>
+
+无 Github 账号请在这里反馈内容：<https://hzy.pw/p/1933#comments>
 
 
 注意事项

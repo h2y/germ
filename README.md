@@ -51,6 +51,4 @@ _带有 * 的功能由 [我的 API 服务器](https://github.com/h2y/apis) 免�
 
 主题预览请访问我的个人网站, 不会让你失望: <https://hzy.pw/>
 
-![](https://hzy.pw/wp-content/uploads/2016/02/QQ截图20160229191513.jpg)
-
-![](https://hzy.pw/wp-content/uploads/2016/02/吃我安利-百度脑图-在线web应用-–-中原驿站.png)
+![](https://hzy.pw/wp-content/uploads/2016/02/QQ%E6%88%AA%E5%9B%BE20160220211528.jpg)

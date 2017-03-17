@@ -442,6 +442,7 @@ blockquote cite a {
 #main-nav ul ul li {
     margin: 0;
     padding: 0;
+    float: none;
     position: relative;
     border-bottom: 1px solid #EBEBEB;
     display: inline;

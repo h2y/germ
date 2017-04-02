@@ -504,7 +504,7 @@ var $saying = $('#footer .saying-bottom');
 var saying_refresh = function() {
     $saying.html('<i class="fa fa-circle-o-notch fa-spin"></i> Refrshing...');
     $.get('https://api.hzy.pw/saying/v1/ciba', function(json) {
-        var html = '<i class="fa fa-paw" aria-hidden="true"></i> ' + json.cnFix;
+        var html = '<i class="fa fa-paw" aria-hidden="true"></i> ' + json.cn;
         $saying.hide().html(html).attr('title', json.en).fadeIn(1200);
     });
 };

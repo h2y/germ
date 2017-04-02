@@ -3,7 +3,6 @@
     Version: 1.2.3.21
     Theme URI: https://github.com/h2y/germ
     Description: An exquisite theme for you. Used PJAX and many advanced features. Besides, it looks well.
-    Tags: Blue,Light,Responsive Layout,Two Columns,Right Sidebar,Theme Options,Custom Menu,Post Formats,Threaded Comments
 
     Author: Moshel
     Author URI:	https://hzy.pw/
@@ -292,23 +291,12 @@ code {
 }
 
 pre {
-    display: block;
-    padding: 14px;
-    margin: 0px 0px 10px;
-    line-height: 18px;
-    font-size: 12px;
-    border: 1px solid #D9D9D9;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    border-radius: 3px;
-}
-
-pre:hover {
-    border: 1px dashed #4682b4;
-    background-color: #eee;
-    transition: background-color .25s linear;
-    -webkit-transition: background-color .25s linear;
-    -moz-transition: background-color .25s linear;
+    padding         : 1em;
+    overflow        : auto;
+    font-size       : 0.85em;
+    line-height     : 1.45;
+    background-color: hsl(0, 0%, 97%);
+    border-radius   : .5em;
 }
 
 blockquote {
@@ -340,7 +328,6 @@ blockquote cite a {
 
 #wrap {
     width: 90%;
-    /*max-width: 1080px;*/
     margin: 0 auto;
 }
 
@@ -371,6 +358,14 @@ blockquote cite a {
 
 #header .head {
     float: left;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+#header .head .desc {
+    position: absolute;
+    bottom: 0;
+    white-space: nowrap;
 }
 
 #header h1 {

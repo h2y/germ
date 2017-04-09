@@ -2177,6 +2177,10 @@ body.nav-open #wrap {
     position: absolute
 }
 
+body.nav-open.has-opened {
+	overflow: hidden;
+}
+
 #close-nav {
     height: 100%;
     width: 100%;
@@ -2281,7 +2285,8 @@ body.nav-open #wrap {
 
     #wrap {
         margin: 0;
-        width: 100%
+        width: 100%;
+        background-color: #eee
     }
 
     #main-nav {

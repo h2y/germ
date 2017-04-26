@@ -2153,9 +2153,9 @@ body.nav-open #wrap {
 .open-nav {
     display: block;
     position: absolute;
-    left: 5px;
-    top: 2px;
-    ;color: #fff;
+    left: 10px;
+    top: 5px;
+    color: #fff;
     font-size: 30px
 }
 
@@ -2272,7 +2272,7 @@ body.nav-open.has-opened {
         width: 100%
     }
 
-    #sideba {
+    #sidebar {
         display: none
     }
 }

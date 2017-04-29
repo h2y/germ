@@ -2372,6 +2372,11 @@ body.nav-open.has-opened {
     .comment-content {
         font-size: 12px
     }
+    
+    /* 长评论 回复按钮影响回复内容错位 fixed by Lensual*/
+    .comment-content > .comment-metadata {
+        margin-bottom: 4px;
+    }
 
     #author_info input[type="text"] {
         height: 25px;

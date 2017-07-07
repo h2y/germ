@@ -1,6 +1,6 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "1.2.4.22";
+    $theme_ver = "1.3.0.23";
     $theme_dir = get_template_directory_uri();
 
     //载入css

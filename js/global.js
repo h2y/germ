@@ -61,7 +61,7 @@ jQuery.fn.typing = function(n) {
         } else if (index <= 0) {
             direction = 1;
             setTimeout(init, options.speed);
-            if(rnd_saying && text2!=text) {
+            if(rnd_saying && text2!==text) {
                 text = text2;
                 refresh_saying();
             }
@@ -75,8 +75,8 @@ jQuery.fn.typing = function(n) {
 
     refresh_saying();
     function refresh_saying() {
-        $.get('https://api.hzy.pw/saying/v1/ciba', function(json){
-            text2 = json.cnFix;
+        $.get(window.ajax.theme_dir+'/inc/api_saying/ciba.php', function(json){
+            text2 = json.note;
         })
         .fail(function() {
             setTimeout(refresh_saying, 2000);
@@ -97,8 +97,7 @@ jQuery(document).ready(function($) {
         $(this).find('.sub-menu').stop().hide('normal');
     });
 
-    var $commentform = $('#commentform'),
-        txt1 = '<div id="loading"><i class="fa fa-circle-o-notch fa-spin"></i> 正在提交, 请稍候...</div>',
+    var txt1 = '<div id="loading"><i class="fa fa-circle-o-notch fa-spin"></i> 正在提交, 请稍候...</div>',
         txt2 = '<div id="error">#</div>',
         txt3 = '">提交成功',
         edt1 = ', 刷新页面之前可以<a rel="nofollow" class="comment-reply-link" href="#edit" onclick=\'return addComment.moveForm("',
@@ -109,10 +108,11 @@ jQuery(document).ready(function($) {
         $comments = $('#comments-title span'),
         $cancel = $('#cancel-comment-reply-link'),
         cancel_text = $cancel.text(),
-        $submit = $('#commentform #submit');
-    $submit.attr('disabled', false),
-        $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body'),
+        $submit = $('#commentform #submit'),
+        $body = (window.opera) ? (document.compatMode==="CSS1Compat" ? $('html') : $('body')) : $('html,body'),
         comm_array = [];
+
+    $submit.attr('disabled', false)
     comm_array.push('');
     $('#comment').after(txt1 + txt2);
     $('#loading').hide();
@@ -155,7 +155,7 @@ jQuery(document).ready(function($) {
                     new_htm = '" id="new_comm_' + num + '"></';
                     new_htm = (parent == '0') ? ('\n<ol style="clear:both;" class="commentlist' + new_htm + 'ol>') : ('\n<ul class="children' + new_htm + 'ul>');
                     ok_htm = '\n<div class="ajax-notice" id="success_' + num + txt3;
-                    div_ = (document.body.innerHTML.indexOf('div-comment-') == -1) ? '' : ((document.body.innerHTML.indexOf('li-comment-') == -1) ? 'div-' : '');
+                    div_ = (document.body.innerHTML.indexOf('div-comment-')===-1) ? '' : ((document.body.innerHTML.indexOf('li-comment-')===-1) ? 'div-' : '');
                     ok_htm = ok_htm.concat(edt1, div_, 'comment-', parent, '", "', parent, '", "respond", "', post, '", ', num, edt2);
                     ok_htm += '</span><span></span>\n';
                     ok_htm += '</div>\n';
@@ -163,9 +163,8 @@ jQuery(document).ready(function($) {
                     $('#new_comm_' + num).append(data);
                     $('#new_comm_' + num + ' li').append(ok_htm);
                     $body.animate({
-                            scrollTop: $('#new_comm_' + num).offset().top - 200
-                        },
-                        900);
+                        scrollTop: $('#new_comm_' + num).offset().top - 200
+                    }, 900);
                     countdown();
                     num++;
                     edit = '';
@@ -279,9 +278,8 @@ jQuery(document).ready(function($) {
             a = "",
             start = b.indexOf("<pre>"),
             end = b.indexOf("</pre>");
-        if (start > -1 && end > -1 && start < end) {
-            a = a
-        } else return;
+        if (!(start > -1 && end > -1 && start < end))
+            return;
         while (end != -1) {
             a += b.substring(0, start + 5) + b.substring(start + 5, end).replace(/<(?=[^>]*?>)/gi, "&lt;").replace(/>/gi, "&gt;");
             b = b.substring(end + 6, b.length);
@@ -298,54 +296,25 @@ jQuery(document).ready(function($) {
         }
     }
 
-    function grin(a) {
-        var b;
-        a = " " + a + " ";
-        if (document.getElementById("comment") && document.getElementById("comment").type == "textarea") {
-            b = document.getElementById("comment")
-        } else {
-            return false
-        }
-        if (document.selection) {
-            b.focus();
-            sel = document.selection.createRange();
-            sel.text = a;
-            b.focus()
-        } else if (b.selectionStart || b.selectionStart == "0") {
-            var c = b.selectionStart;
-            var d = b.selectionEnd;
-            var e = d;
-            b.value = b.value.substring(0, c) + a + b.value.substring(d, b.value.length);
-            e += a.length;
-            b.focus();
-            b.selectionStart = e;
-            b.selectionEnd = e
-        } else {
-            b.value += a;
-            b.focus()
-        }
-    }
 });
 
 $(document).on("click", ".post-share>a", function(e) {
     e.preventDefault();
     if ($(this).parent().hasClass('share-on')) {
-        $(this).parent().removeClass('share-on')
+        $(this).parent().removeClass('share-on');
         $(this).next().hide();
     } else {
-        $(this).parent().addClass('share-on')
+        $(this).parent().addClass('share-on');
         $(this).next().show();
     }
     return false;
 });
-$(document).on("click", ".post-share ul li a", function(e) {
-    $(this).parent().parent().parent().removeClass('share-on')
+$(document).on("click", ".post-share ul li a", function() {
+    $(this).parent().parent().parent().removeClass('share-on');
     $(this).parent().parent().hide();
 });
 
-var ajaxBinded = false;
-
-$(document).ready(function(e) {
+$(document).ready(function() {
     initgallary();
     refresh_qrimg();
     $('#qr').hover(function() {
@@ -421,7 +390,12 @@ $(document).on("click", ".commentnav a", function() {
         id = $(this).parent().data("postid"),
         page = 1,
         concelLink = $("#cancel-comment-reply-link");
-    /comment-page-/i.test(baseUrl) ? page = baseUrl.split(/comment-page-/i)[1].split(/(\/|#|&).*jQuery/)[0] : /cpage=/i.test(baseUrl) && (page = baseUrl.split(/cpage=/)[1].split(/(\/|#|&).*jQuery/)[0]);
+    if(/comment-page-/i.test(baseUrl) )
+        page = baseUrl.split(/comment-page-/i)[1].split(/(\/|#|&).*jQuery/)[0];
+    else {
+        /cpage=/i.test(baseUrl) &&
+        (page = baseUrl.split(/cpage=/)[1].split(/(\/|#|&).*jQuery/)[0]);
+    }
     concelLink.click();
     page = page.split('#')[0];
     var ajax_data = {
@@ -430,19 +404,17 @@ $(document).on("click", ".commentnav a", function() {
         um_page: page
     };
     commentsHolder.html('<div>loading..</div>');
-    jQuery("body, html").animate({
-            scrollTop: commentsHolder.offset().top - 150
-        },
-        1e3);
+    jQuery("body, html").animate({scrollTop: commentsHolder.offset().top - 150}, 'normal');
     //add loading
-    jQuery.post(ajax.ajax_url, ajax_data,
-        function(data) {
-            commentsHolder.html(data);
-            //remove loading
-            $("body, html").animate({
-                scrollTop: commentsHolder.offset().top - 50
-            }, 'normal');
-        });
+    jQuery.post(ajax.ajax_url, ajax_data, function(data) {
+        commentsHolder.html(data);
+        //remove loading
+        $("body, html").animate({
+            scrollTop: commentsHolder.offset().top - 50
+        }, 'normal');
+        if(window.jdenticon)
+            window.jdenticon();
+    });
     return false;
 });
 
@@ -469,11 +441,11 @@ jQuery(document).on("click", "#mobile-nav li>a[href]", closeMobileSidebar);
 
 
 jQuery(document).ready(function($) {
-    jQuery('.archives ul.archives-monthlisting').hide();
-    jQuery('.archives ul.archives-monthlisting:first').show();
+    $('.archives ul.archives-monthlisting').hide();
+    $('.archives ul.archives-monthlisting:first').show();
     //归档页面的开关
-    jQuery('.archives .m-title').click(function() {
-        jQuery(this).next().slideToggle('fast');
+    $('.archives .m-title').click(function() {
+        $(this).next().slideToggle('fast');
         return false;
     });
     add_views();
@@ -503,9 +475,9 @@ function add_views() {
 var $saying = $('#footer .saying-bottom');
 var saying_refresh = function() {
     $saying.html('<i class="fa fa-circle-o-notch fa-spin"></i> Refrshing...');
-    $.get('https://api.hzy.pw/saying/v1/ciba', function(json) {
-        var html = '<i class="fa fa-paw" aria-hidden="true"></i> ' + json.cn;
-        $saying.hide().html(html).attr('title', json.en).fadeIn(1200);
+    $.get(window.ajax.theme_dir+'/inc/api_saying/ciba.php', function(json) {
+        var html = '<i class="fa fa-paw" aria-hidden="true"></i> ' + json.note;
+        $saying.hide().html(html).attr('title', json.content).fadeIn(1200);
     });
 };
 if($saying.length) {

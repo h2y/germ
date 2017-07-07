@@ -17,6 +17,8 @@ function my_enqueue_scripts_frontpage() {
         wp_enqueue_script( 'ajax', $theme_dir.'/js/ajax.min.js', array('jquery'), $theme_ver, true);
     if( dopt('d_autospace_b') != '' )
         wp_enqueue_script( 'autospace', $theme_dir.'/js/autospace.min.js', array('jquery'), $theme_ver, true);
+    if( !dopt('d_defaultavatar_b') )
+        wp_enqueue_script( 'jdenticon', $theme_dir.'/js/jdenticon/jdenticon.min.js', false, $theme_ver, true);
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts_frontpage' );
 
@@ -36,7 +38,8 @@ add_action( 'wp_enqueue_scripts', 'echoJSvar' );
 function echoJSvar() {
     $data = array(
         'ajax_url' => admin_url('admin-ajax.php'),
-        'home' => home_url()
+        'home' => home_url(),
+        'theme_dir' => get_template_directory_uri()
     );
     //侧边栏飞行设置
     if( is_single() && dopt('d_sideroll_single_b') ){
@@ -175,15 +178,17 @@ register_deactivation_hook( __FILE__, 'disable_embeds_flush_rewrite_rules' );
 //禁用embeds功能 END
 
 
-// 结果只有一篇文章时自动跳转到文章
+// 搜索结果只有一篇文章时自动跳转到文章
 add_action('template_redirect', 'redirect_single_post');
 function redirect_single_post() {
     if (is_search()) {
         global $wp_query;
         if ($wp_query->post_count == 1 && $wp_query->max_num_pages == 1) {
-            wp_redirect( get_permalink( $wp_query->posts['0']->ID ) );
+            wp_redirect( get_permalink( $wp_query->posts['0']->ID) );
             exit;
-}	}   }
+        }
+    }
+}
 
 
 register_nav_menus(array('header-menu' => '顶部导航'));
@@ -353,24 +358,6 @@ function postformat_gallery(){
         }
 }
 
-/*
-function record_visitors(){
-    if (is_singular())
-    {
-      global $post;
-      $post_ID = $post->ID;
-      if($post_ID)
-      {
-          $post_views = (int)get_post_meta($post_ID, 'views', true);
-          if(!update_post_meta($post_ID, 'views', ($post_views+1)))
-          {
-            add_post_meta($post_ID, 'views', 1, true);
-          }
-      }
-    }
-}
-add_action('wp_head', 'record_visitors'); */
-
 //打印访问量
 function mzw_post_views($after=''){
   global $post;
@@ -408,17 +395,18 @@ function mzw_like() {
     $id = $_POST["um_id"];
     $action = $_POST["um_action"];
     if ( $action == 'ding'){
-    $mzw_raters = get_post_meta($id,'mzw_ding',true);
-    $expire = time() + 99999999;
-    $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false; // make cookies work with localhost
-    setcookie('mzw_ding_'.$id,$id,$expire,'/',$domain,false);
-    if (!$mzw_raters || !is_numeric($mzw_raters)) {
-        update_post_meta($id, 'mzw_ding', 1);
-    }
-    else {
+        $mzw_raters = get_post_meta($id,'mzw_ding',true);
+        $expire = time() + 99999999;
+        // make cookies work with localhost
+        $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;
+        setcookie('mzw_ding_'.$id,$id,$expire,'/',$domain,false);
+        if (!$mzw_raters || !is_numeric($mzw_raters)) {
+            update_post_meta($id, 'mzw_ding', 1);
+        }
+        else {
             update_post_meta($id, 'mzw_ding', ($mzw_raters + 1));
         }
-    echo get_post_meta($id,'mzw_ding',true);
+        echo get_post_meta($id,'mzw_ding',true);
     }
     die;
 }
@@ -476,8 +464,8 @@ function get_random_avatar($comment, $size=40) {
     else if ($comment->comment_type == "pingback")
         $rnd_src = get_template_directory_uri().'/images/robot.jpg';
     else { //normal comments use svg
-        $rnd_src = "https://api.hzy.pw/avatar/v1/$size/$comment_writer";
-        return "<embed src='$rnd_src' class='avatar avatar-$size photo' width='$size' height='$size' type='image/svg+xml'/>";
+        $userHash = sha1($comment_writer);
+        return "<svg class='avatar avatar-$size photo' width='$size' height='$size' data-jdenticon-hash='$userHash'></svg>";
     }
 
     return "<img src='$rnd_src' class='avatar avatar-$size photo' height='$size' width='$size'>";

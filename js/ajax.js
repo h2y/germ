@@ -1,5 +1,5 @@
 var ajaxcontent = 'content';
-var ajaxsearch_class = 'searchform';
+//var ajaxsearch_class = 'searchform';
 var ajaxignore_string = new String('#, /wp-, .pdf, .zip, .rar, /share');
 var ajaxignore = ajaxignore_string.split(', ');
 
@@ -12,14 +12,13 @@ var ajaxreloadDocumentReady = false;
 var ajaxisLoad = false;
 var ajaxstarted = false;
 var ajaxsearchPath = null;
-var ajaxua = jQuery.browser;
 
 jQuery(document).ready(function() {
     ajaxloadPageInit("");
 });
 
 
-window.onpopstate = function(event) {
+window.onpopstate = function() {
     //location.reload();
     if(ajaxstarted === true) {
         var url = document.location.toString();
@@ -29,16 +28,12 @@ window.onpopstate = function(event) {
 
 function ajaxloadPageInit(scope) {
     jQuery(scope + "a").click(function(event) {
-        if (ajaxcheck_ignore(this.href, this) == true) {
+        if (ajaxcheck_ignore(this.href, this)) {
             event.preventDefault();
 
             document.title = 'Loading...';
 
             this.blur();
-
-            var caption = this.title || this.name || "";
-
-            var group = this.rel || false;
 
             try {
                 ajaxclick_code(this);
@@ -50,22 +45,11 @@ function ajaxloadPageInit(scope) {
             bodyChangeColor();
     });
 
-    jQuery('.' + ajaxsearch_class).each(function(index) {
-        if (jQuery(this).attr("action")) {
-            ajaxsearchPath = jQuery(this).attr("action");
-            jQuery(this).submit(function() {
-                submitSearch(jQuery(this).serialize());
-                return false;
-            });
-        }
-    });
-
-    jQuery('.' + ajaxsearch_class).attr("action");
 }
 
 function ajaxloadPage(url, noPush, getData) {
     if (!ajaxisLoad) {
-        if (ajaxscroll_top == true) {
+        if (ajaxscroll_top) {
             jQuery('html,body').animate({
                 scrollTop: 0
             }, 1500);
@@ -105,9 +89,9 @@ function ajaxloadPage(url, noPush, getData) {
                             jQuery(document).attr('title', (jQuery("<div/>").html(newTitle).text()));
                         }
 
-                        if (ajaxtrack_analytics == true) {
-                            if (typeof _gaq != "undefined") {
-                                if (typeof getData == "undefined") {
+                        if (ajaxtrack_analytics) {
+                            if (typeof _gaq !== "undefined") {
+                                if (typeof getData === "undefined") {
                                     getData = "";
                                 } else {
                                     getData = "?" + getData;
@@ -129,7 +113,7 @@ function ajaxloadPage(url, noPush, getData) {
                             temp = data.split('</div>')[0];
                             i = 0;
                             pos = temp.indexOf("<div");
-                            while (pos != -1) {
+                            while (pos !== -1) {
                                 i++;
                                 pos = temp.indexOf("<div", pos + 1);
                             }
@@ -138,37 +122,25 @@ function ajaxloadPage(url, noPush, getData) {
                             data = data.substring(data.indexOf('</div>') + 6);
                         }
                         document.getElementById(ajaxcontent).innerHTML = output;
-                        jQuery('#' + ajaxcontent).css("position", "absolute");
-                        jQuery('#' + ajaxcontent).css("left", "20000px");
-                        jQuery('#' + ajaxcontent).show();
+                        jQuery('#' + ajaxcontent).css({position:'absolute',left:'20000px'}).show();
                         ajaxloadPageInit("#" + ajaxcontent + " ");
 
-                        if (ajaxreloadDocumentReady == true) {
+                        if (ajaxreloadDocumentReady) {
                             jQuery(document).trigger("ready");
                         }
                         try {
                             ajaxreload_code();
                         } catch (err) {}
-                        jQuery('#' + ajaxcontent).hide();
-                        jQuery('#' + ajaxcontent).css("position", "");
-                        jQuery('#' + ajaxcontent).css("left", "");
-                        jQuery('#' + ajaxcontent).fadeTo("slow", 1, function() {});
+                        jQuery('#' + ajaxcontent).hide().css({position:'',left:''}).fadeTo("slow", 1);
                         jQuery('.spinner').remove();
                     },
                     
-                    error: function(jqXHR, textStatus, errorThrown) {
+                    error: function() {
                         document.location = url;
-                        return;
                     }
                 });
             });
         });
-    }
-}
-
-function submitSearch(param) {
-    if (!ajaxisLoad) {
-        ajaxloadPage(ajaxsearchPath, 0, param);
     }
 }
 
@@ -196,7 +168,7 @@ function ajaxreload_code() {
     else
         jQuery('#container').removeClass('full-width');
         
-    if (typeof(text_autospace_init) === "function")
+    if (window.text_autospace_init)
         window.text_autospace_init();
         
     if(window.initgallary)
@@ -213,6 +185,9 @@ function ajaxreload_code() {
     
     if(window.add_views)
         window.add_views();
+
+    if(window.jdenticon)
+        window.jdenticon();
 }
 
 

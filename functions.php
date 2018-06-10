@@ -1,6 +1,6 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "1.3.0.23";
+    $theme_ver = "1.3.1.24";
     $theme_dir = get_template_directory_uri();
 
     //载入css
@@ -450,11 +450,7 @@ function post_thumbnail( $width = 180,$height = 180 ,$flag = true){
 */
 function get_random_avatar($comment, $size=40) {
     $comment_writer = $comment->comment_author;
-    if (strtoupper($comment_writer) == "MOSHEL" || $comment_writer == "Mσѕнєℓ") {
-        //custom for hzy.pw
-        $rnd_src = dopt('d_myavatar');
-    }
-    else if( $comment->comment_author_email && $comment->comment_author_email == get_the_author_email() ) {
+    if( $comment->comment_author_email && $comment->comment_author_email == get_the_author_meta('email') ) {
         //writer's reply
         if(dopt('d_myavatar') != '')
             $rnd_src = dopt('d_myavatar');
@@ -688,83 +684,67 @@ function specs_getfirstchar($s0){
     if($asc >= -11055 and $asc <= -10247) return "Z";
     return null;
 }
-function specs_pinyin($zh){
-    $ret = "";
-    $s1 = iconv("UTF-8","gb2312", $zh);
-    $s2 = iconv("gb2312","UTF-8", $s1);
-    if($s2 == $zh){$zh = $s1;}
-    $s1 = substr($zh,$i,1);
-    $p = ord($s1);
-    if($p > 160){
-        $s2 = substr($zh,$i++,2);
-        $ret .= specs_getfirstchar($s2);
-    }else{
-        $ret .= $s1;
-    }
-    return strtoupper($ret);
-}
 
 function specs_show_tags() {
-    //if(!$output = get_option('specs_tags_list')){
-        $categories = get_terms( 'post_tag', array(
-            'orderby'    => 'count',
-            'hide_empty' => 1
-         ) );
-        foreach($categories as $v){
-            for($i = 65; $i <= 90; $i++){
-                if(specs_pinyin($v->name) == chr($i)){
-                    $r[chr($i)][] = $v;
-                }
+    $categories = get_terms( 'post_tag', array(
+        'orderby'    => 'count',
+        'hide_empty' => 1
+     ) );
+
+    $r = [];
+	  for($i = 65; $i <= 90; $i++)
+		    $r[chr($i)] = [];
+	  $r['#'] = [];
+
+    foreach($categories as $v){
+        $i = specs_getfirstchar($v->name);
+        if( ($i>="A" && $i<="Z") )
+	          $r[$i][] = $v;
+        else
+	          $r['#'][] = $v;
+    }
+
+    $output = "<ul id='tag-letter'>";
+    for($i=65; $i<=90; $i++){
+        $tagi = $r[chr($i)];
+        if( sizeof($tagi) )
+            $output .= "<li><a href='#".chr($i)."'>".chr($i)."</a></li>";
+        else
+            $output .= "<li><a class='none' href='javascript:;'>".chr($i)."</a></li>";
+    }
+
+    $tagi = $r['#'];
+    if(sizeof($tagi)){
+        $output .= "<li><a href='#other'>#</a></li>";
+    }else{
+        $output .= "<li><a class='none' href='javascript:;'>#</a></li>";
+    }
+
+    $output .= "</ul>";
+    $output .= "<ul id='all-tags'>";
+    for($i=65;$i<=90;$i++){
+        $tagi = $r[chr($i)];
+        if(sizeof($tagi)){
+            $output .= "<li id='".chr($i)."'><h4 class='tag-name'>".chr($i)."</h4><div class='tag-list'>";
+            foreach($tagi as $tag){
+                $output .= "<a href='".get_tag_link($tag->term_id)."'>".$tag->name."<span class='number'>(".specs_post_count_by_tag($tag->term_id).")</span></a>";
             }
-            for($i=48;$i<=57;$i++){
-                if(specs_pinyin($v->name) == chr($i)){
-                    $r[chr($i)][] = $v;
-                }
-            }
+            $output .= '</div>';
         }
-        ksort($r);
-        $output = "<ul id='tag-letter'>";
-        for($i=65;$i<=90;$i++){
-            $tagi = $r[chr($i)];
-            if(is_array($tagi)){
-                $output .= "<li><a href='#".chr($i)."'>".chr($i)."</a></li>";
-            }else{
-                $output .= "<li><a class='none' href='javascript:;'>".chr($i)."</a></li>";
-            }
+    }
+
+    $tagi = $r['#'];
+    if(sizeof($tagi)){
+        $output .= "<li id='other'><h4 class='tag-name'>#</h4><div class='tag-list'>";
+        foreach($tagi as $tag){
+            $output .= "<a href='".get_tag_link($tag->term_id)."'>".$tag->name."<span class='number'>(".specs_post_count_by_tag($tag->term_id).")</span></a>";
         }
-        for($i=48;$i<=57;$i++){
-            $tagi = $r[chr($i)];
-            if(is_array($tagi)){
-                $output .= "<li><a href='#".chr($i)."'>".chr($i)."</a></li>";
-            }else{
-                $output .= "<li><a class='none' href='javascript:;'>".chr($i)."</a></li>";
-            }
-        }
-        $output .= "</ul>";
-        $output .= "<ul id='all-tags'>";
-        for($i=65;$i<=90;$i++){
-            $tagi = $r[chr($i)];
-            if(is_array($tagi)){
-                $output .= "<li id='".chr($i)."'><h4 class='tag-name'>".chr($i)."</h4><div class='tag-list'>";
-                foreach($tagi as $tag){
-                    $output .= "<a href='".get_tag_link($tag->term_id)."'>".$tag->name."<span class='number'>(".specs_post_count_by_tag($tag->term_id).")</span></a>";
-                }
-                $output .= '</div>';
-            }
-        }
-        for($i=48;$i<=57;$i++){
-            $tagi = $r[chr($i)];
-            if(is_array($tagi)){
-                $output .= "<li id='".chr($i)."'><h4 class='tag-name'>".chr($i)."</h4><div class='tag-list'>";
-                foreach($tagi as $tag){
-                    $output .= "<a href='".get_tag_link($tag->term_id)."'>".$tag->name."<span class='number'>(".specs_post_count_by_tag($tag->term_id).")</span></a>";
-                }
-                $output .= '</div>';
-            }
-        }
-        $output .= "</ul>";
-        update_option('specs_tags_list', $output);
-    //}
+        $output .= '</div>';
+    }
+
+    $output .= "</ul>";
+    update_option('specs_tags_list', $output);
+
     echo $output;
 }
 

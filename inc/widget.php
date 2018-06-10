@@ -52,9 +52,8 @@ add_action('widgets_init','mzw_sidebar');
 add_action('widgets_init', create_function('', 'return register_widget("mzw_siderbar_post");'));
 
 class mzw_siderbar_post extends WP_Widget {
-    function mzw_siderbar_post() {
-        global $prename;
-        $this->WP_Widget('mzw_siderbar_post', 'Germ 文章列表', array( 'description' => '多功能文章列表，可按时间、评论、随机排序' ));
+    function __construct() {
+        parent::__construct('mzw_siderbar_post', 'Germ 文章列表', array( 'description' => '多功能文章列表，可按时间、评论、随机排序') );
     }
     function widget($args, $instance) {
         extract($args, EXTR_SKIP);
@@ -163,9 +162,8 @@ function mzw_posts_list($orderby,$limit,$cat) {
 add_action('widgets_init', create_function('', 'return register_widget("mzw_siderbar_tags");'));
 
 class mzw_siderbar_tags extends WP_Widget {
-    function mzw_siderbar_tags() {
-        global $prename;
-        $this->WP_Widget('mzw_siderbar_tags', 'Germ 标签云', array( 'description' => '适配主题的标签云' ));
+    function __construct() {
+	      parent::__construct('mzw_siderbar_tags', 'Germ 标签云', array( 'description' => '适配主题的标签云' ));
     }
     function widget($args, $instance) {
         extract($args, EXTR_SKIP);
@@ -231,9 +229,9 @@ class mzw_siderbar_tags extends WP_Widget {
 add_action( 'widgets_init', create_function('', 'return register_widget("mzw_search");'));
 
 class mzw_search extends WP_Widget {
-    function mzw_search() {
+    function __construct() {
         $widget_ops = array( 'classname' => 'mzw_search', 'description' => '站内搜索' );
-        $this->WP_Widget( 'mzw_search', 'Germ 站内搜索', $widget_ops, $control_ops );
+	      parent::__construct( 'mzw_search', 'Germ 站内搜索', $widget_ops );
     }
 
     function widget( $args, $instance ) {
@@ -261,9 +259,9 @@ class mzw_search extends WP_Widget {
 add_action( 'widgets_init', create_function('', 'return register_widget("mzw_admin");'));
 
 class mzw_admin extends WP_Widget {
-    function mzw_admin() {
+    function __construct() {
         $widget_ops = array( 'classname' => 'mzw_admin', 'description' => '显示作者的信息机个人简介' );
-        $this->WP_Widget( 'mzw_admin', 'Germ 作者信息', $widget_ops, $control_ops );
+	      parent::__construct( 'mzw_admin', 'Germ 作者信息', $widget_ops );
     }
 
     function widget( $args, $instance ) {
@@ -275,7 +273,7 @@ class mzw_admin extends WP_Widget {
             <div class="author_img">
             <?php
                 if(dopt('d_defaultavatar_b'))
-                    echo get_avatar( get_the_author_email(), $size = '80' , '' );
+                    echo get_avatar( get_the_author_meta('email'), $size = '80' , '' );
                 else {
                     $head_src = dopt('d_myavatar') ? dopt('d_myavatar') : "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
                     echo '<img src="'.$head_src.'" class="avatar avatar-80 photo" height="80" width="80">';

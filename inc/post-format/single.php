@@ -66,7 +66,7 @@
 <div class="post-author box clearfix">
     <?php
         if(dopt('d_defaultavatar_b'))
-            echo get_avatar( get_the_author_email(), $size = '80' , '' );
+            echo get_avatar( get_the_author_meta('email'), $size = '80' , '' );
         else {
             $head_src = dopt('d_myavatar') ? dopt('d_myavatar') : "http://q.qlogo.cn/qqapp/100229475/F1260A6CECA521F6BE517A08C4294D8A/100";
             echo '<img src="'.$head_src.'" class="avatar avatar-80 photo" height="80" width="80">';

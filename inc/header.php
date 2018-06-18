@@ -10,8 +10,10 @@
 
 <body class="nav-open">
 <?php
+    $home_url = esc_url( home_url() ) ;
+
     if( is_mobile() ) {
-    	echo '<div id="mobile-nav" class="f12 yahei"><form class="mm-search" action="'.get_bloginfo('url').'" method="get" role="search"><input type="text" autocomplete="off" placeholder="Search" name="s" value=""><input id="mobilesubmit" type="submit" value="Search"></form> ';
+    	echo '<div id="mobile-nav" class="f12 yahei"><form class="mm-search" action="'.$home_url.'" method="get" role="search"><input type="text" autocomplete="off" placeholder="Search" name="s" value=""><input id="mobilesubmit" type="submit" value="Search"></form> ';
     	if(function_exists('wp_nav_menu')) {
     		wp_nav_menu(array( 'theme_location' => 'header-menu','container' => 'ul', 'menu_class' => 'nav'));
     	}
@@ -23,7 +25,7 @@
       <div id="preheader"></div>
       <header id="header" class="clearfix">
   		<div class="head">
-  			<h1><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name')?></a></h1>
+  			<h1><a href="<?=$home_url?>"><?php bloginfo('name')?></a></h1>
   			<p class="desc yahei">
                 <span class="<?php echo dopt('d_saying_title')?'saying-title':''?>">
                     <?php bloginfo('description')?>

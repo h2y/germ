@@ -1,5 +1,6 @@
 ﻿/*!
     Theme Name:	Germ
+    Text Domain: Germ
     Version: 1.3.1.24
     Theme URI: https://github.com/h2y/germ
     Description: An exquisite theme for you. Used PJAX and many advanced features. Besides, it looks well.
@@ -19,7 +20,9 @@ html {
 }
 
 /*光标样式*/
-body{cursor: url(images/normal.cur),default;}
+body{
+    cursor: url(images/normal.cur),default;
+}
 a, button, input[type="submit"] {
     cursor: url(images/link.cur),pointer;
 }
@@ -37,6 +40,7 @@ img {
     -ms-interpolation-mode: bicubic;
 }
 
+.wp-caption, .wp-caption-text, .screen-reader-text, .gallery-caption, .bypostauthor {}
 
 .alignleft {
     float: left;

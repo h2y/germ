@@ -111,13 +111,13 @@ class mzw_siderbar_post extends WP_Widget {
             <label>
                 分类限制：
                 <a style="font-weight:bold;color:#f60;text-decoration:none;" href="javascript:;" title="格式：1,2 &nbsp;表限制ID为1,2分类的文章&#13;格式：-1,-2 &nbsp;表排除分类ID为1,2的文章&#13;也可直接写1或者-1；注意逗号须是英文的">？</a>
-                <input class="widefat" id="<?php echo $this->get_field_id('cat'); ?>" name="<?php echo $this->get_field_name('cat'); ?>" type="text" value="<?php echo attribute_escape($cat); ?>" size="24" />
+                <input class="widefat" id="<?php echo $this->get_field_id('cat'); ?>" name="<?php echo $this->get_field_name('cat'); ?>" type="text" value="<?php echo esc_attr($cat); ?>" size="24" />
             </label>
         </p>
         <p>
             <label>
                 显示数目：
-                <input class="widefat" id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="number" value="<?php echo attribute_escape($limit); ?>" size="24" />
+                <input class="widefat" id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="number" value="<?php echo esc_attr($limit); ?>" size="24" />
             </label>
         </p>
 <?php
@@ -215,7 +215,7 @@ class mzw_siderbar_tags extends WP_Widget {
         <p>
             <label>
                 显示数目：
-                <input class="widefat" id="<?php echo $this->get_field_id('tag_limit'); ?>" name="<?php echo $this->get_field_name('tag_limit'); ?>" type="number" value="<?php echo attribute_escape($tag_limit); ?>" size="24" />
+                <input class="widefat" id="<?php echo $this->get_field_id('tag_limit'); ?>" name="<?php echo $this->get_field_name('tag_limit'); ?>" type="number" value="<?php echo esc_attr($tag_limit); ?>" size="24" />
             </label>
         </p>
         <p>会优先显示文章数量最多的标签.</p>
@@ -268,7 +268,7 @@ class mzw_admin extends WP_Widget {
         extract( $args );
         echo $before_widget;
         ?>
-        <img src="<?php bloginfo('template_directory'); ?>/images/bg_small.jpg">
+        <img src="<?= esc_url( get_template_directory_uri() ) ?>/images/bg_small.jpg">
         <div class="author-body">
             <div class="author_img">
             <?php

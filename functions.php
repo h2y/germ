@@ -417,12 +417,15 @@ add_theme_support( 'post-thumbnails' );
 
 function post_thumbnail( $width = 180,$height = 180 ,$flag = true){
     global $post;
+	  $template_url = esc_url( get_template_directory_uri() );
+
     if( has_post_thumbnail() ){
         $timthumb_src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'full');
+
         if($flag) {
-            $post_timthumb = '<a href="'.get_permalink().'"><img src="'.get_bloginfo("template_url").'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" title="'.get_the_title().'"/></a>';
+            $post_timthumb = '<a href="'.get_permalink().'"><img src="'.$template_url.'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" title="'.get_the_title().'"/></a>';
         } else {
-            $post_timthumb = '<img src="'.get_bloginfo("template_url").'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" title="'.get_the_title().'"/>';
+            $post_timthumb = '<img src="'.$template_url.'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" title="'.get_the_title().'"/>';
         }
         return $post_timthumb;
     } else {
@@ -431,15 +434,15 @@ function post_thumbnail( $width = 180,$height = 180 ,$flag = true){
         $n = count($strResult[1]);
         if($n > 0){
             if($flag) {
-                return '<a href="'.get_permalink().'"><img src="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/></a>';
+                return '<a href="'.get_permalink().'"><img src="'.$template_url.'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/></a>';
             } else {
-                return '<img src="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/>';
+                return '<img src="'.$template_url.'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/>';
             }
         } else {
             if($flag) {
-                return '<a href="'.get_permalink().'"><img class="rounded" src="'.get_bloginfo('template_url').'/images/random/'.rand(1,7).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'"/></a>';
+                return '<a href="'.get_permalink().'"><img class="rounded" src="'.$template_url.'/images/random/'.rand(1,7).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'"/></a>';
             } else {
-                return '<img class="rounded" src="'.get_bloginfo('template_url').'/images/random/'.rand(1,7).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'" width="'.$width.'" height="'.$height.'"/>';
+                return '<img class="rounded" src="'.$template_url.'/images/random/'.rand(1,7).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'" width="'.$width.'" height="'.$height.'"/>';
             }
         }
     }
@@ -781,7 +784,7 @@ function comment_mail_notify($comment_id) {
     <p><strong>' . trim($comment->comment_author) . ' 给你的回复是:</strong><br />'
     . trim($comment->comment_content) . '<br /></p>
     <p>你可以点击此链接 <a href="' . htmlspecialchars(get_comment_link($parent_id)) . '">查看完整内容</a></p><br />
-    <p>欢迎再次来访<a href="' . get_option('home') . '">' . get_option('blogname') . '</a></p>
+    <p>欢迎再次来访<a href="' . home_url() . '">' . get_option('blogname') . '</a></p>
     <p>(此邮件为系统自动发送，请勿直接回复.)</p>
     </div>';
     $from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
@@ -805,7 +808,6 @@ function dimox_breadcrumbs() {
   if ( !is_home() && !is_front_page() || is_paged() ) {
     echo '<div id="crumbs">';
     global $post;
-    $home = get_bloginfo('url');
     echo '' . $name . ' ' . $delimiter . ' ';
     if ( is_category() ) {
       global $wp_query;

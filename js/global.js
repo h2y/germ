@@ -116,69 +116,68 @@ jQuery(document).ready(function($) {
     $('#comment').after(txt1 + txt2);
     $('#loading').hide();
     $('#error').hide();
-    $(document).on("submit", "#commentform",
-        function() {
-            if (edit) $('#comment').after('<input type="text" name="edit_id" id="edit_id" value="' + edit + '" style="display:none;" />');
-            editcode();
-            $submit.attr('disabled', true).fadeTo('slow', 0.5);
-            $('#loading').slideDown();
-            $.ajax({
-                url: ajax.ajax_url,
-                data: $(this).serialize() + "&action=ajax_comment",
-                type: $(this).attr('method'),
-                error: function(request) {
-                    $('#loading').hide();
-                    $("#error").slideDown().html(request.responseText);
-                    setTimeout(function() {
-                            $submit.attr('disabled', false).fadeTo('slow', 1);
-                            $('#error').slideUp();
-                        },
-                        3000);
-                },
-                success: function(data) {
-                    $('#loading').hide();
-                    comm_array.push($('#comment').val());
-                    $('textarea').each(function() {
-                        this.value = ''
-                    });
-                    var t = addComment,
-                        cancel = t.I('cancel-comment-reply-link'),
-                        temp = t.I('wp-temp-form-div'),
-                        respond = t.I(t.respondId),
-                        post = t.I('comment_post_ID').value,
-                        parent = t.I('comment_parent').value;
-                    if (!edit && $comments.length) {
-                        n = parseInt($comments.text().match(/\d+/));
-                        $comments.text($comments.text().replace(n, n + 1));
-                    }
-                    new_htm = '" id="new_comm_' + num + '"></';
-                    new_htm = (parent == '0') ? ('\n<ol style="clear:both;" class="commentlist' + new_htm + 'ol>') : ('\n<ul class="children' + new_htm + 'ul>');
-                    ok_htm = '\n<div class="ajax-notice" id="success_' + num + txt3;
-                    div_ = (document.body.innerHTML.indexOf('div-comment-')===-1) ? '' : ((document.body.innerHTML.indexOf('li-comment-')===-1) ? 'div-' : '');
-                    ok_htm = ok_htm.concat(edt1, div_, 'comment-', parent, '", "', parent, '", "respond", "', post, '", ', num, edt2);
-                    ok_htm += '</span><span></span>\n';
-                    ok_htm += '</div>\n';
-                    $('#respond').before(new_htm);
-                    $('#new_comm_' + num).append(data);
-                    $('#new_comm_' + num + ' li').append(ok_htm);
-                    $body.animate({
-                        scrollTop: $('#new_comm_' + num).offset().top - 200
-                    }, 900);
-                    countdown();
-                    num++;
-                    edit = '';
-                    $('*').remove('#edit_id');
-                    cancel.style.display = 'none';
-                    cancel.onclick = null;
-                    t.I('comment_parent').value = '0';
-                    if (temp && respond) {
-                        temp.parentNode.insertBefore(respond, temp);
-                        temp.parentNode.removeChild(temp)
-                    }
+    $(document).on("submit", "#commentform", function() {
+        if (edit) $('#comment').after('<input type="text" name="edit_id" id="edit_id" value="' + edit + '" style="display:none;" />');
+        editcode();
+        $submit.attr('disabled', true).fadeTo('slow', 0.5);
+        $('#loading').slideDown();
+        $.ajax({
+            url: ajax.ajax_url,
+            data: $(this).serialize() + "&action=ajax_comment",
+            type: $(this).attr('method'),
+            error: function(request) {
+                $('#loading').hide();
+                $("#error").slideDown().html(request.responseText);
+                setTimeout(function() {
+                        $submit.attr('disabled', false).fadeTo('slow', 1);
+                        $('#error').slideUp();
+                    },
+                    3000);
+            },
+            success: function(data) {
+                $('#loading').hide();
+                comm_array.push($('#comment').val());
+                $('textarea').each(function() {
+                    this.value = ''
+                });
+                var t = addComment,
+                    cancel = t.I('cancel-comment-reply-link'),
+                    temp = t.I('wp-temp-form-div'),
+                    respond = t.I(t.respondId),
+                    post = t.I('comment_post_ID').value,
+                    parent = t.I('comment_parent').value;
+                if (!edit && $comments.length) {
+                    n = parseInt($comments.text().match(/\d+/));
+                    $comments.text($comments.text().replace(n, n + 1));
                 }
-            });
-            return false;
+                new_htm = '" id="new_comm_' + num + '"></';
+                new_htm = (parent == '0') ? ('\n<ol style="clear:both;" class="commentlist' + new_htm + 'ol>') : ('\n<ul class="children' + new_htm + 'ul>');
+                ok_htm = '\n<div class="ajax-notice" id="success_' + num + txt3;
+                div_ = (document.body.innerHTML.indexOf('div-comment-')===-1) ? '' : ((document.body.innerHTML.indexOf('li-comment-')===-1) ? 'div-' : '');
+                ok_htm = ok_htm.concat(edt1, div_, 'comment-', parent, '", "', parent, '", "respond", "', post, '", ', num, edt2);
+                ok_htm += '</span><span></span>\n';
+                ok_htm += '</div>\n';
+                $('#respond').before(new_htm);
+                $('#new_comm_' + num).append(data);
+                $('#new_comm_' + num + ' li').append(ok_htm);
+                $body.animate({
+                    scrollTop: $('#new_comm_' + num).offset().top - 200
+                }, 900);
+                countdown();
+                num++;
+                edit = '';
+                $('*').remove('#edit_id');
+                cancel.style.display = 'none';
+                cancel.onclick = null;
+                t.I('comment_parent').value = '0';
+                if (temp && respond) {
+                    temp.parentNode.insertBefore(respond, temp);
+                    temp.parentNode.removeChild(temp)
+                }
+            }
         });
+        return false;
+    });
     addComment = {
         moveForm: function(commId, parentId, respondId, postId, num) {
             var t = this,
@@ -294,7 +293,6 @@ jQuery(document).ready(function($) {
             }
         }
     }
-
 });
 
 $(document).on("click", ".post-share>a", function(e) {
@@ -371,7 +369,7 @@ if (asr_1 !== -24 && asr_2 !== -38 && rolllen !== 0 && $('#sidebar').css('displa
             sidebar_flying = false;
         }
     })
-};
+}
 
 $(document).on("click", ".commentnav a", function() {
     var baseUrl = $(this).attr("href"),
@@ -472,4 +470,22 @@ var saying_refresh = function() {
 if($saying.length) {
     saying_refresh();
     $saying.click(saying_refresh);
+}
+
+
+{
+    // 留言框回复按钮
+
+    $('.reply > a.comment-reply-link').click(function (e) {
+        const target = e.target;
+        $('#commentform #comment_parent').val(target.dataset.commentid);
+        $('#cancel-comment-reply-link').text('取消'+target.getAttribute('aria-label')).show('normal');
+        $('#commentform .text_area').focus();
+    });
+
+    $('#cancel-comment-reply-link').click(function(e) {
+        // 取消回复
+        $(e.target).hide('normal');
+        $('#commentform #comment_parent').val(0);
+    });
 }

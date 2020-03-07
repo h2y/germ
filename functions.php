@@ -1,6 +1,6 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "1.3.1.24";
+    $theme_ver = "1.3.2.25";
     $theme_dir = get_template_directory_uri();
 
     //载入css
@@ -273,7 +273,7 @@ function hu_popuplinks($text) {
 add_filter('get_comment_author_link', 'hu_popuplinks', 6);
 
 function add_nofollow($link, $args, $comment, $post){
-    return preg_replace( '/href=\'(.*(\?|&)replytocom=(\d+)#respond)/', 'href=\'#comment-$3', $link );
+    return preg_replace( '/href=\'(.*(\?|&)replytocom=(\d+)#respond)/', 'href=\'#respond', $link );
 }
 add_filter('comment_reply_link', 'add_nofollow', 420, 4);
 

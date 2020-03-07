@@ -31,6 +31,8 @@
 
             <?php comment_id_fields(); do_action('comment_form', $post->ID); ?>
 
+            <p class="reply-alert" style="display: none"></p>
+
             <p class="input-row message-row"><textarea class="text_area" rows="3" cols="80" name="comment" id="comment" tabindex="4"  placeholder="欢迎在这里畅所欲言..."></textarea></p>
             <input type="submit" name="submit" class="button" id="submit" tabindex="5" value="提交评论"/>
 

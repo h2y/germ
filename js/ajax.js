@@ -1,7 +1,5 @@
 var ajaxcontent = 'content';
-//var ajaxsearch_class = 'searchform';
-var ajaxignore_string = new String('#, /wp-, .pdf, .zip, .rar, /share');
-var ajaxignore = ajaxignore_string.split(', ');
+var ajaxignore = ['#', '/wp-', '.pdf', '.zip', '.rar'];
 
 var ajaxtrack_analytics = false;
 var ajaxscroll_top = true;
@@ -11,7 +9,6 @@ var ajaxreloadDocumentReady = false;
 
 var ajaxisLoad = false;
 var ajaxstarted = false;
-var ajaxsearchPath = null;
 
 jQuery(document).ready(function() {
     ajaxloadPageInit("");

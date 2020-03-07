@@ -287,16 +287,14 @@ code,kbd,pre,samp {
 }
 
 code {
-    white-space: nowrap;
-    border-bottom: 1px solid #CCC;
-    padding: 2px 4px;
-    font-size: 12px;
-    margin: 0 2px;
+    padding: 0;
+    margin: 0;
 }
 
 pre {
     padding         : 1em;
-    overflow        : auto;
+    white-space: pre-wrap;
+    border-bottom: 1px solid #CCC;
     font-size       : 0.85em;
     line-height     : 1.45;
     background-color: hsl(0, 0%, 97%);
@@ -344,13 +342,8 @@ blockquote cite a {
     padding-left: 2rem;
 }
 
-#header, .pagination, .post, .widget, .box, #qr, #gotop {
+#header, .pagination, .post, .widget, .box, #gotop {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 1s;
-    -webkit-transition: box-shadow 1s;
-}
-#header:hover, .pagination:hover, .post:hover, .widget:hover, .box:hover, #qr:hover, #gotop:hover {
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0);
 }
 
 #header {
@@ -521,21 +514,6 @@ blockquote cite a {
 #sidebar {
     float: right;
     width: 28%;
-}
-
-.widget:before,.post:before, .box:before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    z-index: 10;
-    border-width: 0px 16px 16px 0px;
-    border-style: solid;
-    border-color: #FFF #47C2DC #FFF #FFF;
-    background: none repeat scroll 0% 0% #658E15;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.08), -1px 1px 1px rgba(0, 0, 0, 0.08);
-    display: block;
-    width: 0px;
 }
 
 .pagination, .post, .widget, .box {
@@ -2009,10 +1987,9 @@ ol.comments-list > li > ol.children {
     color: #333;
 }
 
-#gotop, #qr {
+#gotop {
     display: block;
     background-color: #fff;
-    border-radius: 5px;
     position: fixed;
     width: 45px;
     height: 45px;
@@ -2024,30 +2001,13 @@ ol.comments-list > li > ol.children {
     z-index: 11;
 }
 
-#gotop:hover, #qr:hover {
+#gotop:hover {
     color: #80DC47;
-}
-
-#qrimg {
-    background-color: #fff;
-    box-shadow: 0 0 10px #000;
-    border-radius: 5px;
-    position: fixed;
-    bottom: 120px;
-    right: 90px;
-    width: 140px;
-    height: 140px;
-    display: none;
-    z-index: 999;
 }
 
 #gotop {
     bottom: -100px;
     transition: all 0.5s ease 0s;
-}
-
-#qr {
-    bottom: 165px;
 }
 
 /*slimbox*/
@@ -2267,7 +2227,7 @@ body.nav-open.has-opened {
 /*响应式布局开始*/
 
 @media (max-width: 1025px) {
-    #qr, #gotop, #qrimg {
+    #gotop {
         display: none;
     }
 }

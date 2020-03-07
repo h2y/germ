@@ -11,7 +11,7 @@
 
 const cache_path = '../../cache/api_saying_ciba.txt';
 
-const cache_max_age = 1; //second
+const cache_max_age = 1;  // in second
 
 const curl_ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36';
 
@@ -20,8 +20,8 @@ const curl_ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (K
  * @return string 生成一个完整的随机的请求地址，日期格式为 2017-11-04
  */
 function build_request_url() {
-    $begin_time = strtotime('2015-5-1');
     $end_time = time();
+    $begin_time = $end_time - 365*24*60*60;
     $time = rand($begin_time, $end_time);
     $date_string = date('Y-m-d', $time);
 

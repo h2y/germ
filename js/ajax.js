@@ -180,9 +180,6 @@ function ajaxreload_code() {
     if(window.favorite_link_init)    
         window.favorite_link_init();
     
-    if(window.refresh_qrimg)
-        window.refresh_qrimg();
-    
     if(window.add_views)
         window.add_views();
 

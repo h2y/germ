@@ -89,7 +89,6 @@ if($(window).width()>650)
 
 
 jQuery(document).ready(function($) {
-
     //顶部二级菜单展开
     $('#main-nav li.menu-item-has-children').hover(function() {
         $(this).find('.sub-menu').stop().show('normal');
@@ -112,7 +111,7 @@ jQuery(document).ready(function($) {
         $body = (window.opera) ? (document.compatMode==="CSS1Compat" ? $('html') : $('body')) : $('html,body'),
         comm_array = [];
 
-    $submit.attr('disabled', false)
+    $submit.attr('disabled', false);
     comm_array.push('');
     $('#comment').after(txt1 + txt2);
     $('#loading').hide();
@@ -316,17 +315,7 @@ $(document).on("click", ".post-share ul li a", function() {
 
 $(document).ready(function() {
     initgallary();
-    refresh_qrimg();
-    $('#qr').hover(function() {
-        $('#qrimg').stop().fadeIn('normal');
-    }, function() {
-        $('#qrimg').stop().fadeOut('normal');
-    });
 });
-
-function refresh_qrimg() {
-    $('#qrimg').attr('src', 'https://api.lwl12.com/img/qrcode/get?ct='+location.href+'&w=140&h=140');
-}
 
 function initgallary() {
     $('.flexslider').flexslider({

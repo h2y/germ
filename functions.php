@@ -5,16 +5,16 @@ function my_enqueue_scripts_frontpage() {
 
     //载入css
     wp_enqueue_style( 'FA', $theme_dir.'/css/font-awesome.min.css', false, $theme_ver);
-    wp_enqueue_style( 'Germ-style', $theme_dir.'/style.min.css', array('FA'), $theme_ver);
+    wp_enqueue_style( 'Germ-style', $theme_dir.'/style.css', array('FA'), $theme_ver);
 
     //载入JS
     wp_enqueue_script( 'FlexSlider', $theme_dir.'/js/jquery.flexslider-min.js', array('jquery'), '2.6.3', true);
-    wp_enqueue_script( 'base', $theme_dir.'/js/global.min.js', array('jquery', 'FlexSlider'), $theme_ver, true);
+    wp_enqueue_script( 'base', $theme_dir.'/js/global.js', array('jquery', 'FlexSlider'), $theme_ver, true);
 
     if( dopt('d_slimbox_b') != '' )
         wp_enqueue_script( 'slimbox', $theme_dir.'/js/slimbox2.min.js', array('jquery'), $theme_ver, true);
     if( dopt('d_ajax_b') != '' )
-        wp_enqueue_script( 'ajax', $theme_dir.'/js/ajax.min.js', array('jquery'), $theme_ver, true);
+        wp_enqueue_script( 'ajax', $theme_dir.'/js/ajax.js', array('jquery'), $theme_ver, true);
     if( dopt('d_autospace_b') != '' )
         wp_enqueue_script( 'autospace', $theme_dir.'/js/autospace.min.js', array('jquery'), $theme_ver, true);
     if( !dopt('d_defaultavatar_b') )

@@ -7,8 +7,6 @@
         </footer>
     </div>
 
-    <img id="qrimg" src=""/>
-    <a id="qr" href="javascript:;"><i class="fa fa-qrcode"></i></a>
     <a id="gotop" title="点击返回页顶" href="javascript:;"><i class="fa fa-arrow-up"></i></a>
 
     <?php

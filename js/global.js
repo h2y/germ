@@ -473,9 +473,9 @@ if($saying.length) {
 }
 
 
-{
-    // 留言框回复按钮
-
+// 注册事件：留言框回复按钮
+comment_reply_buttons();
+function comment_reply_buttons() {
     $('.reply > a.comment-reply-link').click(function (e) {
         const target = e.target;
         $('#commentform #comment_parent').val(target.dataset.commentid);

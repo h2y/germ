@@ -17,8 +17,8 @@ jQuery(document).ready(function() {
 
 window.onpopstate = function() {
     //location.reload();
-    if(ajaxstarted === true) {
-        var url = document.location.toString();
+    var url = document.location.toString();
+    if(ajaxstarted === true && ajaxcheck_ignore(url) ) {
         ajaxloadPage(url, true);
     }
 };
@@ -142,14 +142,11 @@ function ajaxloadPage(url, noPush, getData) {
 }
 
 function ajaxcheck_ignore(url, dom) {
-    //特殊情况（其他链接访问到该页）
-    if(location.href.indexOf(ajax.home) !== 0)
-        return false;
     //非本域
-    if (dom.href.indexOf(ajax.home) !== 0 && dom.href.indexOf('/') !== 0)
+    if (dom && dom.href.indexOf(ajax.home) !== 0 && dom.href.indexOf('/') !== 0)
         return false;
     //target=_blank
-    if (dom.target === "_blank")
+    if (dom && dom.target === "_blank")
         return false;
     //黑名单
     for (var i in ajaxignore)
@@ -179,6 +176,9 @@ function ajaxreload_code() {
 
     if(window.jdenticon)
         window.jdenticon();
+
+    if(window.comment_reply_buttons)
+        window.comment_reply_buttons();
 }
 
 

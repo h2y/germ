@@ -479,8 +479,9 @@ if($saying.length) {
     $('.reply > a.comment-reply-link').click(function (e) {
         const target = e.target;
         $('#commentform #comment_parent').val(target.dataset.commentid);
-        $('#cancel-comment-reply-link').text('取消'+target.getAttribute('aria-label')).show('normal');
-        $('#commentform .text_area').focus();
+        $('#cancel-comment-reply-link').text('取消'+target.getAttribute('aria-label')).hide().show('slow');
+
+        setTimeout(()=>$('#commentform .text_area').focus(), 1);
     });
 
     $('#cancel-comment-reply-link').click(function(e) {

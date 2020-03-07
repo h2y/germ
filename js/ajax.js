@@ -165,9 +165,6 @@ function ajaxreload_code() {
     else
         jQuery('#container').removeClass('full-width');
         
-    if (window.text_autospace_init)
-        window.text_autospace_init();
-        
     if(window.initgallary)
         window.initgallary();
     

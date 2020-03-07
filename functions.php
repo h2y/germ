@@ -16,7 +16,7 @@ function my_enqueue_scripts_frontpage() {
     if( dopt('d_ajax_b') != '' )
         wp_enqueue_script( 'ajax', $theme_dir.'/js/ajax.js', array('jquery'), $theme_ver, true);
     if( dopt('d_autospace_b') != '' )
-        wp_enqueue_script( 'autospace', $theme_dir.'/js/autospace.min.js', array('jquery'), $theme_ver, true);
+        wp_enqueue_script( 'autospace', $theme_dir.'/js/autospace.min.js', false, $theme_ver, true);
     if( !dopt('d_defaultavatar_b') )
         wp_enqueue_script( 'jdenticon', $theme_dir.'/js/jdenticon/jdenticon.min.js', false, $theme_ver, true);
 }

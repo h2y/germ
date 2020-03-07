@@ -262,25 +262,6 @@ input[type="submit"] {
     transition: all 0.2s ease-in-out 0s;
 }
 
-html.han-la hanla:after {
-    content: " ";
-    display: inline;
-    font-family: Arial;
-    font-size: 0.89em;
-}
-
-html.han-la code hanla,
-html.han-la pre hanla,
-html.han-la kbd hanla,
-html.han-la samp hanla {
-    display: none;
-}
-
-html.han-la ol > hanla,
-html.han-la ul > hanla {
-    display: none;
-}
-
 code,kbd,pre,samp {
     font-size: 1em;
     font-family: monospace,serif

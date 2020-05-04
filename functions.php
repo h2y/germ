@@ -1,6 +1,6 @@
 <?php
 function my_enqueue_scripts_frontpage() {
-    $theme_ver = "1.3.2.25";
+    $theme_ver = "1.3.3.26";
     $theme_dir = get_template_directory_uri();
 
     //载入css
@@ -75,21 +75,6 @@ function remove_open_sans() {
 add_action( 'init', 'remove_open_sans' );
 
 
-//编辑器添加按钮
-function enable_more_buttons($buttons) {
-    $buttons[] = 'sub';
-    $buttons[] = 'sup';
-    $buttons[] = 'fontselect';
-    $buttons[] = 'fontsizeselect';
-    $buttons[] = 'cleanup';
-    $buttons[] = 'styleselect';
-    $buttons[] = 'wp_page';
-    $buttons[] = 'anchor';
-    $buttons[] = 'backcolor';
-    return $buttons;
-}
-add_filter("mce_buttons_3", "enable_more_buttons");
-
 function reset_emojis() {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('admin_print_scripts', 'print_emoji_detection_script');
@@ -99,6 +84,7 @@ function reset_emojis() {
     add_filter('comment_text', 'wp_staticize_emoji',50);
 }
 add_action('init', 'reset_emojis');
+
 
 function fixed_activity_widget_avatar_style(){
 echo '<style type="text/css">
@@ -112,8 +98,10 @@ echo '<style type="text/css">
 }
 add_action('admin_head', 'fixed_activity_widget_avatar_style' );
 
+
 include_once('inc/widget.php');
 include_once('inc/themeset.php');
+
 
 add_action('after_setup_theme', 'my_theme_setup');
 function my_theme_setup(){
@@ -129,53 +117,6 @@ remove_action('wp_head','rsd_link');//移除head中的rel="EditURI"
 remove_action('wp_head','wlwmanifest_link');//移除head中的rel="wlwmanifest"
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );//rel=pre
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
-
-
-//禁用REST API
-/*
-add_filter('rest_enabled', '_return_false');
-add_filter('rest_jsonp_enabled', '_return_false');
-remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
-remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
-*/
-
-//禁用embeds功能
-function disable_embeds_init() {
-    global $wp;
-    $wp->public_query_vars = array_diff( $wp->public_query_vars, array(
-        'embed',
-    ) );
-    remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-    add_filter( 'embed_oembed_discover', '__return_false' );
-    remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
-    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-    remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-    add_filter( 'tiny_mce_plugins', 'disable_embeds_tiny_mce_plugin' );
-    add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
-}
-add_action( 'init', 'disable_embeds_init', 9999 );
-function disable_embeds_tiny_mce_plugin( $plugins ) {
-    return array_diff( $plugins, array( 'wpembed' ) );
-}
-function disable_embeds_rewrites( $rules ) {
-    foreach ( $rules as $rule => $rewrite ) {
-        if ( false !== strpos( $rewrite, 'embed=true' ) ) {
-            unset( $rules[ $rule ] );
-        }
-    }
-    return $rules;
-}
-function disable_embeds_remove_rewrite_rules() {
-    add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
-    flush_rewrite_rules();
-}
-register_activation_hook( __FILE__, 'disable_embeds_remove_rewrite_rules' );
-function disable_embeds_flush_rewrite_rules() {
-    remove_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
-    flush_rewrite_rules();
-}
-register_deactivation_hook( __FILE__, 'disable_embeds_flush_rewrite_rules' );
-//禁用embeds功能 END
 
 
 // 搜索结果只有一篇文章时自动跳转到文章
